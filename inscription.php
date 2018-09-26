@@ -77,8 +77,8 @@
                             </ul>
                         </li>
                         <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Magasin</a></li>
-                        <li><a href="inscripiton.html" class="dropdown-toggle" data-toggle="dropdown">Mon compte</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="inscripiton.php">Mon compte</a></li>
+                        <li><a href="contact.php">Contact</a></li>
                         <li><a href="#" class="nav_searchFrom"><i class="fa fa-search"></i></a></li>
                         <li><a href="#" class="panier"><i class="fas fa-cart-arrow-down"></i></a></li>
 
