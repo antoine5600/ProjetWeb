@@ -1,11 +1,11 @@
+<?php include('server.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-	
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--vie-->
+
     <title>Topbuilder Construction Template</title>
 
     <!-- Favicon -->
@@ -15,14 +15,17 @@
     <!-- Animate CSS -->
     <link href="vendors/animate/animate.css" rel="stylesheet">
     <!-- Icon CSS-->
-	<link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
     <!-- Camera Slider -->
     <link rel="stylesheet" href="vendors/camera-slider/camera.css">
     <!-- Owlcarousel CSS-->
-	<link rel="stylesheet" type="text/css" href="vendors/owl_carousel/owl.carousel.css" media="all">
+    <link rel="stylesheet" type="text/css" href="vendors/owl_carousel/owl.carousel.css" media="all">
 
     <!--Theme Styles CSS-->
-	<link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
 
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -30,6 +33,7 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
 </head>
+
 <body>
     <!-- Preloader -->
     <div class="preloader"></div>
@@ -67,18 +71,17 @@
                         <li class="dropdown submenu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu</a>
                             <ul class="dropdown-menu">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="index-2.html">Home 2</a></li>
+                                <li><a href="parpaing.html">parpaing</a></li>
+                                <li><a href="ciment.html">Ciment</a></li>
+                                <li><a href="commandes.html">Mes commandes</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown submenu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Magasin</a>
-                        </li>
-                        <li class="dropdown submenu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">S'incrire</a>
-                        </li>
+                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Magasin</a></li>
+                        <li><a href="inscripiton.html" class="dropdown-toggle" data-toggle="dropdown">Mon compte</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="#" class="nav_searchFrom"><i class="fa fa-search"></i></a></li>
+                        <li><a href="#" class="panier"><i class="fas fa-cart-arrow-down"></i></a></li>
+
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div>
@@ -86,45 +89,51 @@
     </nav>
     <!-- End Header_Area -->
 
-    <!-- All contact Info -->
+    <!-- Collect information for inscription -->
     <section class="all_contact_info">
         <div class="container">
             <div class="row contact_row">
-                <div class="col-sm-6 contact_info">
-                    <h2>Contact Info</h2>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-                    <div class="location">
-                        <div class="location_laft">
-                            <a class="f_location" href="#">location</a>
-                            <a href="#">phone</a>
-                            <a href="#">fax</a>
-                            <a href="#">email</a>
-                        </div>
-                        <div class="address">
-                            <a href="#">Sector # 10, Road # 05, Plot # 31, Uttara, <br> Dhaka 1230 </a>
-                            <a href="#">+880 123 456 789</a>
-                            <a href="#">(626) 935-3026</a>
-                            <a href="#">info@thethemspro.com</a>
-                        </div>
-                    </div>
+                <div class="col-sm-6 contact_info send_message" id="partie_gauche">
+                    <h2>Inscription</h2>
+                    <form method="post" action="register.php" class="form-inline contact_box">
+                        <?php include('errors.php'); ?>
+                        <label class="main-label" for="bday">Civilit&eacute; * </label><br />
+                            <input type="hidden" id="civilityhidden" name="dwfrm_profile_customer_title" value="1" />
+                            <input type="radio" id="title_1" class="active" name="dwfrm_profile_customer_title" value="1" checked />
+                            <label class="civil" for="title_1">Madame</label>
+                            <input type="radio" id="title_2" name="dwfrm_profile_customer_title" value="2" />
+                            <label class="civil" for="title_2">Monsieur</label><br />
+                        <label class="main-label" for="bday">Prénom *</label>
+                            <input type="text" class="form-control input_box" name="username" value="<?php echo $username; ?>" >
+                        <label class="main-label" for="bday">Nom *</label>
+                            <input type="text" class="form-control input_box">
+                        <label class="main-label" for="bday">Email *</label>
+                            <input type="text" class="form-control input_box" name="email" value="<?php echo $email; ?>">
+                        <label class="main-label" for="bday">Date de naissance *</label>
+                            <input type="date" class="form-control input_box" id="bday" name="bday">
+                        <label class="main-label" for="bday">Mot de passe *</label>
+                            <input type="password" class="form-control input_box" name="password_1">
+                        <label class="main-label" for="bday">Confirmation Mot de passe *</label>
+                            <input type="password" class="form-control input_box" type="password" name="password_2">
+                        <button type="submit" class="btn btn-default" name="reg_user">S'inscrire</button>
+                        <p>* Champs obligatoires</p>
+                    </form>
                 </div>
+                <!-- Collect information for connection -->
                 <div class="col-sm-6 contact_info send_message">
-                    <h2>Send Us a Message</h2>
-                    <form class="form-inline contact_box">
-                        <input type="text" class="form-control input_box" placeholder="First Name *">
-                        <input type="text" class="form-control input_box" placeholder="Last Name *">
-                        <input type="text" class="form-control input_box" placeholder="Your Email *">
-                        <input type="text" class="form-control input_box" placeholder="Subject">
-                        <input type="text" class="form-control input_box" placeholder="Your Website">
-                        <textarea class="form-control input_box" placeholder="Message"></textarea>
-                        <button type="submit" class="btn btn-default">Send Message</button>
+                    <h2>Connexion</h2>
+                    <form method="post" action="inscription.php" class="form-inline contact_box">
+                        <?php include('errors.php'); ?>
+                    <label class="main-label" for="bday">Email</label>
+                        <input type="text" name="username" class="form-control input_box" value="">
+                            <label class="main-label" for="bday">Mot de passe</label>
+                        <input type="password" name="password"class="form-control input_box">
+                        <button type="submit" class="btn btn-default" name="login_user">Connexion</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
-    <!-- End All contact Info -->
 
     <!-- Footer Area -->
     <footer class="footer_area">
@@ -171,7 +180,7 @@
             </div>
         </div>
         <div class="copyright_area">
-            CCopyright 2017 All rights reserved. Designed by <a href="https://colorlib.com">Colorlib.</a>
+            Copyright 2017 All rights reserved. Designed by <a href="https://colorlib.com">Colorlib.</a>
         </div>
     </footer>
     <!-- End Footer Area -->
@@ -195,9 +204,8 @@
     <script src="vendors/owl_carousel/owl.carousel.min.js"></script>
     <!-- Stellar JS -->
     <script src="vendors/stellar/jquery.stellar.js"></script>
-    <!-- Map JS -->
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
-    <script src="vendors/map/topbuilder_map.min.js"></script>
+    <!-- Lightbox JS -->
+    <script src="vendors/lightbox/js/lightbox.min.js"></script>
     <!-- Theme JS -->
     <script src="js/theme.js"></script>
 </body>
