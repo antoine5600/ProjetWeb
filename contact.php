@@ -110,14 +110,40 @@
                 </div>
                 <div class="col-sm-6 contact_info send_message">
                     <h2>Send Us a Message</h2>
-                    <form class="form-inline contact_box">
-                        <input type="text" class="form-control input_box" placeholder="First Name *">
-                        <input type="text" class="form-control input_box" placeholder="Last Name *">
-                        <input type="text" class="form-control input_box" placeholder="Your Email *">
-                        <input type="text" class="form-control input_box" placeholder="Subject">
-                        <input type="text" class="form-control input_box" placeholder="Your Website">
-                        <textarea class="form-control input_box" placeholder="Message"></textarea>
-                        <button type="submit" class="btn btn-default">Send Message</button>
+                    <form id="contactForm" action="contact.php" method="POST" >
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Your name *</label>
+                                    <input type="text" value="" maxlength="100" class="form-control" name="name" id="name" required="" aria-required="true">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Your email address *</label>
+                                    <input type="email" value="" maxlength="100" class="form-control" name="email" id="email" required="" aria-required="true">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label>Subject</label>
+                                    <input type="text" value="" maxlength="100" class="form-control" name="subject" id="subject" required="" aria-required="true">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label>Message *</label>
+                                    <textarea maxlength="5000" rows="10" class="form-control" name="message" id="message" required="" aria-required="true"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="submit" value="Send Message" class="btn btn-primary btn-lg mb-xlg" name="contact"/>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
