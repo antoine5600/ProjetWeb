@@ -1,8 +1,21 @@
+<?php 
+  session_start(); 
+
+  if (!isset($_SESSION['username'])) {
+    $_SESSION['msg'] = "You must log in first";
+    header('location: inscription.php');
+  }
+  if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['username']);
+    header("location: inscription.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-	
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--vie-->
@@ -15,14 +28,14 @@
     <!-- Animate CSS -->
     <link href="vendors/animate/animate.css" rel="stylesheet">
     <!-- Icon CSS-->
-	<link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
     <!-- Camera Slider -->
     <link rel="stylesheet" href="vendors/camera-slider/camera.css">
     <!-- Owlcarousel CSS-->
-	<link rel="stylesheet" type="text/css" href="vendors/owl_carousel/owl.carousel.css" media="all">
+    <link rel="stylesheet" type="text/css" href="vendors/owl_carousel/owl.carousel.css" media="all">
 
     <!--Theme Styles CSS-->
-	<link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
 
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
