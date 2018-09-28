@@ -14,7 +14,7 @@
                 <div class="col-sm-6 contact_info send_message" id="partie_gauche">
                     <h2>Inscription</h2>
                     <form method="post" action="register.php" class="form-inline contact_box">
-                        <?php include('errors.php'); ?>
+                        <?php include('errors_reg.php'); ?>
                         <label class="main-label" for="bday">Civilit&eacute; * </label><br />
                             <input type="hidden" id="civilityhidden" name="dwfrm_profile_customer_title" value="1" />
                             <input type="radio" id="title_1" class="active" name="dwfrm_profile_customer_title" value="1" checked />
@@ -41,7 +41,7 @@
                 <div class="col-sm-6 contact_info send_message">
                     <h2>Connexion</h2>
                     <form method="post" action="inscription.php" class="form-inline contact_box">
-                        <?php include('errors.php'); ?>
+                        <?php include('errors_log.php'); ?>
                     <label class="main-label" for="bday">Email</label>
                         <input type="text" name="username" class="form-control input_box" value="">
                             <label class="main-label" for="bday">Mot de passe</label>
