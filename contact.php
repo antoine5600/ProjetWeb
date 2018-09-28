@@ -41,41 +41,28 @@
                     </div>
                 </div>
                 <div class="col-sm-6 contact_info send_message">
-                    <h2>Send Us a Message</h2>
-                    <form id="contactForm" action="contact.php" method="POST" >
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    <label>Your name *</label>
-                                    <input type="text" value="" maxlength="100" class="form-control" name="name" id="name" required="" aria-required="true">
+                    <h2>Contactez-nous</h2>
+                    <form id="contactForm" class="form-inline contact_box" action="contact.php" method="POST" >
+                        <div class="col-md-6">
+                                    <label class="main-label" for="bday">Nom</label>
+                                    <input type="text" value="" maxlength="100" class="form-control input_box" name="name" id="name" required="" aria-required="true">
                                 </div>
                                 <div class="col-md-6">
-                                    <label>Your email address *</label>
-                                    <input type="email" value="" maxlength="100" class="form-control" name="email" id="email" required="" aria-required="true">
+                                    <label class="main-label" for="bday">Email</label>
+                                    <input type="email" value="" maxlength="100" class="form-control input_box" name="email" id="email" required="" aria-required="true">
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group">
                                 <div class="col-md-12">
-                                    <label>Subject</label>
-                                    <input type="text" value="" maxlength="100" class="form-control" name="subject" id="subject" required="" aria-required="true">
+                                    <label class="main-label" for="bday" >Sujet *</label>
+                                    <input type="text" value="" maxlength="100" class="form-control input_box" name="subject" id="subject" required="" aria-required="true">
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group">
                                 <div class="col-md-12">
-                                    <label>Message *</label>
-                                    <textarea maxlength="5000" rows="10" class="form-control" name="message" id="message" required="" aria-required="true"></textarea>
+                                    <label class="main-label" for="bday">Message *</label>
+                                    <textarea rows="10" class="form-control input_box" name="message" id="message" aria-required="true"></textarea>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
+                                <p>* Champs obligatoires</p>
                             <div class="col-md-12">
-                                <input type="submit" value="Send Message" class="btn btn-primary btn-lg mb-xlg" name="contact"/>
+                                <button type="submit" class="btn btn-primary btn-lg mb-xlg btn-default" name="contact">Envoyer</button>
                             </div>
-                        </div>
                     </form>
                 </div>
             </div>
