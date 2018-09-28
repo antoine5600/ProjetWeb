@@ -68,6 +68,9 @@
             <li class="nav-item">
               <a class="nav-link" href="Contact.php">Contact</a>
             </li>
+            <li class="nav-item">
+              <a href="index.php?logout='1'" class="nav-link">logout</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -77,8 +80,10 @@
     <div class="container">
       <h1 class="mt-5">Logo Nav by Start Bootstrap</h1>
       <p>The logo in the navbar is now a default Bootstrap feature in Bootstrap 4! Make sure to set the width and height of the logo within the HTML. For best results, it's recommended that you use an SVG image as your logo.</p>
-      <?php  if (isset($_SESSION['username'])) : ?>
-      <p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
+      <?php  if (isset($_SESSION['username'])) : 
+                if ($_SESSION['type'] == 0) : ?>
+                  <p>Welcome <strong> Simple User</strong></p>
+                <?php endif ?>
       <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
     <?php endif ?>
     </div>
