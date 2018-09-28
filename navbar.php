@@ -1,4 +1,4 @@
-
+<?php include('header.php'); ?>
 <!-- Preloader -->
     <div class="preloader"></div>
 
@@ -41,7 +41,7 @@
                             </ul>
                         </li>
                         <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Magasin</a></li>
-                        <li><a href="inscripiton.php">Mon compte</a></li>
+                        <li><a href="#">Mon compte</a></li>
                         <li><a href="contact.php">Contact</a></li>
                         <li><a href="#" class="nav_searchFrom"><i class="fa fa-search"></i></a></li>
                         <li><a href="#" class="panier"><i class="fas fa-cart-arrow-down"></i></a></li>
