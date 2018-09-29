@@ -35,9 +35,9 @@
                         <li class="dropdown submenu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu</a>
                             <ul class="dropdown-menu">
-                                <li><a href="parpaing.html">parpaing</a></li>
-                                <li><a href="ciment.html">Ciment</a></li>
-                                <li><a href="commandes.html">Mes commandes</a></li>
+                                <li><a href="parpaing.php">parpaing</a></li>
+                                <li><a href="ciment.php">Ciment</a></li>
+                                <li><a href="commandes.php"></a></li>
                             </ul>
                         </li>
                         <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Magasin</a></li>
