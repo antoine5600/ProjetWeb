@@ -1,4 +1,10 @@
-<?php include('header.php'); ?>
+<?php include('header.php'); 
+//session_start();
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['username']);
+    header("location: index.php");
+  }?>
 <!-- Preloader -->
     <div class="preloader"></div>
 
@@ -24,7 +30,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt=""></a>
+                    <a class="navbar-brand" href="index.php"><img src="images/logo.png" alt=""></a>
                 </div>
             </div>
 
@@ -36,13 +42,19 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu</a>
                             <ul class="dropdown-menu">
                                 <li><a href="parpaing.php">parpaing</a></li>
-                                <li><a href="ciment.php">Ciment</a></li>
-                                <li><a href="commandes.php"></a></li>
+                                <li><a href="#">Ciment</a></li>
+                                <li><a href="#">Commandes</a></li>
                             </ul>
                         </li>
                         <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Magasin</a></li>
                         <li><a href="#">Mon compte</a></li>
                         <li><a href="contact.php">Contact</a></li>
+                        <?php  if (isset($_SESSION['username'])) : ?>
+                              <li><a href="index.php?logout='1'">logout</a></li>
+                        <?php endif ?>
+                        <?php if (!isset($_SESSION['username'])) : ?>
+                            <li><a href="inscription.php">Se connecter</a></li>
+                        <?php endif ?>
                         <li><a href="#" class="nav_searchFrom"><i class="fa fa-search"></i></a></li>
                         <li><a href="#" class="panier"><i class="fas fa-cart-arrow-down"></i></a></li>
 

@@ -1,5 +1,5 @@
 <?php include('server.php')
-  session_start(); 
+  /*session_start(); 
 
   if (!isset($_SESSION['username'])) {
     $_SESSION['msg'] = "You must log in first";
@@ -9,7 +9,7 @@
     session_destroy();
     unset($_SESSION['username']);
     header("location: inscription.php");
-  }
+  }*/
 ?>
 <!DOCTYPE html>
 <html>
