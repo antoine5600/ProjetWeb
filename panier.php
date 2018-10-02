@@ -1,3 +1,14 @@
+<?php
+	session_start() ;
+	if ( isset($_POST['parpaing'.'1']) )
+	{
+		$_SESSION['parpaing'.'1'] = $_SESSION['parpaing'.'1'] + $_POST['parpaing'.'1'] ;
+		$_SESSION['parpaing'.'2'] = $_SESSION['parpaing'.'2'] + $_POST['parpaing'.'2'] ;
+		$_SESSION['parpaing'.'3'] = $_SESSION['parpaing'.'3'] + $_POST['parpaing'.'3'] ;
+		$_SESSION['parpaing'.'4'] = $_SESSION['parpaing'.'4'] + $_POST['parpaing'.'4'] ;
+	}
+	
+?>
 <!DOCTYPE html>
 <html>
 	<body>
@@ -31,26 +42,31 @@
 						<span>Price</span>
 					</li>
 					<li class="row">
-						<span class="quantity">1</span>
+						<span class="quantity"><?php echo $_SESSION['parpaing'.'1']; ?></span>
 						<span class="itemName">Brique Porotherm</span>
 						<span class="popbtn"><a class="arrow"></a></span>
-						<span class="price">$49.95</span>
+						<span class="price"><?php echo $_SESSION['parpaing'.'1']*1.10; ?>€</span>
 					</li>
 					<li class="row">
-						<span class="quantity">50</span>
+						<span class="quantity"><?php echo $_SESSION['parpaing'.'2']; ?></span>
 						<span class="itemName">Béton cellulaire</span>
 						<span class="popbtn"><a class="arrow"></a></span>
-						<span class="price">$5.00</span>
+						<span class="price"><?php echo $_SESSION['parpaing'.'2']*1.29; ?>€</span>
 					</li>
 					<li class="row">
-						<span class="quantity">20</span>
+						<span class="quantity"><?php echo $_SESSION['parpaing'.'3']; ?></span>
 						<span class="itemName">Parpaing creux</span>
 						<span class="popbtn"><a class="arrow"></a></span>
-						<span class="price">$919.99</span>				
+						<span class="price"><?php echo $_SESSION['parpaing'.'3']*1.15; ?>€</span>				
 					</li>
+					<?php
+						$tot = 0 ;
+						$test = 1 ;
+						$tot = $_SESSION['parpaing'.$test]*1.10 ;
+					?>
 					<li class="row totals">
-						<span class="itemName">Total:</span>
-						<span class="price">$974.94</span>
+						<span class="itemName">Total: </span>
+						<span class="price"><?php echo $tot ?>€</span>
 						<span class="order"> <a class="text-center">ORDER</a></span>
 					</li>
 				</ul>

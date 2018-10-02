@@ -60,7 +60,7 @@ if (isset($_GET['logout'])) {
                         <li><a href="inscription.php">Se connecter</a></li>
                     <?php endif ?>
                     <li><a href="#" class="nav_searchFrom"><i class="fa fa-search"></i></a></li>
-                    <li><a href="#" class="panier"><i class="fas fa-cart-arrow-down"></i></a></li>
+                    <li><a href="panier.php" class="panier"><i class="fas fa-cart-arrow-down"></i></a></li>
 
                 </ul>
             </div><!-- /.navbar-collapse -->
