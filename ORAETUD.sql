@@ -32,7 +32,7 @@ create table Users( id_usr integer NOT NULL AUTO_INCREMENT,
 					User_permission integer NOT NULL,
 					User_sex char(1),
 					User_Bday date,
-                    CONSTRAINT PK_usr PRIMARY KEY (id_usr)
+                    CONSTRAINT PK_usr PRIMARY KEY (id_usr),
 					CONSTRAINT CHK_usr CHECK (User_permission<=3 AND User_permission>=0)
 );
 
