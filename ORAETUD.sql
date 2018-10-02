@@ -1,4 +1,4 @@
-drop table Product_category;
+/*drop table Product_category;
 drop table Client_addr;
 drop table Favorites;
 drop table Command;
@@ -10,7 +10,7 @@ drop table Mods;
 drop table Admins;
 drop table Clients;
 drop table Users;
-drop table Addresses;
+drop table Addresses;*/
 
 create table Addresses( id_addr integer NOT NULL, 
                         Street varchar(128), 
