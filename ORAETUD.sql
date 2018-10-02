@@ -109,4 +109,4 @@ create table Product_category(  Product integer NOT NULL,
 
 create unique index I_passwords on Users (Mail, Psswd);
 create index I_products on Product_category (Product);
-create index I_passwords on Product_quantity list);
+create index I_passwords on Product_quantity (list);
