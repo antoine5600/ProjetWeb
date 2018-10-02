@@ -6,9 +6,6 @@ drop table Product_quantity;
 drop table Product_list;
 drop table Categories;
 drop table Products;
-drop table Mods;
-drop table Admins;
-drop table Clients;
 drop table Users;
 drop table Addresses;*/
 
@@ -27,19 +24,19 @@ create table Users( id_usr integer NOT NULL AUTO_INCREMENT,
                     Name varchar(128) NOT NULL, 
                     First_name varchar(128) NOT NULL, 
                     Mail varchar(128) NOT NULL, 
-                    Psswd char(128) NOT NULL,
+                    Psswd varchar(128) NOT NULL,
                     Telephone varchar(12),
-					User_permission integer NOT NULL,
-					User_sex char(1),
-					User_Bday date,
+                    User_permission integer NOT NULL,
+                    User_sex char(1),
+                    User_Bday date,
                     CONSTRAINT PK_usr PRIMARY KEY (id_usr),
-					CONSTRAINT CHK_usr CHECK (User_permission<=3 AND User_permission>=0)
+                    CONSTRAINT CHK_usr CHECK (User_permission<=3 AND User_permission>=0)
 );
 
 
 create table Products(  id_prod integer NOT NULL AUTO_INCREMENT, 
                         Name varchar(256), 
-						Description varchar(512),
+                        Description varchar(512),
                         Price real, 
                         Stock integer, 
                         Sales real,
@@ -50,7 +47,7 @@ create table Products(  id_prod integer NOT NULL AUTO_INCREMENT,
 
 create table Categories(    id_cat integer NOT NULL AUTO_INCREMENT, 
                             Name varchar(64), 
-							Description varchar(512),
+                            Description varchar(512),
                             parent_category integer,
                             CONSTRAINT PK_cat PRIMARY KEY (id_cat),
                             CONSTRAINT FK_cat FOREIGN KEY (parent_category) REFERENCES Categories(id_cat)
@@ -92,7 +89,7 @@ create table Favorites( id_fav integer NOT NULL AUTO_INCREMENT,
 
 create table Client_addr(   Client integer NOT NULL, 
                             Address integer NOT NULL,
-							Name varchar(64),
+                            Name varchar(64),
                             CONSTRAINT PK_client_addr PRIMARY KEY (Client, Address),
                             CONSTRAINT FK_client_addr_c FOREIGN KEY (Client) REFERENCES Clients(id_client),
                             CONSTRAINT FK_client_addr_a FOREIGN KEY (Address) REFERENCES Addresses(id_addr)
@@ -109,4 +106,4 @@ create table Product_category(  Product integer NOT NULL,
 
 create unique index I_passwords on Users (Mail, Psswd);
 create index I_products on Product_category (Product);
-create index I_passwords on Product_quantity (list);
+create index I_lists on Product_quantity (list);

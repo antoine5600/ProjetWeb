@@ -28,10 +28,10 @@
                     <form class="form-inline contact_box">
                         <p>L'entreprise TOPBUILDER reste à votre entière disposition pour de plus amples informations concernant notre stock de matériaux de construction. </p>
                               <?php  if (isset($_SESSION['username'])) : 
-                                        if ($_SESSION['type'] == 0) : ?>
+                                        /*if ($_SESSION['type'] == 0) : ?>
                                           <p>Welcome <strong> Simple User</strong></p>
-                                        <?php endif ?>
-                            <?php endif ?>
+                                        <?php endif ?>*/
+                            endif ?>
                     </form>
                 </div>
 

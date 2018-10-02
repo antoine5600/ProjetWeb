@@ -25,7 +25,7 @@
                         <label class="main-label" for="bday">Prénom *</label>
                             <input type="text" id="colortext" class="form-control input_box" name="username"  >
                         <label class="main-label" for="bday">Nom *</label>
-                            <input type="text" id="colortext" class="form-control input_box">
+                            <input type="text" id="colortext" class="form-control input_box" name="userFirstname">
                         <label class="main-label" for="bday">Email *</label>
                             <input type="text" id="colortext" class="form-control input_box" name="email">
                         <label class="main-label" for="bday">Date de naissance *</label>

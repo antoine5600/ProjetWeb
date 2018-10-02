@@ -14,6 +14,7 @@ $db = mysqli_connect('localhost', 'root', '', 'projet_web');
 if (isset($_POST['reg_user'])) {
   // receive all input values from the form
   $username = mysqli_real_escape_string($db, $_POST['username']);
+  $userFirstname = mysqli_real_escape_string($db, $_POST['userFirstname']);
   $email = mysqli_real_escape_string($db, $_POST['email']);
   $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
   $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
@@ -21,6 +22,7 @@ if (isset($_POST['reg_user'])) {
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($username)) { array_push($errors_reg, "Username is required"); }
+  if (empty($userFirstname)) { array_push($errors_reg, "UserFirstname is required"); }
   if (empty($email)) { array_push($errors_reg, "Email is required"); }
   if (empty($password_1)) { array_push($errors_reg, "Password is required"); }
   if ($password_1 != $password_2) {
@@ -29,7 +31,7 @@ if (isset($_POST['reg_user'])) {
 
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
-  $user_check_query = "SELECT * FROM users WHERE Name='$username' OR Mail='$email' LIMIT 1";
+  $user_check_query = "SELECT * FROM users WHERE (Name='$username' AND First_name='$userFirstname' )OR Mail='$email' LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
   
@@ -47,8 +49,8 @@ if (isset($_POST['reg_user'])) {
   if (count($errors_reg) == 0) {
     $password = md5($password_1);//encrypt the password before saving in the database
 
-    $query = "INSERT INTO users (Name, Mail, psswd) 
-          VALUES('$username', '$email', '$password')";
+    $query = "INSERT INTO users (Name, First_name, Mail, psswd, User_permission) 
+          VALUES('$username','$userFirstname', '$email', '$password',1)";
     mysqli_query($db, $query);
     $_SESSION['username'] = $username;
     $_SESSION['success'] = "You are now logged in";
