@@ -8,7 +8,7 @@ $errors_reg = array();
 $errors_log = array();
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'registration');
+$db = mysqli_connect('localhost', 'root', '', 'projet_web');
 
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
@@ -29,16 +29,16 @@ if (isset($_POST['reg_user'])) {
 
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
-  $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1";
+  $user_check_query = "SELECT * FROM users WHERE Name='$username' OR Mail='$email' LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
   
   if ($user) { // if user exists
-    if ($user['username'] === $username) {
+    if ($user['Name'] === $username) {
       array_push($errors_reg, "Username already exists");
     }
 
-    if ($user['email'] === $email) {
+    if ($user['Mail'] === $email) {
       array_push($errors_reg, "email already exists");
     }
   }
@@ -47,7 +47,7 @@ if (isset($_POST['reg_user'])) {
   if (count($errors_reg) == 0) {
     $password = md5($password_1);//encrypt the password before saving in the database
 
-    $query = "INSERT INTO users (username, email, password) 
+    $query = "INSERT INTO users (Name, Mail, psswd) 
           VALUES('$username', '$email', '$password')";
     mysqli_query($db, $query);
     $_SESSION['username'] = $username;
@@ -59,11 +59,11 @@ if (isset($_POST['reg_user'])) {
 
 // LOGIN USER
 if (isset($_POST['login_user'])) {
-  $username = mysqli_real_escape_string($db, $_POST['username']);
+  $mail = mysqli_real_escape_string($db, $_POST['mail']);
   $password = mysqli_real_escape_string($db, $_POST['password']);
 
-  if (empty($username)) {
-    array_push($errors_log, "Username is required");
+  if (empty($mail)) {
+    array_push($errors_log, "Mail is required");
   }
   if (empty($password)) {
     array_push($errors_log, "Password is required");
@@ -71,13 +71,13 @@ if (isset($_POST['login_user'])) {
 
   if (count($errors_log) == 0) {
     $password = md5($password);
-    $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    $query = "SELECT * FROM users WHERE Mail='$mail' AND psswd='$password'";
     $results = mysqli_query($db, $query);
     if (mysqli_num_rows($results) == 1) {
       $row = $results->fetch_array(MYSQLI_ASSOC);
-      $_SESSION['username'] = $username;
-      $_SESSION['type'] = $row['type'];
-      $_SESSION['email'] = $row['email'];
+      $_SESSION['username'] = $row['Name'];
+      //$_SESSION['type'] = $row['type'];
+      $_SESSION['email'] = $mail;
       $_SESSION['success'] = "You are now logged in";
       header('location: index.php');
     }else {

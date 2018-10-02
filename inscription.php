@@ -23,17 +23,17 @@
                             <input type="radio" id="title_2" name="dwfrm_profile_customer_title" value="2" />
                             <label class="civil" for="title_2">Monsieur</label><br />
                         <label class="main-label" for="bday">Prénom *</label>
-                            <input type="text" id="colortext" class="form-control input_box" name="username" value="<?php echo $username; ?>" >
+                            <input type="text" class="form-control input_box" name="username"  >
                         <label class="main-label" for="bday">Nom *</label>
-                            <input type="text" id="colortext" class="form-control input_box">
+                            <input type="text" class="form-control input_box">
                         <label class="main-label" for="bday">Email *</label>
-                            <input type="text" id="colortext" class="form-control input_box" name="email" value="<?php echo $email; ?>">
+                            <input type="text" class="form-control input_box" name="email">
                         <label class="main-label" for="bday">Date de naissance *</label>
-                            <input type="date" id="colortext" class="form-control input_box" id="bday" name="bday">
+                            <input type="date" class="form-control input_box" id="bday" name="bday">
                         <label class="main-label" for="bday">Mot de passe *</label>
-                            <input type="password" id="colortext" class="form-control input_box" name="password_1">
+                            <input type="password" class="form-control input_box" name="password_1">
                         <label class="main-label" for="bday">Confirmation Mot de passe *</label>
-                            <input type="password" id="colortext" class="form-control input_box" type="password" name="password_2">
+                            <input type="password" class="form-control input_box" type="password" name="password_2">
                         <button type="submit" class="btn btn-default" name="reg_user">S'inscrire</button>
                         <p>* Champs obligatoires</p>
                     </form>
@@ -44,9 +44,9 @@
                     <form method="post" action="inscription.php" class="form-inline contact_box">
                         <?php include('errors_log.php'); ?>
                     <label class="main-label" for="bday">Email</label>
-                        <input type="text" id="colortext" name="username" class="form-control input_box" value="">
+                        <input type="text" name="mail" class="form-control input_box" value="">
                             <label class="main-label" for="bday">Mot de passe</label>
-                        <input type="password" id="colortext" name="password"class="form-control input_box">
+                        <input type="password" name="password"class="form-control input_box">
                         <button type="submit" class="btn btn-default" name="login_user">Connexion</button>
                     </form>
                 </div>
