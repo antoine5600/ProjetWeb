@@ -52,9 +52,9 @@ create table Mods(      id_mod integer NOT NULL,
 
 create table Products(  id_prod integer NOT NULL, 
                         Name varchar(256), 
-                        Price number, 
+                        Price real, 
                         Stock integer, 
-                        Sales number,
+                        Sales real,
                         CONSTRAINT PK_prod PRIMARY KEY (id_prod)
 );
 
