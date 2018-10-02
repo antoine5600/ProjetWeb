@@ -7,7 +7,14 @@
 		$_SESSION['parpaing'.'3'] = $_SESSION['parpaing'.'3'] + $_POST['parpaing'.'3'] ;
 		$_SESSION['parpaing'.'4'] = $_SESSION['parpaing'.'4'] + $_POST['parpaing'.'4'] ;
 	}
-	
+	else
+	{
+		$_SESSION['parpaing'.'1'] = 0 ;
+		$_SESSION['parpaing'.'2'] = 0 ;
+		$_SESSION['parpaing'.'3'] = 0 ;
+		$_SESSION['parpaing'.'4'] = 0 ;
+		
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,7 +28,7 @@
 
 		<div class="container-fluid breadcrumbBox text-center">
 			<ol class="breadcrumb">
-				<li class="active"><a href="#">Order</a></li>
+				<li class="active">Order</li>
 				<li><a href="#">Payment</a></li>
 			</ol>
 		</div>
@@ -90,4 +97,5 @@
 		<?php include('footer.php'); ?>
 
 	</body>
+	
 </html>
