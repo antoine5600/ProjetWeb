@@ -30,7 +30,7 @@ This files contents are outlined below.
     19. Contact
     20. Footer
     21. Responsive
-
+ligne 343
 
 ----------------------------------------------------*/
 /*--------------------------------------------------*/
@@ -2703,4 +2703,8 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
   color:black;
 }
 
+#repnavbar{
+  min-width: 250px;
+  size:30px;
+}
 /*# sourceMappingURL=style.css.map */
