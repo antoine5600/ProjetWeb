@@ -5,7 +5,7 @@
 
 
 <body>
-    <?php include('headPanier.php'); ?>
+    <?php include('header.php'); ?>
     <?php include('navbar_inscription.php'); ?>
 
     <!-- Collect information for inscription -->

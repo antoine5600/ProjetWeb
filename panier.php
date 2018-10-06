@@ -20,7 +20,7 @@
 <html>
 	<body>
 		
-		<?php include('headPanier.php'); ?>	
+		<?php include('header.php'); ?>	
 		
 		 <!-- Navigation -->
 
