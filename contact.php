@@ -11,6 +11,7 @@
     header("location: inscription.php");
   }*/
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <body>
@@ -44,25 +45,21 @@
                     <h2>Contactez-nous</h2>
                     <form id="contactForm" class="form-inline contact_box" action="contact.php" method="POST" >
                         <div class="col-md-6">
-                                    <label class="main-label" for="bday">Nom</label>
-                                    <input type="text" value=" <?php echo $_SESSION['username']; ?>" maxlength="100" class="form-control input_box" name="name" id="name" required="" aria-required="true">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="main-label" for="bday">Email</label>
-                                    <input type="email" value="<?php echo $_SESSION['email']; ?>" maxlength="100" class="form-control input_box" name="email" id="email" required="" aria-required="true">
-                                </div>
-                                <div class="col-md-12">
-                                    <label class="main-label" for="bday" >Sujet *</label>
-                                    <input type="text" value="" maxlength="100" class="form-control input_box" name="subject" id="subject" required="" aria-required="true">
-                                </div>
-                                <div class="col-md-12">
-                                    <label class="main-label" for="bday">Message *</label>
-                                    <textarea rows="10" class="form-control input_box" name="message" id="message" aria-required="true"></textarea>
-                                </div>
-                                <p>* Champs obligatoires</p>
-                            <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary btn-lg mb-xlg btn-default" name="contact">Envoyer</button>
-                            </div>
+                            <label class="main-label" for="bday">Email</label>
+                            <input type="email" value=" <?php echo $_SESSION['email']; ?>" maxlength="100" class="form-control input_box" name="email" id="email" required="" aria-required="true">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="main-label" for="bday" >Sujet *</label>
+                            <input type="text" value="" maxlength="100" class="form-control input_box" name="subject" id="subject" required="" aria-required="true">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="main-label" for="bday">Message *</label>
+                            <textarea rows="10" class="form-control input_box" name="message" id="message" aria-required="true"></textarea>
+                        </div>
+                        <p>* Champs obligatoires</p>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary btn-lg mb-xlg btn-default" name="contact">Envoyer</button>
+                    </div>
                     </form>
                 </div>
             </div>
