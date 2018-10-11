@@ -52,6 +52,7 @@ if (isset($_GET['logout'])) {
                         <li class="dropdown submenu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon Compte</a>
                         <ul class="dropdown-menu">
+                            <li id="repnavbar"><a href="myaccount.php">Dashboard</a></li>
                             <li id="repnavbar"><a href="index.php?logout='1'">logout</a></li>
                         </ul>
                     </li>              
