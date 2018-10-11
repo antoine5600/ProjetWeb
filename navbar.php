@@ -46,7 +46,7 @@ if (isset($_GET['logout'])) {
                             <li><a href="#">Commandes</a></li>
                         </ul>
                     </li>
-                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Magasin</a></li>
+                    <li><a href="magasin.php">Magasin</a></li>
                     <li><a href="contact.php">Contact</a></li>
                     <?php  if (isset($_SESSION['username'])) : ?>
                         <li class="dropdown submenu">
