@@ -26,7 +26,7 @@
         <link rel="stylesheet" href="css/_offer.css">
         <link rel="stylesheet" type="text/css" href="css/nav.css" media="all" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
+		<link rel="stylesheet" type="text/css" href="css/custom1.css"/>
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
         <script src="js/html5shiv.min.js"></script>
