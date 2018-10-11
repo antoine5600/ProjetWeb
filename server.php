@@ -78,7 +78,7 @@ if (isset($_POST['login_user'])) {
     if (mysqli_num_rows($results) == 1) {
       $row = $results->fetch_array(MYSQLI_ASSOC);
       $_SESSION['username'] = $row['Name'];
-      //$_SESSION['type'] = $row['type'];
+      $_SESSION['user_permission'] = $row['User_permission'];
       $_SESSION['email'] = $mail;
       $_SESSION['success'] = "You are now logged in";
       header('location: index.php');
