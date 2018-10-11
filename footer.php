@@ -61,7 +61,5 @@
     <script src="vendors/owl_carousel/owl.carousel.min.js"></script>
     <!-- Stellar JS -->
     <script src="vendors/stellar/jquery.stellar.js"></script>
-    <!-- Lightbox JS -->
-    <script src="vendors/lightbox/js/lightbox.min.js"></script>
     <!-- Theme JS -->
     <script src="js/theme.js"></script>
