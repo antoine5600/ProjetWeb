@@ -25,7 +25,11 @@
 				<h1>Your shopping cart</h1>
 				
 			</div>
-			
+			<?php 
+				if ( $_SESSION['nombre_total_objet_dans_panier'] > 0 )
+				{
+					
+			?>
 			<div class="col-md-7 col-sm-12 text-left">
 				<ul>
 					<li class="row list-inline columnCaptions">
@@ -37,7 +41,7 @@
 					<?php if ( $_SESSION['parpaing'.'1'] != 0 )
 					{ ?>
 						<li class="row">
-							<span class="quantity"><?php if ( $_SESSION['parpaing'.'1'] > 1 ) { echo '<input type="submit" name="submit1-" value="-" class="submit_commande"/>';}?><?php echo $_SESSION['parpaing'.'1']; ?><input type="submit" name="submit1+" value="+" class="submit_commande"/><!--<?php echo $_SESSION['parpaing'.'1']; ?>--></span>
+							<span class="quantity"><?php if ( $_SESSION['parpaing'.'1'] > 1 ) { echo '<input type="submit" name="submit1-" value="-" class="submit_commande"/>';}?><?php echo $_SESSION['parpaing'.'1']; ?><input type="submit" name="submit1+" value="+" class="submit_commande"/></span>
 							<span class="itemName">Palette - 84 Blocs béton Creux NF B40 - 15x20x50 cm</span>
 							<span class="popbtn"><input type="submit" name="delete_panier1" value="supprimer" class="submit_commande"/><!--<a class="arrow"></a>--></span>
 							<span class="price"><?php echo $_SESSION['parpaing'.'1']*1.10; ?>€</span>
@@ -46,7 +50,7 @@
 					<?php if ( $_SESSION['parpaing'.'2'] != 0 )
 					{ ?>
 						<li class="row">
-							<span class="quantity"><?php if ( $_SESSION['parpaing'.'2'] > 1 ) { echo '<input type="submit" name="submit2-" value="-" class="submit_commande"/>';}?><?php echo $_SESSION['parpaing'.'2']; ?><input type="submit" name="submit2+" value="+" class="submit_commande"/><!--<?php echo $_SESSION['parpaing'.'2']; ?>--></span>
+							<span class="quantity"><?php if ( $_SESSION['parpaing'.'2'] > 1 ) { echo '<input type="submit" name="submit2-" value="-" class="submit_commande"/>';}?><?php echo $_SESSION['parpaing'.'2']; ?><input type="submit" name="submit2+" value="+" class="submit_commande"/></span>
 							<span class="itemName">palette - 84 Blocs béton Poteau NF B40 - 15x20x50 cm</span>
 							<span class="popbtn"><input type="submit" name="delete_panier2" value="supprimer" class="submit_commande"/></span>
 							<span class="price"><?php echo $_SESSION['parpaing'.'2']*1.29; ?>€</span>
@@ -55,7 +59,7 @@
 					<?php if ( $_SESSION['parpaing'.'3'] != 0 )
 					{ ?>
 						<li class="row">
-							<span class="quantity"><?php if ( $_SESSION['parpaing'.'3'] > 1 ) { echo '<input type="submit" name="submit3-" value="-" class="submit_commande"/>';}?><?php echo $_SESSION['parpaing'.'3']; ?><input type="submit" name="submit3+" value="+" class="submit_commande"/><!--<input type="number" name="parpaing3" id="parpaing3" min="0" step="1" value="1" /><?php echo $_SESSION['parpaing'.'3']; ?>--></span>
+							<span class="quantity"><?php if ( $_SESSION['parpaing'.'3'] > 1 ) { echo '<input type="submit" name="submit3-" value="-" class="submit_commande"/>';}?><?php echo $_SESSION['parpaing'.'3']; ?><input type="submit" name="submit3+" value="+" class="submit_commande"/></span>
 							<span class="itemName">Palette - 70 Blocs béton Creux NF B40 - 20x20x50 cm</span>
 							<span class="popbtn"><input type="submit" name="delete_panier3" value="supprimer" class="submit_commande"/></span>
 							<span class="price"><?php echo $_SESSION['parpaing'.'3']*1.15; ?>€</span>				
@@ -84,7 +88,13 @@
 					</li>
 				</ul>
 			</div>
-
+			<?php 
+				}
+				else
+				{
+					echo 'aucun article dans le panier' ;
+				}
+			?>
 		</div>
 
 		<!-- The popover content -->
