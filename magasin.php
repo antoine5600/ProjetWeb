@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row contact_row">
                 <div class="col-sm-4 contact_info">
-                    <h2>Contact Info</h2>
+                    <h2>Trouvez-nous</h2>
                     <div class="location">
                         <div class="location_laft">
                             <a class="f_location" href="#">location</a>
@@ -22,7 +22,7 @@
                             <a href="#">Zone Artisanale de l'ENSIBS <br> 56000 Vannes, FRANCE </a>
                             <a href="#">+880 123 456 789</a>
                             <a href="#">(626) 935-3026</a>
-                            <a href="#">info@thethemspro.com</a>
+                            <a href="#">top@builder.com</a>
                         </div>
                     </div>
                 </div>
