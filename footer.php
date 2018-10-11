@@ -1,6 +1,6 @@
     <!-- Footer Area -->
     <footer class="footer_area">
-        <div class="container">
+        <!--<div class="container">
             <div class="footer_row row">
                 <div class="col-md-3 col-sm-6 footer_about">
                     <h2>ABOUT OUR COMPANY</h2>

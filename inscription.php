@@ -23,9 +23,9 @@
                             <input type="radio" id="title_2" name="dwfrm_profile_customer_title" value="2" />
                             <label class="civil" for="title_2">Monsieur</label><br />
                         <label class="main-label" for="bday">Prénom *</label>
-                            <input type="text" id="colortext" class="form-control input_box" name="username"  >
+                            <input type="text" id="colortext" class="form-control input_box" name="userFirstname"  >
                         <label class="main-label" for="bday">Nom *</label>
-                            <input type="text" id="colortext" class="form-control input_box" name="userFirstname">
+                            <input type="text" id="colortext" class="form-control input_box" name="username">
                         <label class="main-label" for="bday">Email *</label>
                             <input type="text" id="colortext" class="form-control input_box" name="email">
                         <label class="main-label" for="bday">Date de naissance *</label>
