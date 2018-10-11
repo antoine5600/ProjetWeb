@@ -1,15 +1,5 @@
 <?php 
   session_start(); 
-
-  /*if (!isset($_SESSION['username'])) {
-    $_SESSION['msg'] = "You must log in first";
-    header('location: inscription.php');
-  }
-  if (isset($_GET['logout'])) {
-    session_destroy();
-    unset($_SESSION['username']);
-    header("location: inscription.php");
-  }*/
 ?>
 
 <!DOCTYPE html>
@@ -45,8 +35,12 @@
                     <h2>Contactez-nous</h2>
                     <form id="contactForm" class="form-inline contact_box" action="contact.php" method="POST" >
                         <div class="col-md-6">
-                            <label class="main-label" for="bday">Email</label>
-                            <input type="email" value=" <?php echo $_SESSION['email']; ?>" maxlength="100" class="form-control input_box" name="email" id="email" required="" aria-required="true">
+                             <label class="main-label" for="bday">Email</label>
+                            <?php if (isset($_SESSION['username'])) : ?>
+                                <input type="email" value=" <?php echo $_SESSION['email']; ?>" maxlength="100" class="form-control input_box" name="email" id="email" required="" aria-required="true">
+                            <?php else : ?>
+                                <input type="email" value=" Mail :" maxlength="100" class="form-control input_box" name="email" id="email" required="" aria-required="true">
+                            <?php endif ?>
                         </div>
                         <div class="col-md-12">
                             <label class="main-label" for="bday" >Sujet *</label>
