@@ -24,7 +24,7 @@
                             <a href="#">email</a>
                         </div>
                         <div class="address">
-                            <a href="#">Sector # 10, Road # 05, Plot # 31, Uttara, <br> Dhaka 1230 </a>
+                            <a href="#">Zone Artisanale de l'ENSIBS <br> FRANCE </a>
                             <a href="#">+880 123 456 789</a>
                             <a href="#">(626) 935-3026</a>
                             <a href="#">info@thethemspro.com</a>
@@ -34,24 +34,24 @@
                 <div class="col-sm-6 contact_info send_message">
                     <h2>Contactez-nous</h2>
                     <form id="contactForm" class="form-inline contact_box" action="contact.php" method="POST" >
-                        <div class="col-md-6">
-                             <label class="main-label" for="bday">Email</label>
+                        <div class="col-md-12">
+                             <label class="main-label" for="bday">Email *</label>
                             <?php if (isset($_SESSION['username'])) : ?>
-                                <input type="email" value=" <?php echo $_SESSION['email']; ?>" maxlength="100" class="form-control input_box" name="email" id="email" required="" aria-required="true">
+                                <input type="email" id="colortext" value=" <?php echo $_SESSION['email']; ?>" maxlength="100" class="form-control input_box" name="email" id="email" required="" aria-required="true">
                             <?php else : ?>
-                                <input type="email" value=" Mail :" maxlength="100" class="form-control input_box" name="email" id="email" required="" aria-required="true">
+                                <input type="email" id="colortext" value=" Mail :" maxlength="100" class="form-control input_box" name="email" id="email" required="" aria-required="true">
                             <?php endif ?>
                         </div>
                         <div class="col-md-12">
                             <label class="main-label" for="bday" >Sujet *</label>
-                            <input type="text" value="" maxlength="100" class="form-control input_box" name="subject" id="subject" required="" aria-required="true">
+                            <input type="text" id="colortext" value="" maxlength="100" class="form-control input_box" name="subject" id="subject" required="" aria-required="true">
                         </div>
                         <div class="col-md-12">
                             <label class="main-label" for="bday">Message *</label>
-                            <textarea rows="10" class="form-control input_box" name="message" id="message" aria-required="true"></textarea>
+                            <textarea rows="10" id="colortext" class="form-control input_box" name="message" id="message" aria-required="true"></textarea>
                         </div>
-                        <p>* Champs obligatoires</p>
                     <div class="col-md-12">
+                        <p>* Champs obligatoires</p>    
                         <button type="submit" class="btn btn-primary btn-lg mb-xlg btn-default" name="contact">Envoyer</button>
                     </div>
                     </form>
