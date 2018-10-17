@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
-     <?php include('navbar.php'); ?>
+    <?php include('navbar.php'); ?>
     <section class="all_contact_info">
         <div class="container">
             <div class="row contact_row">

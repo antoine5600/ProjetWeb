@@ -1,11 +1,12 @@
 <?php 
-  include('server.php') ; 
+  session_start(); 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <body>
-     <?php include('navbar.php'); ?>
+    <?php include('navbar.php'); ?>
+
     <!-- All contact Info -->
     <section class="all_contact_info">
         <div class="container">
@@ -58,6 +59,8 @@
         </div>
     </section>
     <!-- End All contact Info -->
-<?php include('footer.php'); ?>
+
+
+    <?php include('footer.php'); ?>
 </body>
 </html>
