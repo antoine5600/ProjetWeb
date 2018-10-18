@@ -38,7 +38,7 @@
                             <?php if (isset($_SESSION['username'])) : ?>
                                 <input type="email" id="colortext" value=" <?php echo $_SESSION['email']; ?>" maxlength="100" class="form-control input_box" name="email" id="email" required="" aria-required="true">
                             <?php else : ?>
-                                <input type="email" id="colortext" value=" Mail :" maxlength="100" class="form-control input_box" name="email" id="email" required="" aria-required="true">
+                                <input type="email" id="colortext" maxlength="100" class="form-control input_box" name="email" id="email" required="" aria-required="true">
                             <?php endif ?>
                         </div>
                         <div class="col-md-12">

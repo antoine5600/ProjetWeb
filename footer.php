@@ -1,36 +1,19 @@
     <!-- Footer Area -->
-    <footer class="footer_area">
+    <div class="footer_area">
         <div class="container">
             <div class="footer_row row">
-                <div class="col-md-3 col-sm-6 footer_about">
-                    <h2>ABOUT OUR COMPANY</h2>
+                <div class="col-md-6 col-sm-6 footer_about">
+                    <h2>NOTRE COMPAGNIE</h2>
                     <img src="images/footer-logo.png" alt="">
                     <p>Nous vous proposons une selection de parpaing, pour pouvoir créer toutes vos idées. Ainsi qu'une multitude d'outils pour vous aidez à les réaliser.</p>
                 </div>
-                <div class="col-md-3 col-sm-6 footer_about quick">
-                    <h2>Quick links</h2>
-                    <ul class="quick_link">
-                        <li><a href="#"><i class="fa fa-chevron-right"></i>Building Construction</a></li>
-                        <li><a href="#"><i class="fa fa-chevron-right"></i>Home Renovation</a></li>
-                        <li><a href="#"><i class="fa fa-chevron-right"></i>Hardwood Flooring</a></li>
-                        <li><a href="#"><i class="fa fa-chevron-right"></i>Repairing Of Roof</a></li>
-                        <li><a href="#"><i class="fa fa-chevron-right"></i>Commercial Construction</a></li>
-                        <li><a href="#"><i class="fa fa-chevron-right"></i>Concreate Transport</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 col-sm-6 footer_about">
-                    <h2>Twitter Feed</h2>
-                    <a href="#" class="twitter">@colorlib: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</a>
-                    <a href="#" class="twitter">@colorlib: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</a>
-                </div>
-                <div class="col-md-3 col-sm-6 footer_about">
-                    <h2>CONTACT US</h2>
+                <div class="col-md-6 col-sm-6 footer_about">
+                    <h2>CONTACTEZ-NOUS</h2>
                     <address>
-                        <p>Have questions, comments or just want to say hello:</p>
+                        <p>Vous avez des questions, des commentaires ou juste envie de dire bonjour:</p>
                         <ul class="my_address">
-                            <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>info@thethemspro.com</a></li>
-                            <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i>+880 123 456 789</a></li>
-                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i><span>Sector # 10, Road # 05, Plot # 31, Uttara, Dhaka 1230 </span></a></li>
+                            <li><a href="contact.php"><i class="fa fa-envelope" aria-hidden="true"></i>top@builder.com</a></li>
+                            <li><a href="magasin.php"><i class="fa fa-map-marker" aria-hidden="true"></i>Zone Artisanale de l'ENSIBS, 56000 Vannes, FRANCE</a></li>
                         </ul>
                     </address>
                 </div>
@@ -39,7 +22,7 @@
         <div class="copyright_area">
             Copyright 2017 All rights reserved. Designed by <a href="https://colorlib.com">Colorlib.</a>
         </div>
-    </footer>
+    </div>
     <!-- End Footer Area -->
 
     <!-- jQuery JS -->
