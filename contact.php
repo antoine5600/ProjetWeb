@@ -7,6 +7,7 @@
 <body>
     <?php include('navbar.php'); ?>
 
+
     <!-- All contact Info -->
     <section class="all_contact_info">
         <div class="container">
