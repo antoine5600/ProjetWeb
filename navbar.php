@@ -1,11 +1,12 @@
-<?php include('header.php'); ?>
-<?
+<?php
+include('header.php'); 
 //session_start();
 if (isset($_GET['logout'])) {
     session_destroy();
     unset($_SESSION['username']);
     header("location: index.php");
-}?>
+}
+?>
 <!-- Preloader -->
 <div class="preloader"></div>
 
@@ -53,7 +54,9 @@ if (isset($_GET['logout'])) {
                         <li class="dropdown submenu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon Compte</a>
                         <ul class="dropdown-menu">
-                            <li id="repnavbar"><a href="myaccount.php">Dashboard</a></li>
+                            <?php  if ($_SESSION['user_permission'] =='2') : ?>
+                            <li id="repnavbar"><a href="myaccount.php">Dashboard </a></li>
+                            <?php endif ?>
                             <li id="repnavbar"><a href="index.php?logout='1'">logout</a></li>
                         </ul>
                     </li>              
@@ -62,7 +65,7 @@ if (isset($_GET['logout'])) {
                         <li><a href="inscription.php">Se connecter</a></li>
                     <?php endif ?>
                     <li><a href="#" class="nav_searchFrom"><i class="fa fa-search"></i></a></li>
-                    <li><a href="panier.php" class="panier"><i class="fas fa-cart-arrow-down"></i></a></li>
+                    <li><a href="panier.php" class="panier"><i class="fas fa-cart-arrow-down"><?php if ( $_SESSION['nombre_total_objet_dans_panier'] > 0 ) {echo $_SESSION['nombre_total_objet_dans_panier'] ;} ?></i></a></li>
 
                 </ul>
             </div><!-- /.navbar-collapse -->

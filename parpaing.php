@@ -1,5 +1,5 @@
 <?php 
- include('server.php');
+	include('server_objet_a_vendre.php') ;
 
   /*if (!isset($_SESSION['username'])) {
     $_SESSION['msg'] = "You must log in first";
@@ -26,35 +26,21 @@
             <h2>our breeze block</h2>
         </div>
         <div class="featured_gallery">
-			<form method="post" action="parpaing.php">
-				<div class="col-md-3 col-sm-4 col-xs-6 gallery_iner p0">
-					<img src="images/im1.jpg" alt="">
-					<div class="gallery_hover">
-						<h4>1 Palette - 84 Blocs béton Creux NF B40 - 15x20x50 cm</h4>
-						<h4><input type="submit" name="submit1+" value="commander" class="submit_commande"/></h4>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-4 col-xs-6 gallery_iner p0">
-					<img src="images/im2.jpg" alt="">
-					<div class="gallery_hover">
-						<h4>1 palette - 84 Blocs béton Poteau NF B40 - 15x20x50 cm</h4>
-						<h4><input type="submit" name="submit2+" value="commander" class="submit_commande"/></h4>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-4 col-xs-6 gallery_iner p0">
-					<img src="images/im3.jpg" alt="">
-					<div class="gallery_hover">
-						<h4>1 Palette - 70 Blocs béton Creux NF B40 - 20x20x50 cm</h4>
-						<h4><input type="submit" name="submit3+" value="commander" class="submit_commande"/></h4>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-4 col-xs-6 gallery_iner p0">
-					<img src="images/im4.jpg" alt="">
-					<div class="gallery_hover">
-						<h4>1 Palette - 84 Blocs béton Linteau B40 - 15x20x50 cm</h4>
-						<h4><input type="submit" name="submit4+" value="commander" class="submit_commande"/></h4>
-					</div>
-				</div>
+			<form method="post" action="parpaing execution.php">
+				<?php
+					for ($nombre_de_lignes = 1 ; $nombre_de_lignes <= $_SESSION['nb_parpaing'] ; $nombre_de_lignes++)
+					{
+				?>
+						<div class="col-md-3 col-sm-4 col-xs-6 gallery_iner p0">
+							<img src= <?php echo 'images/im' . $nombre_de_lignes . '.jpg' ; ?> alt="">
+							<div class="gallery_hover">
+								<h4>1 Palette - <?php echo $_SESSION['nom_parpaing'][$nombre_de_lignes-1]['name'] . ' - ' . $_SESSION['nom_parpaing'][$nombre_de_lignes-1]['description'] ; ?></h4>
+								<h4><input type="submit" name=<?php echo 'submit' . $nombre_de_lignes . '+' ; ?> value="commander" class="submit_commande"/></h4>
+							</div>
+						</div>
+				<?php
+					}
+				?>
 			</form>
 
         </div>
