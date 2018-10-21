@@ -16,14 +16,19 @@ if (isset($_POST['reg_user'])) {
   $username = mysqli_real_escape_string($db, $_POST['username']);
   $userFirstname = mysqli_real_escape_string($db, $_POST['userFirstname']);
   $email = mysqli_real_escape_string($db, $_POST['email']);
+  $civ = mysqli_real_escape_string($db, $_POST['customer_title']);
+  $bday = mysqli_real_escape_string($db, $_POST['bday']);
   $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
   $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
+  $user_permission = 1;
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($username)) { array_push($errors_reg, "Username is required"); }
   if (empty($userFirstname)) { array_push($errors_reg, "UserFirstname is required"); }
   if (empty($email)) { array_push($errors_reg, "Email is required"); }
+  if (empty($civ)) { array_push($errors_reg, "Civ is required"); }
+  if (empty($bday)) { array_push($errors_reg, "Bday is required"); }
   if (empty($password_1)) { array_push($errors_reg, "Password is required"); }
   if ($password_1 != $password_2) {
   array_push($errors_reg, "The two passwords do not match");
@@ -49,10 +54,11 @@ if (isset($_POST['reg_user'])) {
   if (count($errors_reg) == 0) {
     $password = md5($password_1);//encrypt the password before saving in the database
 
-    $query = "INSERT INTO users (Name, First_name, Mail, psswd, User_permission) 
-          VALUES('$username','$userFirstname', '$email', '$password',1)";
+    $query = "INSERT INTO users (Name, First_name, Mail, psswd, User_permission, User_sex, User_Bday) 
+          VALUES('$username','$userFirstname', '$email', '$password','$user_permission', '$civ', '$bday')";
     mysqli_query($db, $query);
     $_SESSION['username'] = $username;
+    $_SESSION['user_permission'] = $User_permission;
     $_SESSION['success'] = "You are now logged in";
     header('location: index.php');
   }
@@ -171,5 +177,54 @@ $arrResult = array ('response'=>'error');
 }
 }
 
+//EDIT USER
+if (isset($_POST['edit_user'])) {
+
+  //$_SESSION['success'] = "LA";
+
+  // receive all input values from the form
+  $username = mysqli_real_escape_string($db, $_POST['username']);
+  $userFirstname = mysqli_real_escape_string($db, $_POST['userFirstname']);
+  $email = mysqli_real_escape_string($db, $_POST['email']);
+  $civ = mysqli_real_escape_string($db, $_POST['customer_title']);
+  $bday = mysqli_real_escape_string($db, $_POST['bday']);
+  $id = mysqli_real_escape_string($db, $_POST['id']);
+
+  // form validation: ensure that the form is correctly filled ...
+  // by adding (array_push()) corresponding error unto $errors array
+  if (empty($username)) { array_push($errors_reg, "Username is required"); }
+  if (empty($userFirstname)) { array_push($errors_reg, "UserFirstname is required"); }
+  if (empty($email)) { array_push($errors_reg, "Email is required"); }
+  if (empty($civ)) { array_push($errors_reg, "Civ is required"); }
+  if (empty($bday)) { array_push($errors_reg, "Bday is required"); }
+
+  // first check the database to make sure 
+  // a user does not already exist with the same username and/or email
+  $user_check_query = "SELECT * FROM users WHERE (Name='$username' AND First_name='$userFirstname' )OR Mail='$email' LIMIT 1";
+  $result = mysqli_query($db, $user_check_query);
+  $user = mysqli_fetch_assoc($result);
+  
+  /*if ($user) { // if user exists
+    if ($user['Name'] === $username) {
+      array_push($errors_reg, "Username already exists");
+    }
+
+    if ($user['Mail'] === $email) {
+      array_push($errors_reg, "email already exists");
+    }
+  }*/
+
+  // Finally, register user if there are no errors in the form
+  if (count($errors_reg) == 0) {
+
+
+    $query = "UPDATE users SET Name='$username', First_name='$userFirstname', Mail='$email', User_sex='$civ', User_Bday='$bday'
+    WHERE id_usr = '$id'";
+    mysqli_query($db, $query);
+    $_SESSION['username'] = $username;
+    $_SESSION['success'] = "Edit success";
+    header('location: userManage.php');
+  }
+}
 
 ?>

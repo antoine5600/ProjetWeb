@@ -17,10 +17,10 @@
                     <form method="post" action="register.php" class="form-inline contact_box">
                         <?php include('errors_reg.php'); ?>
                         <label class="main-label" for="bday">Civilit&eacute; * </label><br />
-                            <input type="hidden" id="civilityhidden" name="dwfrm_profile_customer_title" value="1" />
-                            <input type="radio" id="title_1" class="active" name="dwfrm_profile_customer_title" value="1" checked />
+                            <input type="hidden" id="civilityhidden" name="customer_title" value="1" />
+                            <input type="radio" id="title_1" class="active" name="customer_title" value="1" checked />
                             <label class="civil" for="title_1">Madame</label>
-                            <input type="radio" id="title_2" name="dwfrm_profile_customer_title" value="2" />
+                            <input type="radio" id="title_2" name="customer_title" value="2" />
                             <label class="civil" for="title_2">Monsieur</label><br />
                         <label class="main-label" for="bday">Prénom *</label>
                             <input type="text" id="colortext" class="form-control input_box" name="userFirstname"  >

@@ -1,6 +1,7 @@
 <?php 
-  session_start();
+ // session_start();
   include ('serverDash.php');
+  include ('server.php');
   ?>
 <!DOCTYPE html>
 <html>
@@ -33,37 +34,50 @@
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Dashboard</h1>
+				<h1 class="page-header">Dashboard <?php echo($_SESSION['success']);?></h1>
 			</div>
 		</div><!--/.row-->
 		
-		<?php var_dump (getUser()); ?>
-		<table class="table">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-    </tbody>
-  </table>
+		<?php 
+		$result = getUser();
+		//var_dump (mysqli_num_rows($result));
+		echo "<table class='table'> ";
+            echo "<tr>";
+            	echo "<th>Name</th>";
+                echo "<th>First Name</th>";
+                echo "<th>Email</th>";
+                echo "<th>Telephone</th>";
+                echo "<th>Type</th>";
+            echo "</tr>";
+            $row = mysqli_fetch_array($result);
+		while($row){
+            echo "<tr>";
+            	echo "<td>" . $row['Name'] . "</td>";
+                echo "<td>" . $row['First_name'] . "</td>";
+                echo "<td>" . $row['Mail'] . "</td>";
+                echo "<td>" . $row['Telephone'] . "</td>";
+                switch ($row['User_permission']) {
+					case 1:
+						echo "<td> Client</td>";
+						break;
+					case 2:
+						echo "<td> Admin </td>";
+						break;
+				}
+				?> 
+				<td> 
+					<?php $id =  $row['id_usr'];
+					echo "<a href='modifUser.php?id=$id'>Modifier</a>";
+					?>
+			     </td>
+			     <?php
+			     $row = mysqli_fetch_array($result);
+				//echo "<td> <button type='button' class='btn'>Delete</button> </td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+		 ?>
+		
 		<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-default">

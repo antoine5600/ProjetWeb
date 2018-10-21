@@ -7,13 +7,20 @@ $errors_reg = array();
 $errors_log = array();
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'projet_web');
+$GLOBALS['$db'] = mysqli_connect('localhost', 'root', '', 'projet_web');
 
 
 function getUser()
 {
-	$user_check_query = "SELECT * FROM users LIMIT 1";
-	$result = mysql_query($user_check_query);
+	$user_check_query = "SELECT * FROM users";
+	$result = mysqli_query($GLOBALS['$db'], $user_check_query);
+	return $result;
+}
+
+function getUserId($id)
+{
+	$user_check_query = "SELECT * FROM users where id_usr = ".$id;
+	$result = mysqli_query($GLOBALS['$db'], $user_check_query);
 	return $result;
 }
 
