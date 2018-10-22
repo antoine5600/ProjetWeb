@@ -34,7 +34,8 @@
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Dashboard <?php echo($_SESSION['success']);?></h1>
+				<h1 class="page-header">Dashboard</h1>
+				<a href="createUser.php"> + Create </a>
 			</div>
 		</div><!--/.row-->
 		
@@ -72,7 +73,7 @@
 			     </td>
 			     <?php
 			     $row = mysqli_fetch_array($result);
-				//echo "<td> <button type='button' class='btn'>Delete</button> </td>";
+				echo "<td> <button type='button' class='btn'>Delete</button> </td>";
             echo "</tr>";
         }
         echo "</table>";

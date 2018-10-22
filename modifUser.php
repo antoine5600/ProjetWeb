@@ -34,4 +34,4 @@ $row = mysqli_fetch_array($result);?>
 	<button type="submit" class="btn btn-default" name="edit_user">Editer</button>
 	<p>* Champs obligatoires</p>
 </form>
-?>
+<button onclick="history.go(-1);">Back </button>
