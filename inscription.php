@@ -14,7 +14,7 @@
             <div class="row contact_row">
                 <div class="col-sm-6 contact_info send_message" id="partie_gauche">
                     <h2>Inscription</h2>
-                    <form method="post" action="register.php" class="form-inline contact_box">
+                    <form method="post" action="inscription.php" class="form-inline contact_box">
                         <?php include('errors_reg.php'); ?>
                         <label class="main-label" for="bday">Civilit&eacute; * </label><br />
                             <input type="hidden" id="civilityhidden" name="customer_title" value="1" />

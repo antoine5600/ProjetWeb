@@ -1,11 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<?php include ('headerDash.php'); ?>
 <?php 
 include ('serverDash.php');
 include ('server.php');
+
 $id=$_REQUEST['id'];
 $result = getUserId($id);
 $row = mysqli_fetch_array($result);?>
-
-
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span></button>
+			<a class="navbar-brand" onclick="history.go(-1);" style="cursor:pointer;" ><span>Retour</span></a></br>
+		</div>
+	</div><!-- /.container-fluid -->
+</nav>
+<p></p>
+<nav class="container">
 <form method="post" action="userManage.php" class="form-inline contact_box">
 	<label class="main-label" for="bday">Civilit&eacute; * </label><br />
 	<?php if ($row['User_sex'] == '1' ): ?>
@@ -22,16 +38,18 @@ $row = mysqli_fetch_array($result);?>
 		<label class="civil" for="title_2">Monsieur</label><br />
 	<?php endif ?>
 	<label class="main-label" for="bday">Prénom *</label>
-	<input type="text" id="colortext" class="form-control input_box" name="userFirstname" value=<?php echo $row['First_name']; ?>  >
+	<input type="text" id="colortext" class="form-control input_box" name="userFirstname" value=<?php echo $row['First_name']; ?>  ><br /><br />
 	<label class="main-label" for="bday">Nom *</label>
-	<input type="text" id="colortext" class="form-control input_box" name="username" value=<?php echo $row['Name']; ?>>
+	<input type="text" id="colortext" class="form-control input_box" name="username" value=<?php echo $row['Name']; ?>><br /><br />
 	<label class="main-label" for="bday">Email *</label>
-	<input type="text" id="colortext" class="form-control input_box" name="email" value=<?php echo $row['Mail']; ?>>
+	<input type="text" id="colortext" class="form-control input_box" name="email" value=<?php echo $row['Mail']; ?>><br /><br />
 	<label class="main-label" for="bday">Date de naissance *</label>
 	<input type="date" id="colortext" class="form-control input_box" id="bday" name="bday" value=<?php echo strftime('%Y-%m-%d',
-  strtotime($row['User_Bday'])); ?> >
+  strtotime($row['User_Bday'])); ?> ><br /><br />
   <input type="hidden" id="id" name="id" value=<?php echo $id; ?> />
 	<button type="submit" class="btn btn-default" name="edit_user">Editer</button>
 	<p>* Champs obligatoires</p>
 </form>
-<button onclick="history.go(-1);">Back </button>
+</nav>	
+</body>
+</html>

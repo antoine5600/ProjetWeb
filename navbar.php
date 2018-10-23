@@ -45,7 +45,6 @@ if (isset($_GET['logout'])) {
                         <ul class="dropdown-menu">
                             <li><a href="parpaing.php">parpaing</a></li>
                             <li><a href="#">Ciment</a></li>
-                            <li><a href="#">Commandes</a></li>
                         </ul>
                     </li>
                     <li><a href="magasin.php">Magasin</a></li>
