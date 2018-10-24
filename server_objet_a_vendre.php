@@ -1,5 +1,5 @@
 <?php
-	include('session.php') ;
+	include('server.php') ;
 	// connexion à la bdd
 	try
 	{ // le dernier paramètre permet d'avoir de meilleur message d'erreur
