@@ -21,7 +21,7 @@
 	</nav>
 
 		<?php include('dashNav.php'); ?>
-		
+	
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
@@ -414,6 +414,18 @@
 	});
 };
 	</script>
+	<script>
+// Add active class to the current button (highlight it)
+var header = document.getElementById("divider");
+var btns = header.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
 		
 </body>
 </html>
