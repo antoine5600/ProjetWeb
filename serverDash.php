@@ -24,4 +24,11 @@ function getUserId($id)
 	return $result;
 }
 
+function deleteUser($id)
+{
+	$user_check_query = "DELETE FROM users where id_usr = ".$id;
+	$result = mysqli_query($GLOBALS['$db'], $user_check_query);
+	return $result;
+}
+
 ?>

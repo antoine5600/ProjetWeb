@@ -14,7 +14,7 @@
 		<li class="active"><a href="myaccount.php"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 		<li><a href="userManage.php"><em class="fa fa-calendar">&nbsp;</em> Gestion Utilisateur</a></li>
 		<li><a href="charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Gestion Commande</a></li>
-		<li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
+		<li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> Gestion Produit</a></li>
 		<li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>
 		<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
 			<em class="fa fa-navicon">&nbsp;</em> Multilevel <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>

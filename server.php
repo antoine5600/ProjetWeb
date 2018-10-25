@@ -54,8 +54,11 @@ if (isset($_POST['reg_user'])) {
   if (count($errors_reg) == 0) {
     $password = md5($password_1);//encrypt the password before saving in the database
 
-    $query = "INSERT INTO users (Name, First_name, Mail, psswd, User_permission, User_sex, User_Bday) 
-          VALUES('$username','$userFirstname', '$email', '$password','$user_permission', '$civ', '$bday')";
+    //$query = "INSERT INTO users (Name, First_name, Mail, psswd, User_permission, User_sex, User_Bday) 
+    //      VALUES('$username','$userFirstname', '$email', '$password','$user_permission', '$civ', '$bday')";
+
+    $query = "SELECT AddUser('$username','$userFirstname', '$email', '$password', NULL,'$user_permission', '$civ', '$bday')";
+
     mysqli_query($db, $query);
     $_SESSION['username'] = $username;
     $_SESSION['user_permission'] = $User_permission;
@@ -79,7 +82,8 @@ if (isset($_POST['login_user'])) {
 
   if (count($errors_log) == 0) {
     $password = md5($password);
-    $query = "SELECT * FROM users WHERE Mail='$mail' AND psswd='$password'";
+    //$query = "SELECT * FROM users WHERE Mail='$mail' AND psswd='$password'";
+    $query = "SELECT * FROM Users WHERE id_usr = Login('$mail', '$password')";
     $results = mysqli_query($db, $query);
     if (mysqli_num_rows($results) == 1) {
       $row = $results->fetch_array(MYSQLI_ASSOC);
@@ -272,8 +276,8 @@ if (isset($_POST['create_user'])) {
   if (count($errors_reg) == 0) {
     $password = md5($password_1);//encrypt the password before saving in the database
 
-    $query = "INSERT INTO users (Name, First_name, Mail, psswd, User_permission, User_sex, User_Bday) 
-          VALUES('$username','$userFirstname', '$email', '$password','$user_permission', '$civ', '$bday')";
+
+    $query = "SELECT AddUser('$username','$userFirstname', '$email', '$password', NULL,'$user_permission', '$civ', '$bday')";
     mysqli_query($db, $query);
     $_SESSION['success'] = "You are now logged in";
     header('location: userManage.php');

@@ -73,7 +73,7 @@
 			     </td>
 			     <?php
 			     $row = mysqli_fetch_array($result);
-				echo "<td> <button type='button' class='btn'>Delete</button> </td>";
+				echo "<td><a href='deleteUser.php?action=deleteUser&amp;id=$id'>Delete</a></td>";
             echo "</tr>";
         }
         echo "</table>";

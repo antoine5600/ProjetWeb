@@ -10,10 +10,10 @@ drop table Categories;
 drop table Products;
 drop table Mods;
 drop table Admins;
-drop table Clients;
+drop table Clients;*/
 drop table Users;
 drop table Addresses;
-*/
+
 
 
 /* ----------------------------------------------------------------------*/
