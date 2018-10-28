@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<link href="css/styleD.css" rel="stylesheet">
-</head>
 <body>
+	<?php include ('headerDash.php'); ?>
 <div id="oModal" class="oModal">
   <div>
    
@@ -16,8 +14,8 @@
 			if ($_REQUEST['action']=='deleteUser')    
 			{
 			echo "
-			   <br><center><h2>Souhaitez-vous vraiment supprimer le user n° $id ? </h2>
-			   <br><br>
+			   <br><center><h4>Souhaitez-vous vraiment supprimer le user n° $id ? </h4>
+			   <br>
 			   <h4><a href='deleteUser?action=validerDeleteUser&amp;id=$id'#oModal> Oui</a>&nbsp; &nbsp; &nbsp; &nbsp;
 			   <a href='userManage.php'>Non</a></h4></center>";
 			}
