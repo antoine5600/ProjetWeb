@@ -1,20 +1,34 @@
-<?php 
-include ('serverDash.php');
-$id=$_REQUEST['id'];
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="css/styleD.css" rel="stylesheet">
+</head>
+<body>
+<div id="oModal" class="oModal">
+  <div>
+   
+     <section>
+      <?php 
+			include ('serverDash.php');
+			$id=$_REQUEST['id'];
 
 
-if ($_REQUEST['action']=='deleteUser')    
-{
-echo "
-   <br><center><h5>Souhaitez-vous vraiment supprimer le user n° $id ? 
-   <br><br>
-   <a href='deleteUser.php?action=validerDeleteUser&amp;id=$id'> Oui</a>&nbsp; &nbsp; &nbsp; &nbsp;
-   <a href='userManage.php?'>Non</a></h5></center>";
-}
-else if ($_REQUEST['action']=='validerDeleteUser')
-{
-	$a = deleteUser($id);
-	echo "<br><br><center><h5>User $id a été supprimé</h5>
-   	<a href='userManage.php?'>Retour</a></center>";
-}
-?>
+			if ($_REQUEST['action']=='deleteUser')    
+			{
+			echo "
+			   <br><center><h2>Souhaitez-vous vraiment supprimer le user n° $id ? </h2>
+			   <br><br>
+			   <h4><a href='deleteUser?action=validerDeleteUser&amp;id=$id'#oModal> Oui</a>&nbsp; &nbsp; &nbsp; &nbsp;
+			   <a href='userManage.php'>Non</a></h4></center>";
+			}
+			else if ($_REQUEST['action']=='validerDeleteUser')
+			{
+				$a = deleteUser($id);
+			   	header('Location: userManage.php');
+			}
+		?>
+     </section>
+  </div>
+</div>
+</body>
+</html>

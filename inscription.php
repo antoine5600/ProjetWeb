@@ -2,8 +2,6 @@
 <?php include('server.php') ?>
 <!DOCTYPE html>
 <html lang="en">
-
-
 <body>
     <?php include('header.php'); ?>
     <?php include('navbar_inscription.php'); ?>
