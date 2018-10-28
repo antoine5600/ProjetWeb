@@ -68,7 +68,7 @@
 				?> 
 				<td> 
 					<?php $id =  $row['id_usr'];
-					echo "<a href='modifUser.php?id=$id'>Modifier</a>";
+					echo "<a href='modifUser.php?id=$id#oModal'>Modifier</a>";
 					?>
 			     </td>
 			     <?php
