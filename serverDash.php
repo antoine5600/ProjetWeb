@@ -31,4 +31,25 @@ function deleteUser($id)
 	return $result;
 }
 
+function getProduct()
+{
+	$user_check_query = "SELECT * FROM products";
+	$result = mysqli_query($GLOBALS['$db'], $user_check_query);
+	return $result;
+}
+
+function getProductId($id)
+{
+	$user_check_query = "SELECT * FROM products where id_prod = ".$id;
+	$result = mysqli_query($GLOBALS['$db'], $user_check_query);
+	return $result;
+}
+
+function deleteProduct($id)
+{
+	$user_check_query = "DELETE FROM products where id_prod = ".$id;
+	$result = mysqli_query($GLOBALS['$db'], $user_check_query);
+	return $result;
+}
+
 ?>

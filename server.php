@@ -284,4 +284,72 @@ if (isset($_POST['create_user'])) {
   }
 }
 
+// CREATE PRODUCT
+if (isset($_POST['create_product'])) {
+  // receive all input values from the form
+  $name = mysqli_real_escape_string($db, $_POST['productName']);
+  $price = mysqli_real_escape_string($db, $_POST['productPrice']);
+  $description = mysqli_real_escape_string($db, $_POST['productDescription']);
+
+  // form validation: ensure that the form is correctly filled ...
+  // by adding (array_push()) corresponding error unto $errors array
+  if (empty($name)) { array_push($errors_reg, "name is required"); }
+  if (empty($price)) { array_push($errors_reg, "price is required"); }
+  if (empty($description)) { array_push($errors_reg, "description is required"); }
+
+  // first check the database to make sure 
+  // a user does not already exist with the same username and/or email
+  $user_check_query = "SELECT * FROM products WHERE Name='name' LIMIT 1";
+  $result = mysqli_query($db, $user_check_query);
+  $product = mysqli_fetch_assoc($result);
+  
+  if ($product) { // if product exists
+    if ($product['Name'] === $name) {
+      array_push($errors_reg, "name already exists");
+    }
+  }
+
+  // Finally, register user if there are no errors in the form
+  if (count($errors_reg) == 0) {
+
+    $query = "INSERT INTO products (Name,Description,Price) VALUES ('$name','$description','$price')";
+    mysqli_query($db, $query);
+    $_SESSION['success'] = "You are now logged in";
+    header('location: productManage.php');
+  }
+}
+
+//EDIT PRODUCT
+if (isset($_POST['edit_product'])) {
+
+
+  // receive all input values from the form
+  $name = mysqli_real_escape_string($db, $_POST['productName']);
+  $price = mysqli_real_escape_string($db, $_POST['productPrice']);
+  $description = mysqli_real_escape_string($db, $_POST['productDescription']);
+    $id = mysqli_real_escape_string($db, $_POST['id']);
+
+  // form validation: ensure that the form is correctly filled ...
+  // by adding (array_push()) corresponding error unto $errors array
+  if (empty($name)) { array_push($errors_reg, "name is required"); }
+  if (empty($price)) { array_push($errors_reg, "price is required"); }
+  if (empty($description)) { array_push($errors_reg, "description is required"); }
+
+  // first check the database to make sure 
+  // a user does not already exist with the same username and/or email
+  $user_check_query = "SELECT * FROM products WHERE Name='name' LIMIT 1";
+  $result = mysqli_query($db, $user_check_query);
+  $product = mysqli_fetch_assoc($result);
+
+
+  // Finally, register user if there are no errors in the form
+  if (count($errors_reg) == 0) {
+
+    $query = "UPDATE products SET Name='$name', Price='$price', Description='$description'WHERE id_prod = '$id'";
+    mysqli_query($db, $query);
+    $_SESSION['success'] = "Edit success";
+    header('location: productManage.php');
+  }
+}
+
 ?>
