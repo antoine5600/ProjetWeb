@@ -37,8 +37,8 @@ ligne 343
 @import url("https://fonts.googleapis.com/css?family=Oswald:300,400,700|Roboto:300,300i,400,400i,500,500i,700,700i");
 /*Color Variables*/
 ::selection {
-  background-color: #000000;
-  color: #000000;
+  background-color: #b1b9ef;
+  color: #b1b9ef;
 }
 
 /* Button */
@@ -2707,9 +2707,6 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
   min-width: 250px;
 }
 
-#errors{
-  color: black;
-}
 
 
 /*# sourceMappingURL=style.css.map */
