@@ -14,20 +14,16 @@
             <div class="row contact_row">
                 <div class="col-sm-6 contact_info">
                     <h2>Contact Info</h2>
-                    <p>There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+                    <p>Il y a beaucoup de personnes qui passent sur le site de Top Builder pour toutes questions, recommandation ou pour un retour de commande. Remplissez le formulaire de contact et nous vous repondrons au maximum sous 2 jours ouvrés.</p>
+                    <p>Horaire d'ouverture : <br>Lundi-Mardi : 9h-19h <br> Samedi : 10h-18h <br> Dimanche : 10h-12h30</p>
                     <div class="location">
                         <div class="location_laft">
-                            <a class="f_location" href="#">location</a>
-                            <a href="#">phone</a>
-                            <a href="#">fax</a>
-                            <a href="#">email</a>
+                            <a class="f_location" href="magasin.php">location</a>
+                            <a href="contact.php">email</a>
                         </div>
                         <div class="address">
-                            <a href="#">Zone Artisanale de l'ENSIBS <br> FRANCE </a>
-                            <a href="#">+880 123 456 789</a>
-                            <a href="#">(626) 935-3026</a>
-                            <a href="#">info@thethemspro.com</a>
+                            <a href="magasin.php">Zone Artisanale de l'ENSIBS <br>56450 Vannes, FRANCE </a>
+                            <a href="contact.php">top@builder.com</a>
                         </div>
                     </div>
                 </div>

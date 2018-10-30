@@ -14,14 +14,10 @@
                     <div class="location">
                         <div class="location_laft">
                             <h7 class="f_location" >LOCATION <br><br>
-                            <br>PHONE<br>
-                            <br>FAX<br>
                             <br>EMAIL</h7>
                         </div>
                         <div class="address">
                             <h7>Zone Artisanale de l'ENSIBS <br> 56000 Vannes, FRANCE <br>
-                            <br>+880 123 456 789<br>
-                            <br>(626) 935-3026</br>
                             <br>top@builder.com</h7>
                         </div>
                     </div>
