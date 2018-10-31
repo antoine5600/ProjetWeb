@@ -37,8 +37,8 @@ ligne 343
 @import url("https://fonts.googleapis.com/css?family=Oswald:300,400,700|Roboto:300,300i,400,400i,500,500i,700,700i");
 /*Color Variables*/
 ::selection {
-  background-color: #b1b9ef;
-  color: #b1b9ef;
+  background-color: rgba(0, 191, 255,0.3);;
+  color: rgba(0, 191, 255,0.3);;
 }
 
 /* Button */
