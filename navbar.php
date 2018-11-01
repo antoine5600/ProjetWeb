@@ -56,6 +56,7 @@ if (isset($_GET['logout'])) {
                             <?php  if ($_SESSION['user_permission'] =='2') : ?>
                             <li id="repnavbar"><a href="myaccount.php">Dashboard </a></li>
                             <?php endif ?>
+							<li id="repnavbar"><a href="mes_commandes.php">Mes commandes</a></li>
                             <li id="repnavbar"><a href="index.php?logout='1'">logout</a></li>
                         </ul>
                     </li>              

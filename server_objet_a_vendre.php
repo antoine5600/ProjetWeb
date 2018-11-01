@@ -27,7 +27,7 @@
 		
 		if ( $nb_adr_client != 0 )
 		{
-			$bdd_adresses_client = $bdd->prepare('SELECT * FROM client_addr WHERE Client = :id_client') ;
+			$bdd_adresses_client = $bdd->prepare('SELECT * FROM client_addr INER JOIN addresses ON Address = id_addr WHERE Client = :id_client') ;
 			$bdd_adresses_client->execute(array(
 				'id_client' => $_SESSION['id_user']
 				));
@@ -35,10 +35,16 @@
 			$bdd_adresses_client->closeCursor() ;
 		}
 		
+		$bdd_nb_commandes_client = $bdd->prepare('SELECT COUNT(*) AS nb_commandes FROM command WHERE Client = :id_client') ;
+		$bdd_nb_commandes_client->execute(array( 'id_client' => $_SESSION['id_user'] )) ;
+		$nb_commandes_client = $bdd_nb_commandes_client->fetch() ;
+		$nb_commandes = $nb_commandes_client['nb_commandes'] ;
 		
-		if ( $_SESSION['user_permission'] == 2 )
+		if ( $nb_commandes != 0 )
 		{
-			
+			$bdd_adresses_commandes = $bdd->prepare('SELECT * FROM addresses INER JOIN command ON id_addr = command.Delivery_addr JOIN client_addr ON command.Delivery_addr = client_addr.Address WHERE command.Client = :id_client') ;
+			$bdd_adresses_commandes->execute(array( 'id_client' => $_SESSION['id_user'] )) ;
+			$adresses_commandes = $bdd_adresses_commandes->fetchAll() ;
 		}
 	}
 	

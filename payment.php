@@ -23,9 +23,18 @@
 										$compteur_pour_post = 1 ; // les id en sql commencent à 1
 										foreach ( $adr_client as $addresses )
 										{
+											if ( $addresses['Name'] != "" )
+											{
 								?>
-											<input type="radio" name="choix_adresse" value="adresse<?php echo $compteur_pour_post ?>" id="adresse<?php echo $compteur_pour_post ?>" /> <label for="adresse<?php echo $compteur_pour_post ?>"><?php echo $addresses['Name'] ; ?></label>
+												<input type="radio" name="choix_adresse" value="adresse<?php echo $compteur_pour_post ?>" id="adresse<?php echo $compteur_pour_post ?>" /> <label for="adresse<?php echo $compteur_pour_post ?>"><?php echo $addresses['Name'] ; ?></label>
 								<?php
+											}
+											else
+											{
+								?>
+												<input type="radio" name="choix_adresse" value="adresse<?php echo $compteur_pour_post ?>" id="adresse<?php echo $compteur_pour_post ?>" /> <label for="adresse<?php echo $compteur_pour_post ?>"><?php echo $addresses['Street'] . ', ' . $addresses['Additional'] . ', ' . $addresses['City'] . ' ' . $addresses['Postcode'] . ', ' . $addresses['Country'] ; ?></label>
+								<?php
+											}
 											$compteur_pour_post++ ;
 										}
 									}
