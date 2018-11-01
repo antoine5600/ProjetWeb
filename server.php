@@ -195,6 +195,8 @@ if (isset($_POST['edit_user'])) {
   $civ = mysqli_real_escape_string($db, $_POST['customer_title']);
   $bday = mysqli_real_escape_string($db, $_POST['bday']);
   $id = mysqli_real_escape_string($db, $_POST['id']);
+  $number = mysqli_real_escape_string($db, $_POST['number']);
+  $userPermission = mysqli_real_escape_string($db, $_POST['userPermission']);
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
@@ -203,6 +205,7 @@ if (isset($_POST['edit_user'])) {
   if (empty($email)) { array_push($errors_reg, "Email is required"); }
   if (empty($civ)) { array_push($errors_reg, "Civ is required"); }
   if (empty($bday)) { array_push($errors_reg, "Bday is required"); }
+  if (empty($userPermission)) { array_push($errors_reg, "userPermission is required"); }
 
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
@@ -224,7 +227,7 @@ if (isset($_POST['edit_user'])) {
   if (count($errors_reg) == 0) {
 
 
-    $query = "UPDATE users SET Name='$username', First_name='$userFirstname', Mail='$email', User_sex='$civ', User_Bday='$bday'
+    $query = "UPDATE users SET Name='$username', First_name='$userFirstname', Mail='$email', User_sex='$civ', User_Bday='$bday', User_permission='$userPermission', Telephone='$number'
     WHERE id_usr = '$id'";
     mysqli_query($db, $query);
     $_SESSION['username'] = $username;
@@ -241,6 +244,8 @@ if (isset($_POST['create_user'])) {
   $email = mysqli_real_escape_string($db, $_POST['email']);
   $civ = mysqli_real_escape_string($db, $_POST['customer_title']);
   $bday = mysqli_real_escape_string($db, $_POST['bday']);
+  $number = mysqli_real_escape_string($db, $_POST['number']);
+  $userPermission = mysqli_real_escape_string($db, $_POST['userPermission']);
   $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
   $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
   $user_permission = 1;
@@ -252,6 +257,7 @@ if (isset($_POST['create_user'])) {
   if (empty($email)) { array_push($errors_reg, "Email is required"); }
   if (empty($civ)) { array_push($errors_reg, "Civ is required"); }
   if (empty($bday)) { array_push($errors_reg, "Bday is required"); }
+  if (empty($userPermission)) { array_push($errors_reg, "userPermission is required"); }
   if (empty($password_1)) { array_push($errors_reg, "Password is required"); }
   if ($password_1 != $password_2) {
   array_push($errors_reg, "The two passwords do not match");
@@ -271,6 +277,10 @@ if (isset($_POST['create_user'])) {
     if ($user['Mail'] === $email) {
       array_push($errors_reg, "email already exists");
     }
+
+    if ($user['Telephone'] === $number) {
+      array_push($errors_reg, "number already exists");
+    }
   }
 
   // Finally, register user if there are no errors in the form
@@ -278,7 +288,7 @@ if (isset($_POST['create_user'])) {
     $password = md5($password_1);//encrypt the password before saving in the database
 
 
-    $query = "SELECT AddUser('$username','$userFirstname', '$email', '$password', NULL,'$user_permission', '$civ', '$bday')";
+    $query = "SELECT AddUser('$username','$userFirstname', '$email', '$password', '$number','$userPermission', '$civ', '$bday')";
     mysqli_query($db, $query);
     $_SESSION['success'] = "You are now logged in";
     header('location: userManage.php');

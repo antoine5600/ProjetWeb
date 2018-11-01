@@ -14,6 +14,7 @@ $row = mysqli_fetch_array($result);?>
   <div>
 	<form method="post" action="userManage.php" class="form-inline contact_box">
 		<div class="separate">
+			<?php include('errors_log.php'); ?>
 			<label class="main-label" for="bday">Civilit&eacute; * </label>
 			<?php if ($row['User_sex'] == '1' ): ?>
 				<input type="hidden" id="civilityhidden" name="customer_title" value="1" />
@@ -46,6 +47,14 @@ $row = mysqli_fetch_array($result);?>
 			<input type="date" id="colortext" class="form-control input_box" id="bday" name="bday" value=<?php echo strftime('%Y-%m-%d', strtotime($row['User_Bday'])); ?> >
 	  		<input type="hidden" id="id" name="id" value=<?php echo $id; ?> />
 	  	</div>
+	  	<div class="separate">
+			<label class="main-label" for="bday">Telephone</label>
+			<input type="text" id="colortext" class="form-control input_box" name="number" value=<?php echo $row['Telephone']; ?>>
+		</div>
+	  	<div class="separate">
+			<label class="main-label" for="bday">Permission Admin*</label>
+			<input type="text" id="colortext" placeholder="2=admin,1=user"class="form-control input_box" name="userPermission" value=<?php echo $row['User_permission']; ?>>
+		</div>
 	  	<div class="separate">
 			<button type="submit" class="btn btn-default" name="edit_user">Editer</button>
 			<p>* Champs obligatoires</p>

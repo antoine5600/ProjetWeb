@@ -35,6 +35,14 @@
                 <input type="date" id="colortext" class="form-control input_box sapce" id="bday" name="bday">
             </div>
             <div class="separate">
+                <label class="main-label" for="bday">Téléphone</label>
+                <input type="text" id="colortext" class="form-control input_box sapce" name="number">
+            </div>
+            <div class="separate">
+                <label class="main-label" for="bday">Permission admin *</label>
+                <input type="text" id="colortext" class="form-control input_box sapce" name="userPermission">
+            </div>
+            <div class="separate">
                 <label class="main-label" for="bday">Mot de passe *</label>
                 <input type="password" id="colortext" class="form-control input_box sapce" name="password_1">
             </div>
