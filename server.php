@@ -230,7 +230,6 @@ if (isset($_POST['edit_user'])) {
     $query = "UPDATE users SET Name='$username', First_name='$userFirstname', Mail='$email', User_sex='$civ', User_Bday='$bday', User_permission='$userPermission', Telephone='$number'
     WHERE id_usr = '$id'";
     mysqli_query($db, $query);
-    $_SESSION['username'] = $username;
     $_SESSION['success'] = "Edit success";
     header('location: userManage.php');
   }
