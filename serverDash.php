@@ -1,5 +1,5 @@
 <?php
-
+	include('server_objet_a_vendre.php') ;
 // initializing variables
 $username = "";
 $email    = "";
