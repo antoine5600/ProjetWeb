@@ -1,7 +1,7 @@
 <?php 
  // session_start();
   include ('serverDash.php');
-  include ('server.php');
+  //include ('server.php');
   ?>
 <!DOCTYPE html>
 <html>
