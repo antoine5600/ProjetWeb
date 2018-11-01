@@ -26,7 +26,7 @@
             <h2>our breeze block</h2>
         </div>
         <div class="featured_gallery">
-			<form method="post" action="parpaing execution.php">
+			<form method="post" action="parpaing_execution.php">
 				<?php
 					for ($nombre_de_lignes = 1 ; $nombre_de_lignes <= $_SESSION['nb_parpaing'] ; $nombre_de_lignes++)
 					{
@@ -35,7 +35,14 @@
 							<img src= <?php echo 'images/im' . $nombre_de_lignes . '.jpg' ; ?> alt="">
 							<div class="gallery_hover">
 								<h4>1 Palette - <?php echo $_SESSION['nom_parpaing'][$nombre_de_lignes-1]['name'] . ' - ' . $_SESSION['nom_parpaing'][$nombre_de_lignes-1]['description'] ; ?></h4>
-								<h4><input type="submit" name=<?php echo 'submit' . $nombre_de_lignes . '+' ; ?> value="commander" class="submit_commande"/></h4>
+								<?php 
+									if ( isset( $_SESSION['username'] ) == true )
+									{
+								?>
+										<h4><input type="submit" name=<?php echo 'submit' . $nombre_de_lignes . '+' ; ?> value="commander" class="submit_commande"/></h4>
+								<?php
+									}
+								?>
 							</div>
 						</div>
 				<?php

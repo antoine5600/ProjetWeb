@@ -91,7 +91,8 @@ if (isset($_POST['login_user'])) {
       $_SESSION['user_permission'] = $row['User_permission'];
       $_SESSION['email'] = $mail;
       $_SESSION['success'] = "You are now logged in";
-	  $_SESSION['user_info'] = $row ;
+	  $_SESSION['user_firstname'] = $row['First_name'] ;
+	  $_SESSION['id_user'] = $row['id_usr'] ;
       header('location: index.php');
     }else {
       array_push($errors_log, "Wrong username/password combination");

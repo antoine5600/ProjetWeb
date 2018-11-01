@@ -9,51 +9,66 @@
 	<link href="css/pay.css" rel="stylesheet">
 	</head>
 	<body>
-		<h2>Payments</h2>
+		<h2>Paiements</h2>
 		<div class="row">
 			<div class="col-75">
 				<div class="container">
-					<form method="post" action="/action_page.php">
+					<form method="post" action="payment_execution.php">
 						<div class="row">
 							<div class="col-50">
-								<h3>Billing Address</h3>
-								<label for="fname"><i class="fa fa-user"></i> Full Name</label>
-								<input type="text" id="firstname" name="firstname" value=<?php echo $_SESSION['user_info']['First_name'] . ' ' . $_SESSION['user_info']['Name'] ; ?>>
-								<label for="email"><i class="fa fa-envelope"></i> Email</label>
-								<input type="text" id="email" name="email" value=<?php echo $_SESSION['user_info']['Mail'] ?>>
-								<label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-								<input type="text" id="address" name="address" placeholder="542 W. 15th Street">
-								<label for="city"><i class="fa fa-institution"></i> City</label>
-								<input type="text" id="city" name="city" placeholder="New York">
+								<h3>Addresse de livraison</h3>
+								<?php
+									if ( $nb_adr_client != 0 )
+									{
+										$compteur_pour_post = 1 ; // les id en sql commencent à 1
+										foreach ( $adr_client as $addresses )
+										{
+								?>
+											<input type="radio" name="choix_adresse" value="adresse<?php echo $compteur_pour_post ?>" id="adresse<?php echo $compteur_pour_post ?>" /> <label for="adresse<?php echo $compteur_pour_post ?>"><?php echo $addresses['Name'] ; ?></label>
+								<?php
+											$compteur_pour_post++ ;
+										}
+									}
+								?>
+								<input type="radio" name="choix_adresse" value="adresseNEW" id="adresseNEW" /> <label for="adresseNEW"> Nouvelle Adresse (remplir les champs ci-dessous)</label>
+								
+								<label for="addr_name"><i class="fa fa-user"></i> Nom de l'adresse </label>
+								<input type="text" id="addr_name" name="addr_name" placeholder="Chez moi">
+								<label for="street"><i class="fa fa-address-card-o"></i> Rue</label>
+								<input type="text" id="street" name="street" placeholder="15 Rue Tohannic">
+								<label for="additional"><i class="fa fa-address-card-o"></i> Informations Supplémentaires</label>
+								<input type="text" id="additional" name="additional" placeholder="3eme étage, porte numéro 307">
+								<label for="country">Pays</label>
+								<input type="text" id="country" name="country" placeholder="France">
 								<div class="row">
 									<div class="col-50">
-										<label for="state">State</label>
-										<input type="text" id="state" name="state" placeholder="NY">
+										<label for="city"><i class="fa fa-institution"></i> Ville </label>
+										<input type="text" id="city" name="city" placeholder="Vannes">
 									</div>
 									<div class="col-50">
-										<label for="zip">Zip</label>
-										<input type="text" id="zip" name="zip" placeholder="10001">
+										<label for="postcode">Code Postal</label>
+										<input type="text" id="postcode" name="postcode" placeholder="56000">
 									</div>
 								</div>
 							</div>
 							<div class="col-50">
-								<h3>Payment</h3>
-								<label for="fname">Accepted Cards</label>
+								<h3>Paiement</h3>
+								<label for="fname">Cartes acceptées</label>
 								<div class="icon-container">
 									<input type="radio" name="carte" value="visa" id="visa" /> <label for="visa"><i class="fa fa-cc-visa" style="color:navy;"></i></label>
 									<input type="radio" name="carte" value="amex" id="amex" /> <label for="amex"><i class="fa fa-cc-amex" style="color:blue;"></i></i></label>
 									<input type="radio" name="carte" value="mastercard" id="mastercard" /> <label for="mastercard"><i class="fa fa-cc-mastercard" style="color:red;"></i></i></label>
 									<input type="radio" name="carte" value="discover" id="discover" /> <label for="discover"><i class="fa fa-cc-discover" style="color:orange;"></i></i></label>
 								</div>
-								<label for="cname">Name on Card</label>
+								<label for="cname">Propriétaire de la carte</label>
 								<input type="text" id="cardname" name="cardname" placeholder="John More Doe">
-								<label for="ccnum">Credit card number</label>
+								<label for="ccnum">Numéro de carte</label>
 								<input type="text" id="cardnumber" name="cardnumber" placeholder="1111-2222-3333-4444">
-								<label for="expmonth">Exp Month</label>
+								<label for="expmonth">Mois d'expiration</label>
 								<input type="text" id="expmonth" name="expmonth" placeholder="September">
 								<div class="row">
 									<div class="col-50">
-										<label for="expyear">Exp Year</label>
+										<label for="expyear">Année d'expiration</label>
 										<input type="text" id="expyear" name="expyear" placeholder="2018">
 									</div>
 									<div class="col-50">
@@ -63,14 +78,13 @@
 								</div>
 							</div>
 						</div>
-						<label><input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing</label>
-						<input type="submit" value="Continue to checkout" class="btn">
+						<input type="submit" name="validation_commande" value="Continue to checkout" class="btn">
 					</form>
 				</div>
 			</div>
 			<div class="col-25">
 				<div class="container">
-					<h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b><?php echo $_SESSION['nombre_total_objet_dans_panier'] ; ?></b></span></h4>
+					<h4>Panier <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b><?php echo $_SESSION['nombre_total_objet_dans_panier'] ; ?></b></span></h4>
 					<?php
 						foreach ( $_SESSION['id_objet_dans_mon_panier'] as $objet_dans_panier )
 						{
