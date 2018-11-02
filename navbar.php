@@ -73,7 +73,7 @@ if (isset($_GET['logout'])) {
                     <?php endif ?>
            <!--                <li><a href="#" class="nav_searchFrom"><i class="fa "></i></a></li>-->
                     <li><a href="panier.php" class="panier" id="panierStyle"><i class="fas fa-cart-arrow-down"><?php if ( $_SESSION['nombre_total_objet_dans_panier'] > 0 ) {echo $_SESSION['nombre_total_objet_dans_panier'] ;} ?></i></a></li>
-                </ul>
+                    </ul>
             </div><!-- /.navbar-collapse -->
         </div>
     </div><!-- /.container -->
