@@ -8,21 +8,28 @@ if (isset($_GET['logout'])) {
 }
 ?>
 <!-- Preloader -->
+<style>
+.panier_searchFrom{
+  width: 100px;
+  background: #f6b60b;
+  color: #fff;
+  padding: 0;
+  text-align: center;
+  margin-left: 15px;
+  height: 101px;
+  margin-top: -1px;
+  height: 45px;
+}
+
+.panier_searchFrom:hover .panier_searchFrom:focus{
+  color: #222222;
+}
+</style>
 <div class="preloader"></div>
 
 <!-- Header_Area -->
 <nav class="navbar navbar-default header_aera" id="main_navbar">
     <div class="container">
-        <!-- searchForm --> 
-        <div class="searchForm">
-            <form action="#" class="row m0">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                    <input type="search" name="search" class="form-control" placeholder="Type & Hit Enter">
-                    <span class="input-group-addon form_hide"><i class="fa fa-times"></i></span>
-                </div>
-            </form>
-        </div><!--End searchForm -->
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="col-md-2 p0">
             <div class="navbar-header">
@@ -64,9 +71,8 @@ if (isset($_GET['logout'])) {
                     <?php if (!isset($_SESSION['username'])) : ?>
                         <li><a href="inscription.php">Se connecter</a></li>
                     <?php endif ?>
-                    <li><a href="#" class="nav_searchFrom"><i class="fa fa-search"></i></a></li>
-                    <li><a href="panier.php" class="panier"><i class="fas fa-cart-arrow-down"><?php if ( $_SESSION['nombre_total_objet_dans_panier'] > 0 ) {echo $_SESSION['nombre_total_objet_dans_panier'] ;} ?></i></a></li>
-
+           <!--                <li><a href="#" class="nav_searchFrom"><i class="fa "></i></a></li>-->
+                    <li><a href="panier.php" class="panier" id="panierStyle"><i class="fas fa-cart-arrow-down"><?php if ( $_SESSION['nombre_total_objet_dans_panier'] > 0 ) {echo $_SESSION['nombre_total_objet_dans_panier'] ;} ?></i></a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div>

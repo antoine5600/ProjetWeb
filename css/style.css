@@ -2707,6 +2707,16 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
   min-width: 250px;
 }
 
+#panierStyle{
+  background-color: #f6b60b; 
+  border-left:solid 10px #fff; 
+  padding-right: 25px;
+  width: 100px;
+  
+  }
 
 
+#panierStyle:hover{
+  color: #fff;
+}
 /*# sourceMappingURL=style.css.map */
