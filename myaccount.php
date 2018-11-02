@@ -1,10 +1,14 @@
-<?php 
-  session_start();
-  ?>
+
 <!DOCTYPE html>
 <html>
 <body>
-	<?php include ('headerDash.php'); ?>
+	<?php include ('headerDash.php');
+		  include ('serverDash.php'); ?>
+	<?php $countOrder=0;
+		  $countUser = "SELECT * FROM users";
+			foreach( $adresses_commandes_admin as $adr_admin ){
+				$countOrder=$countOrder+1;
+			}?>
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -52,8 +56,8 @@
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-teal panel-widget border-right">
 						<div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
-							<div class="large">120</div>
-							<div class="text-muted">New Orders</div>
+							<div class="large"><?php echo $countOrder; ?></div>
+							<div class="text-muted">Orders</div>
 						</div>
 					</div>
 				</div>
@@ -68,8 +72,8 @@
 				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-orange panel-widget border-right">
 						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-							<div class="large">24</div>
-							<div class="text-muted">New Users</div>
+							<div class="large"><?php echo $countUser; ?></div>
+							<div class="text-muted">Users</div>
 						</div>
 					</div>
 				</div>

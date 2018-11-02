@@ -15,7 +15,8 @@
 <html lang="en">
 
 <body>
-    <?php include('header.php'); ?>
+
+    <?php include('header.php');  ?>
     <!-- Preloader -->
     <div class="preloader"></div>
 
