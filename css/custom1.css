@@ -168,6 +168,20 @@ a:hover {
 	cursor: pointer;
 }
 
+.submit-Delete{
+	position: relative;
+	left: -7px;
+	top:-10px;
+	background-color: #f6b60b;
+	color:red;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.submit-Delete:hover{
+	font-size: 20px;
+}
+
 .arrow{
 	width: 0; 
 	height: 0; 
@@ -217,6 +231,7 @@ a:hover {
 	border-radius: 2px;
 	padding: 20px 30px;
 }
+
 
 
 /* Popovers */

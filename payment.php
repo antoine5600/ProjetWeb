@@ -1,15 +1,38 @@
+
 <?php
 	include('server_objet_a_vendre.php') ;
 ?>
 <!DOCTYPE html>
 <html>
-	<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link href="css/pay.css" rel="stylesheet">
-	</head>
+
 	<body>
-		<h2>Paiements</h2>
+		
+		<?php include('headerPayment.php'); ?>	
+		
+		 <!-- Navigation -->
+
+ 		 <?php include('navbar.php'); ?>
+
+ 		 <div class="container-fluid breadcrumbBox text-center">
+			<ol class="breadcrumb">
+				<?php 
+					if ( $_SESSION['nombre_total_objet_dans_panier'] > 0 )
+					{
+						
+				?>
+						<li><a href="panier.php">Order</a></li>
+						<li class="active">Payment</li>
+						
+				<?php
+					}
+				?>
+			</ol>
+		</div>
+
+
+
+
+ 		 <h2>Paiements</h2>
 		<div class="row">
 			<div class="col-75">
 				<div class="container">
@@ -118,5 +141,10 @@
 				</div>
 			</div>
 		</div>
+
+
+
+ 		 <?php include('footer.php'); ?>
+
 	</body>
 </html>

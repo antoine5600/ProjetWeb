@@ -14,16 +14,18 @@ body {
   -ms-flex-wrap: wrap; /* IE10 */
   flex-wrap: wrap;
   margin: 0 -16px;
+
 }
 
 .col-25 {
   -ms-flex: 25%; /* IE10 */
   flex: 25%;
-}
+  }
 
 .col-50 {
   -ms-flex: 50%; /* IE10 */
   flex: 50%;
+  background-color: grey;
 }
 
 .col-75 {
@@ -38,7 +40,7 @@ body {
 }
 
 .container {
-  background-color: #f2f2f2;
+  /*background-color: #f2f2f2; */
   padding: 5px 20px 15px 20px;
   border: 1px solid lightgrey;
   border-radius: 3px;
