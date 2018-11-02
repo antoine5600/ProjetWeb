@@ -20,7 +20,7 @@
             </div>
             <div class="separate" >
                 <label class="main-label" for="bday">Description *</label>
-                <textarea rows="4" cols="50" name="productDescription"> Description ici :</textarea>
+                <textarea rows="4" cols="50" name="productDescription" placeholder="Description ici :"></textarea>
             </div>
             <div class="separate">
                 <button type="submit" class="btn btn-default" name="create_product">Ajouter</button>
@@ -28,7 +28,7 @@
             </div>
         </form>
         <footer class="cf">
-            <a href="userManage.php" class="btn">Fermer</a>
+            <a href="productManage.php" class="btn">Fermer</a>
         </footer>
   </div>
 </div>
