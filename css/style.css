@@ -9,10 +9,10 @@ theme.
 
 This files contents are outlined below.
 
-	1. Variables
-	2. Prefix
-	3. header
-	4. Slider
+  1. Variables
+  2. Prefix
+  3. header
+  4. Slider
     5. Builder
     6. About
     7. Offer
@@ -1207,7 +1207,7 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
 /* End Our Partners Area */
 /*--------------------------------------------------*/
 .featured_works {
-  /*background: white fixed;*/
+  background: url("../images/protfolio_bg.jpg") no-repeat fixed;
   background-position: center;
   text-align: center;
   position: relative;
@@ -2707,6 +2707,18 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
   min-width: 250px;
 }
 
+#panierStyleNav{
+  background-color: #f6b60b; 
+  border-left:solid 10px #fff; 
+  padding-right: 25px;
+  width: 100px;
+  
+  }
+
+
+#panierStyleNav:hover{
+  color: #fff;
+}
 
 
 /*# sourceMappingURL=style.css.map */

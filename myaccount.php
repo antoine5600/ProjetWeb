@@ -5,7 +5,7 @@
 	<?php include ('headerDash.php');
 		  include ('serverDash.php'); ?>
 	<?php $countOrder=0;
-		  $countUser = "SELECT * FROM users";
+		  $countUser = 0;
 			foreach( $adresses_commandes_admin as $adr_admin ){
 				$countOrder=$countOrder+1;
 			}?>

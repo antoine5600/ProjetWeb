@@ -7,22 +7,11 @@ if (isset($_GET['logout'])) {
     header("location: index.php");
 }
 ?>
-<!-- Preloader -->
 <div class="preloader"></div>
 
 <!-- Header_Area -->
 <nav class="navbar navbar-default header_aera" id="main_navbar">
     <div class="container">
-        <!-- searchForm --> 
-        <div class="searchForm">
-            <form action="#" class="row m0">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                    <input type="search" name="search" class="form-control" placeholder="Type & Hit Enter">
-                    <span class="input-group-addon form_hide"><i class="fa fa-times"></i></span>
-                </div>
-            </form>
-        </div><!--End searchForm -->
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="col-md-2 p0">
             <div class="navbar-header">
@@ -44,7 +33,7 @@ if (isset($_GET['logout'])) {
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu</a>
                         <ul class="dropdown-menu">
                             <li><a href="parpaing.php">parpaing</a></li>
-                            <li><a href="ciment.php">Ciment</a></li>
+                            <li><a href="#">Ciment</a></li>
                         </ul>
                     </li>
                     <li><a href="magasin.php">Magasin</a></li>
@@ -56,7 +45,7 @@ if (isset($_GET['logout'])) {
                             <?php  if ($_SESSION['user_permission'] =='2') : ?>
                             <li id="repnavbar"><a href="myaccount.php">Dashboard </a></li>
                             <?php endif ?>
-							<li id="repnavbar"><a href="mes_commandes.php">Mes commandes</a></li>
+                            <li id="repnavbar"><a href="mes_commandes.php">Mes commandes</a></li>
                             <li id="repnavbar"><a href="index.php?logout='1'">logout</a></li>
                         </ul>
                     </li>              
@@ -64,9 +53,8 @@ if (isset($_GET['logout'])) {
                     <?php if (!isset($_SESSION['username'])) : ?>
                         <li><a href="inscription.php">Se connecter</a></li>
                     <?php endif ?>
-                    <li><a href="#" class="nav_searchFrom"><i class="fa fa-search"></i></a></li>
-                    <li><a href="panier.php" class="panier"><i class="fas fa-cart-arrow-down"><?php if ( $_SESSION['nombre_total_objet_dans_panier'] > 0 ) {echo $_SESSION['nombre_total_objet_dans_panier'] ;} ?></i></a></li>
-
+           <!--                <li><a href="#" class="nav_searchFrom"><i class="fa "></i></a></li>-->
+                    <li><a href="panier.php" class="panier" id="panierStyleNav"><i class="fas fa-cart-arrow-down"><?php if ( $_SESSION['nombre_total_objet_dans_panier'] > 0 ) {echo $_SESSION['nombre_total_objet_dans_panier'] ;} ?></i></a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div>
