@@ -37,8 +37,12 @@ ligne 343
 @import url("https://fonts.googleapis.com/css?family=Oswald:300,400,700|Roboto:300,300i,400,400i,500,500i,700,700i");
 /*Color Variables*/
 ::selection {
-  background-color: rgba(0, 191, 255,0.2);;
-  color: rgba(0, 191, 255,0.2);;
+  background-color: rgba(0, 191, 255,1);;
+  color: rgba(255, 2555, 255,1);;
+}
+
+body{
+  color : black;
 }
 
 /* Button */
@@ -2710,13 +2714,14 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
 #panierStyleNav{
   background-color: #f6b60b; 
   border-left:solid 10px #fff; 
-  padding-right: 25px;
-  width: 100px;
+  padding-right: 20px;
+  width: 90px;
+  position : center;
   
   }
 
 
-#panierStyleNav:hover{
+#panierStyleNav:hover .panierStyleNav:focus{
   color: #fff;
 }
 
