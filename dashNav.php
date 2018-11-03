@@ -20,6 +20,6 @@
 		<li <?php if($page == "myaccount.php"){echo 'class="active"';} ?>><a href="myaccount.php"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 		<li <?php if($page == "userManage.php"){echo 'class="active"';} ?>><a href="userManage.php"><em class="fa fa-calendar">&nbsp;</em> Gestion Utilisateur</a></li>
 		<li <?php if($page == "productManage.php"){echo 'class="active"';} ?>><a href="productManage.php"><em class="fa fa-bar-chart">&nbsp;</em> Gestion Produit</a></li>
-		<li <?php if($page == "elements.html"){echo 'class="active"';} ?>><a href="command_manage.php"><em class="fa fa-toggle-off">&nbsp;</em> Gestion Commande</a></li>
+		<li <?php if($page == "command_manage.php"){echo 'class="active"';} ?>><a href="command_manage.php"><em class="fa fa-toggle-off">&nbsp;</em> Gestion Commande</a></li>
 	</ul>
 </div><!--/.sidebar-->

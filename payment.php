@@ -1,4 +1,3 @@
-
 <?php
 	include('server_objet_a_vendre.php') ;
 ?>
@@ -120,10 +119,10 @@
 					<?php
 						foreach ( $_SESSION['id_objet_dans_mon_panier'] as $objet_dans_panier )
 						{
-							if ( $_SESSION['parpaing' . $objet_dans_panier] != 0 )
+							if ( $_SESSION['objet' . $objet_dans_panier] != 0 )
 							{
 					?>
-								<p><a href="#"><?php echo $_SESSION['parpaing' . $objet_dans_panier]; ?> x <?php echo $_SESSION['nom_parpaing'][$objet_dans_panier-1]['name'] . ' - ' . $_SESSION['nom_parpaing'][$objet_dans_panier-1]['description'] ; ?></a> <span class="price"><?php echo $_SESSION['parpaing' . $objet_dans_panier]*$_SESSION['nom_parpaing'][$objet_dans_panier-1]['price']; ?>€</span></p>
+								<p><a href="#"><?php echo $_SESSION['objet' . $objet_dans_panier]; ?> x <?php echo $_SESSION['info_objet_total'][$objet_dans_panier-1]['name'] . ' - ' . $_SESSION['info_objet_total'][$objet_dans_panier-1]['description'] ; ?></a> <span class="price"><?php echo $_SESSION['objet' . $objet_dans_panier]*$_SESSION['info_objet_total'][$objet_dans_panier-1]['price']; ?>€</span></p>
 					<?php
 							}
 						}
@@ -133,7 +132,7 @@
 						$prix_total = 0 ;
 						foreach ( $_SESSION['id_objet_dans_mon_panier'] as $objet_dans_panier )
 						{
-							$prix_total += $_SESSION['parpaing' . $objet_dans_panier] * $_SESSION['nom_parpaing'][$objet_dans_panier-1]['price'] ;
+							$prix_total += $_SESSION['objet' . $objet_dans_panier] * $_SESSION['info_objet_total'][$objet_dans_panier-1]['price'] ;
 						}
 					?>
 					<p>Total <span class="price" style="color:black"><b><?php echo $prix_total ; ?></b></span></p>

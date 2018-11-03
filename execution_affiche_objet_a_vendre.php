@@ -5,5 +5,5 @@
 		$id_post = preg_replace('#^([0-9]+)\+$#isU', '$1', $val_post);
 	}
 	include('server_objet_a_vendre.php') ;
-	header('Location: parpaing.php');
+	header('Location: ' . $_POST['nom_page'] . '.php');
 ?>

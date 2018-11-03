@@ -9,14 +9,26 @@
 	{
 		die('Erreur : ' . $e->getMessage()); // permet d'afficher un message d'erreur qui n'affiche pas le login+password dans le message visible par le visiteur
 	}
-	if ( /*isset( $_SESSION['nb_parpaing'] ) == false*/true ) // marche pas comme prévu, snif
+	if ( isset( $nom_page_actuelle ) == true ) // même si recharger à chaque fois les variables n'est pas optimisé, le rajout d'un objet du dashboard nécessite cette action
 	{
-		$bdd_nb_parpaing_vendable = $bdd->query('SELECT COUNT(*) AS nb_parpaing FROM products') ;
-		$nb_parpaing_vendable = $bdd_nb_parpaing_vendable->fetch() ;
-		$_SESSION['nb_parpaing'] = $nb_parpaing_vendable['nb_parpaing'] ;
+		$bdd_nb_objet_vendable_total = $bdd->query('SELECT COUNT(*) AS nb_objet_total FROM products') ;
+		$nb_objet_vendable_total = $bdd_nb_objet_vendable_total->fetch() ;
+		$_SESSION['nb_objet_total'] = $nb_objet_vendable_total['nb_objet_total'] ;
 		
-		$bdd_nom_parpaing_vendable = $bdd->query('SELECT id_prod , name , description , price FROM products') ;
-		$_SESSION['nom_parpaing'] = $bdd_nom_parpaing_vendable->fetchAll() ;
+		$bdd_info_objet_vendable_total = $bdd->query('SELECT id_prod , name , description , price FROM products') ;
+		$_SESSION['info_objet_total'] = $bdd_info_objet_vendable_total->fetchAll() ;
+		
+		if ( $nom_page_actuelle != 'panier' )
+		{
+			$bdd_nb_objet_vendable = $bdd->prepare('SELECT COUNT(*) AS nb_objet FROM products INNER JOIN product_category ON id_prod = product_category.product JOIN categories ON product_category.category = categories.id_cat WHERE categories.name = :nom_categorie') ;
+			$bdd_nb_objet_vendable->execute(array( 'nom_categorie' => $nom_page_actuelle )) ;
+			$nb_objet_vendable = $bdd_nb_objet_vendable->fetch() ;
+			$_SESSION['nb_objet'] = $nb_objet_vendable['nb_objet'] ;
+			
+			$bdd_info_objet_vendable = $bdd->prepare('SELECT products.id_prod , products.name , products.description , products.price , categories.name AS nom_categorie FROM products INNER JOIN product_category ON id_prod = product_category.product JOIN categories ON product_category.category = categories.id_cat WHERE categories.name = :nom_categorie') ;
+			$bdd_info_objet_vendable->execute(array( 'nom_categorie' => $nom_page_actuelle )) ;
+			$_SESSION['info_objet'] = $bdd_info_objet_vendable->fetchAll() ;
+		}
 	}
 	
 	if ( isset( $_SESSION['username'] ) )
@@ -27,7 +39,7 @@
 		
 		if ( $nb_adr_client != 0 )
 		{
-			$bdd_adresses_client = $bdd->prepare('SELECT * FROM client_addr INER JOIN addresses ON Address = id_addr WHERE Client = :id_client') ;
+			$bdd_adresses_client = $bdd->prepare('SELECT * FROM client_addr INNER JOIN addresses ON Address = id_addr WHERE Client = :id_client') ;
 			$bdd_adresses_client->execute(array(
 				'id_client' => $_SESSION['id_user']
 				));
@@ -42,13 +54,13 @@
 		
 		if ( $nb_commandes != 0 )
 		{
-			$bdd_adresses_commandes = $bdd->prepare('SELECT * FROM addresses INER JOIN command ON id_addr = command.Delivery_addr JOIN client_addr ON command.Delivery_addr = client_addr.Address WHERE command.Client = :id_client') ;
+			$bdd_adresses_commandes = $bdd->prepare('SELECT * FROM addresses INNER JOIN command ON id_addr = command.Delivery_addr JOIN client_addr ON command.Delivery_addr = client_addr.Address WHERE command.Client = :id_client') ;
 			$bdd_adresses_commandes->execute(array( 'id_client' => $_SESSION['id_user'] )) ;
 			$adresses_commandes = $bdd_adresses_commandes->fetchAll() ;
 		}
 		if ( $_SESSION['user_permission'] == 2 )
 		{
-			$bdd_adresses_commandes_admin = $bdd->query('SELECT * FROM addresses INER JOIN command ON id_addr = command.Delivery_addr JOIN client_addr ON command.Delivery_addr = client_addr.Address JOIN users ON users.id_usr = client_addr.Client') ;
+			$bdd_adresses_commandes_admin = $bdd->query('SELECT * FROM addresses INNER JOIN command ON id_addr = command.Delivery_addr JOIN client_addr ON command.Delivery_addr = client_addr.Address JOIN users ON users.id_usr = client_addr.Client') ;
 			$adresses_commandes_admin = $bdd_adresses_commandes_admin->fetchAll() ;
 		}
 	}
@@ -57,9 +69,6 @@
 	{
 		if ( $id_post > 0 ) // cas adresse qui existe déjà
 		{
-			/*$tmp = (int)($id_post) ;
-			$bdd_id_adresse_convertion_get = $bdd->prepare('(SELECT Address FROM client_addr LIMIT :id_recu) ORDER BY DESC') ;
-			$bdd_id_adresse_convertion = $bdd_id_adresse_convertion_get->execute(array( 'id_recu' => $tmp )) ;*/ // le limit ne marche pas O_o
 			$bdd_id_adresse_convertion = $bdd->query('SELECT Address FROM client_addr') ;
 			for ( $i = 0 ; $i < $id_post ; $i++ )
 			{
