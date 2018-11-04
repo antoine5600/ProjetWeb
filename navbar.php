@@ -33,7 +33,7 @@ if (isset($_GET['logout'])) {
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu</a>
                         <ul class="dropdown-menu">
                             <li><a href="parpaing.php">parpaing</a></li>
-                            <li><a href="#">Ciment</a></li>
+                            <li><a href="ciment.php">Ciment</a></li>
                         </ul>
                     </li>
                     <li><a href="magasin.php">Magasin</a></li>
