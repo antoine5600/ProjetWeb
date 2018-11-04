@@ -93,6 +93,7 @@ if (isset($_POST['login_user'])) {
       $_SESSION['success'] = "You are now logged in";
 	  $_SESSION['user_firstname'] = $row['First_name'] ;
 	  $_SESSION['id_user'] = $row['id_usr'] ;
+	  $_SESSION['phone_number'] = $row['Telephone'] ;
       header('location: index.php');
     }else {
       array_push($errors_log, "Wrong username/password combination");

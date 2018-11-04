@@ -4,7 +4,7 @@
 	<?php include ('headerDash.php'); ?>
 <?php 
 include ('serverDash.php');
-include ('server.php');
+//include ('server.php');
 
 $id=$_REQUEST['id'];
 $result = getProductId($id);

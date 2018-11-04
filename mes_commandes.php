@@ -26,10 +26,12 @@
 											echo '<td>' . $adr['Street'] . ' ' . $adr['Additional'] . ', ' . $adr['City'] . ' ' . $adr['Postcode'] . ', ' . $adr['Country'] . '</td>';
 										echo "</tr>";
 									}
-							}else{
+								echo "</table>";
+							}
+							else
+							{
 								echo "Aucune commande";
 							}
-				        echo "</table>";
 					?>
                     </div>
                 </div>

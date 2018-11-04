@@ -58,6 +58,7 @@
 			$bdd_adresses_commandes->execute(array( 'id_client' => $_SESSION['id_user'] )) ;
 			$adresses_commandes = $bdd_adresses_commandes->fetchAll() ;
 		}
+		
 		if ( $_SESSION['user_permission'] == 2 )
 		{
 			$bdd_adresses_commandes_admin = $bdd->query('SELECT * FROM addresses INNER JOIN command ON id_addr = command.Delivery_addr JOIN client_addr ON command.Delivery_addr = client_addr.Address JOIN users ON users.id_usr = client_addr.Client') ;
