@@ -46,7 +46,6 @@ if (isset($_GET['logout'])) {
                             <li id="repnavbar"><a href="myaccount.php">Dashboard </a></li>
                             <?php endif ?>
 							<li id="repnavbar"><a href="account_user.php">Mon compte</a></li>
-                            <li id="repnavbar"><a href="mes_commandes.php">Mes commandes</a></li>
                             <li id="repnavbar"><a href="index.php?logout='1'">logout</a></li>
                         </ul>
                     </li>              
@@ -54,7 +53,6 @@ if (isset($_GET['logout'])) {
                     <?php if (!isset($_SESSION['username'])) : ?>
                         <li><a href="inscription.php">Se connecter</a></li>
                     <?php endif ?>
-           <!--                <li><a href="#" class="nav_searchFrom"><i class="fa "></i></a></li>-->
                     <li><a href="panier.php" class="panier" id="panierStyleNav"><i class="fas fa-cart-arrow-down"><?php if ( $_SESSION['nombre_total_objet_dans_panier'] > 0 ) {echo $_SESSION['nombre_total_objet_dans_panier'] ;} ?></i></a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->

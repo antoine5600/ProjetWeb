@@ -2721,9 +2721,9 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
   }
 
 
-#panierStyleNav:hover .panierStyleNav:focus{
+#panierStyleNav:hover {
   color: #fff;
 }
 
-
 /*# sourceMappingURL=style.css.map */
+  
