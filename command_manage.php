@@ -44,6 +44,7 @@
             	echo "<th>Numéro Commande</th>";
                 echo "<th>Client</th>";
                 echo "<th>Adresse</th>";
+                echo "<th>Statut</th>";
             echo "</tr>";
 			foreach( $adresses_commandes_admin as $adr_admin )
 			{
@@ -51,6 +52,7 @@
 					echo '<td>' . $adr_admin['id_command'] . '</td>';
 					echo '<td>' . $adr_admin['Name'] . ' ' . $adr_admin['First_name'] . '</td>';
 					echo '<td>' . $adr_admin['Street'] . ' ' . $adr_admin['Additional'] . ', ' . $adr_admin['City'] . ' ' . $adr_admin['Postcode'] . ', ' . $adr_admin['Country'] . '</td>';
+					echo '<td>' . 'Validée' . '</td>';
 				echo "</tr>";
 			}
         echo "</table>";
