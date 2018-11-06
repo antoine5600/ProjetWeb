@@ -325,7 +325,7 @@ if (isset($_POST['create_product'])) {
 
     $query = "INSERT INTO products (Name,Description,Price) VALUES ('$name','$description','$price')";
     mysqli_query($db, $query);
-    $_SESSION['success'] = "You are now logged in";
+    //$_SESSION['success'] = "You are now logged in";
     header('location: productManage.php');
   }
 }
