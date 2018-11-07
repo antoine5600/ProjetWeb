@@ -30,6 +30,7 @@
         <footer class="cf">
             <a href="productManage.php" class="btn">Fermer</a>
         </footer>
+    </section>
   </div>
 </div>
 </body>
