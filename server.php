@@ -369,4 +369,42 @@ if (isset($_POST['edit_product'])) {
   }
 }
 
+//CREATE ADDRESSES
+if (isset($_POST['create_adr'])) {
+  // receive all input values from the form
+  $name = mysqli_real_escape_string($db, $_POST['addr_name']);
+  $street = mysqli_real_escape_string($db, $_POST['street']);
+  $additional = mysqli_real_escape_string($db, $_POST['additional']);
+  $country = mysqli_real_escape_string($db, $_POST['country']);
+  $city = mysqli_real_escape_string($db, $_POST['city']);
+  $postcode = mysqli_real_escape_string($db, $_POST['postcode']);
+  $id_user = mysqli_real_escape_string($db, $_POST['user_id']);
+
+  // form validation: ensure that the form is correctly filled ...
+  // by adding (array_push()) corresponding error unto $errors array
+  if (empty($name)) { array_push($errors_reg, "Name is required"); }
+  if (empty($street)) { array_push($errors_reg, "Street is required"); }
+  if (empty($additional)) { array_push($errors_reg, "Additional is required"); }
+  if (empty($country)) { array_push($errors_reg, "Country is required"); }
+  if (empty($city)) { array_push($errors_reg, "City is required"); }
+  if (empty($postcode)) { array_push($errors_reg, "Postcode is required"); }
+
+
+  // Finally, register user if there are no errors in the form
+  if (count($errors_reg) == 0) {
+
+
+    $query = "INSERT INTO addresses (Street,Additional,Postcode,City,Country) VALUES ('$street','$additional','$postcode','$city','$country')";
+    mysqli_query($db, $query);
+    $queryIdAdr = "SELECT MAX(id_addr) as MaxId from addresses LIMIT 1";
+    $result = mysqli_query($db, $queryIdAdr);
+    $idAdrArray = mysqli_fetch_assoc($result);
+    $idAdr = $idAdrArray['MaxId'];
+    $queryAdr = "INSERT INTO client_addr (Client,Address,Name) VALUES ('$id_user','$idAdr','$name')";
+    mysqli_query($db, $queryAdr);
+
+    //$_SESSION['success'] = "You are now logged in";
+    header('location: account_user.php');
+  }
+}
 ?>
