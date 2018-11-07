@@ -325,7 +325,13 @@ if (isset($_POST['create_product'])) {
 
     $query = "INSERT INTO products (Name,Description,Price) VALUES ('$name','$description','$price')";
     mysqli_query($db, $query);
-    //$_SESSION['success'] = "You are now logged in";
+    $queryIdProd = "SELECT MAX(id_prod) as MaxId from products LIMIT 1";
+    $result = mysqli_query($db, $queryIdProd);
+    $idProdArray = mysqli_fetch_assoc($result);
+    $idProd = $idProdArray['MaxId'];
+    $queryPC = "INSERT INTO  product_category (Product,Category) VALUES ('$idProd','1')";
+    mysqli_query($db, $queryPC);
+    //$_SESSION['test'] = $idProd;
     header('location: productManage.php');
   }
 }
