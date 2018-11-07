@@ -52,4 +52,11 @@ function deleteProduct($id)
 	return $result;
 }
 
+function countUser()
+{
+	$user_check_query = "SELECT count(*) as count FROM users";
+	$result = mysqli_query($GLOBALS['$db'], $user_check_query);
+	return $result;
+}
+
 ?>

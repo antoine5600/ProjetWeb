@@ -44,7 +44,6 @@
             	echo "<th>Numéro Commande</th>";
                 echo "<th>Client</th>";
                 echo "<th>Adresse</th>";
-                echo "<th>Statut</th>";
             echo "</tr>";
 			foreach( $adresses_commandes_admin as $adr_admin )
 			{
@@ -52,11 +51,12 @@
 					echo '<td>' . $adr_admin['id_command'] . '</td>';
 					echo '<td>' . $adr_admin['Name'] . ' ' . $adr_admin['First_name'] . '</td>';
 					echo '<td>' . $adr_admin['Street'] . ' ' . $adr_admin['Additional'] . ', ' . $adr_admin['City'] . ' ' . $adr_admin['Postcode'] . ', ' . $adr_admin['Country'] . '</td>';
-					echo '<td>' . 'Validée' . '</td>';
 				echo "</tr>";
 			}
         echo "</table>";
 		 ?>
+		
+		
 	</div>	<!--/.main-->
 	
 	<script src="js/jquery-1.11.1.min.js"></script>
@@ -78,7 +78,18 @@
 	});
 };
 	</script>
-	<script src="js/classActive.js"></script>
+	<script>
+// Add active class to the current button (highlight it)
+var header = document.getElementById("divider");
+var btns = header.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
 		
 </body>
 </html>
