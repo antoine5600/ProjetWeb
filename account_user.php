@@ -19,6 +19,7 @@
 				</div>
 				<div class="col-sm-6 contact_info">
 					<h2>Vos adresses</h2>
+					<a href="createAdr.php#oModal"> + Ajouter adresse </a>
 					<br>
 						<?php
 							if ( isset( $adr_client ) == true )
