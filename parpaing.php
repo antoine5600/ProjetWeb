@@ -24,7 +24,7 @@
     <section class="featured_works row" data-stellar-background-ratio="0.3">
         <div class="tittle wow fadeInUp">
             <p>   <br>   </p>
-            <h2>our breeze block</h2>
+            <h2>Les Parpaings</h2>
         </div>
         <div class="featured_gallery">
 			<form method="post" action="execution_affiche_objet_a_vendre.php">
@@ -37,7 +37,13 @@
 						<div class="col-md-3 col-sm-4 col-xs-6 gallery_iner p0">
 							<img src= <?php echo 'images/' . $nom_page_actuelle . $nombre_de_lignes . '.jpg' ; ?> alt="">
 							<div class="gallery_hover">
-								<h4>1 Palette - <?php echo $_SESSION['info_objet'][$nombre_de_lignes-1]['name'] . ' - ' . $_SESSION['info_objet'][$nombre_de_lignes-1]['description'] ; ?></h4>
+								<?php $id=$_SESSION['info_objet'][$nombre_de_lignes-1]['name']; 
+									  $desP =$_SESSION['info_objet'][$nombre_de_lignes-1]['description'];
+									  $prix=$_SESSION['info_objet'][$nombre_de_lignes-1]['price'] ; 
+								?>
+								<br>
+								<h4 id="nameBlock">1 Palette - <?php echo $_SESSION['info_objet'][$nombre_de_lignes-1]['name'] ; ?></h4>
+								<h4 ><?php echo "<a href='affDescription.php?id=$id&desP=$desP&price=$prix#oModal'> Ici Description </a> "?></h4>
 								<?php 
 									if ( isset( $_SESSION['username'] ) == true )
 									{
@@ -46,8 +52,8 @@
 								<?php
 									}
 								?>
+								<div class="col-md-6 col-sm-4 col-xs-6 prix"><h3><?php echo $prix; ?> €</h3></div>
 							</div>
-							<div class="prix"><h5><?php echo $_SESSION['info_objet'][$nombre_de_lignes-1]['price'] ; ?> €</h5></div>
 						</div>
 				<?php
 					}
