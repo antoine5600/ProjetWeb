@@ -20,7 +20,7 @@
                 </div>
                 <div class="separate">
                     <label for="additional"><i class="fa fa-address-card-o"></i> Informations Supplémentaires</label>
-                    <input type="text" id="additional" name="additional">
+                    <input type="text" id="additional" name="additional" >
                 </div>
                 <div class="separate">
                     <label for="country">Pays</label>
@@ -42,7 +42,7 @@
             </div>
         </form>
         <footer class="cf">
-            <a href="account_user.php" class="btn">Fermer</a>
+            <a href="payment.php" class="btn">Fermer</a>
         </footer>
   </div>
 </div>
