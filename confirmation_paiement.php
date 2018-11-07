@@ -1,15 +1,6 @@
 <?php 
     include('server_objet_a_vendre.php') ;
 
-  /*if (!isset($_SESSION['username'])) {
-    $_SESSION['msg'] = "You must log in first";
-    header('location: inscription.php');
-  }
-  if (isset($_GET['logout'])) {
-    session_destroy();
-    unset($_SESSION['username']);
-    header("location: inscription.php");
-  }*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,15 +43,6 @@
             </div>
         </div>
     </section>
-    <!-- End Our Features Area -->
-
-    <!-- Our Partners Area -->
-    
-    <!-- End Our Team Area -->
-
-    <!-- Footer Area -->
-    
-    <!-- End Footer Area -->
 
     <!-- jQuery JS -->
     <script src="js/jquery-1.12.0.min.js"></script>
