@@ -49,33 +49,25 @@
 									<div class="col-xs-5 col-sm-6 col-lg-4 all_contact_info">
 										<h2>Votre Panier <span class="price"><i class="fa fa-shopping-cart"></i> <b>
 											<?php echo $_SESSION['nombre_total_objet_dans_panier'] ; ?></b></span></h2>
-											<?php
-												$prix_total = 0 ;
-												foreach ( $_SESSION['id_objet_dans_mon_panier'] as $objet_dans_panier )
-												{
-													$num_pos_id_correspondant_dans_tableau_info_objet_total = 0 ;
-													foreach( $_SESSION['info_objet_total'] as $cherche_position )
+											<?php foreach ( $_SESSION['id_objet_dans_mon_panier'] as $objet_dans_panier )
 													{
-														if ( $cherche_position['id_prod'] == $objet_dans_panier )
-														{
-															break;
-														}
-														else
-														{
-															$num_pos_id_correspondant_dans_tableau_info_objet_total++ ;
-														}
-													}
-													if ( $_SESSION['objet' . $objet_dans_panier] != 0 )
-													{
+														if ( $_SESSION['objet' . $objet_dans_panier] != 0 )
+															{
 											?>
-														<p><?php echo $_SESSION['objet' . $objet_dans_panier]; ?> x <?php echo $_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['name'] . ' - ' . $_SESSION['info_objet_total'][$objet_dans_panier-1]['description'] ; ?> <span class="price"><?php echo $_SESSION['objet' . $objet_dans_panier]*$_SESSION['info_objet_total'][$objet_dans_panier-1]['price']; ?>€</span></p>
-											<?php
+											<p><?php echo $_SESSION['objet' . $objet_dans_panier]; ?> x <?php echo $_SESSION['info_objet_total'][$objet_dans_panier-1]['name'] . ' - ' . $_SESSION['info_objet_total'][$objet_dans_panier-1]['description'] ; ?> <span class="price"><?php echo $_SESSION['objet' . $objet_dans_panier]*$_SESSION['info_objet_total'][$objet_dans_panier-1]['price']; ?>€</span></p>
+												<?php
+															}
 													}
-													$prix_total += $_SESSION['objet' . $objet_dans_panier] * $_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['price'] ;
-												}
 											?>
 										<hr>
-										<p>Total <span class="price" ><?php echo $prix_total ; ?></span></p>
+								<?php
+									$prix_total = 0 ;
+									foreach ( $_SESSION['id_objet_dans_mon_panier'] as $objet_dans_panier )
+									{
+										$prix_total += $_SESSION['objet' . $objet_dans_panier] * $_SESSION['info_objet_total'][$objet_dans_panier-1]['price'] ;
+									}
+								?>
+								<p>Total <span class="price" ><?php echo $prix_total ; ?></span></p>
 									</div>
 									<div class="col-xs-6 col-sm-8 col-lg-10 contact_info">
 										<h2>Carte de paiement</h2>

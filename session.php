@@ -10,44 +10,30 @@
 	{
 		$_SESSION['id_objet_dans_mon_panier'] = array() ;
 	}
-	
-	
-	if ( isset( $id_post ) )
+	if ( isset( $id_post ) and $id_post > 0 and $id_post <= $_SESSION['nb_objet_total'] ) // les and servent à protéger contre quelqu'un qui modifirait manuellement les names des submit
 	{
-		// vérifie si l'id de l'objet donné est bien un de ceux de la bdd et protège donc contre un out of bound
-		$id_produit_submit_existe_dans_bdd = false ;
-		foreach( $_SESSION['info_objet_total'] as $cherche_id_prod )
+		if ( in_array( $id_post , $_SESSION['id_objet_dans_mon_panier'] ) == false )
 		{
-			if ( $id_post == $cherche_id_prod['id_prod'] )
-			{
-				$id_produit_submit_existe_dans_bdd = true ;
-			}
+			$_SESSION['id_objet_dans_mon_panier'][] = $id_post ;
+			$_SESSION['objet'.$id_post] = 1 ;
+			$_SESSION['nombre_total_objet_dans_panier']++ ;
 		}
-		if ( $cherche_id_prod == true )
-		{echo $id_post ;
-			if ( in_array( $id_post , $_SESSION['id_objet_dans_mon_panier'] ) == false )
+		else
+		{
+			if ( preg_match( '#^[0-9]+\+$#' , $val_post ) )
 			{
-				$_SESSION['id_objet_dans_mon_panier'][] = $id_post ;
-				$_SESSION['objet'.$id_post] = 1 ;
+				$_SESSION['objet'.$id_post] = $_SESSION['objet'.$id_post] + 1;
 				$_SESSION['nombre_total_objet_dans_panier']++ ;
 			}
-			else
+			elseif ( preg_match( '#^[0-9]+-$#' , $val_post ) )
 			{
-				if ( preg_match( '#^[0-9]+\+$#' , $val_post ) )
-				{
-					$_SESSION['objet'.$id_post] = $_SESSION['objet'.$id_post] + 1;
-					$_SESSION['nombre_total_objet_dans_panier']++ ;
-				}
-				elseif ( preg_match( '#^[0-9]+-$#' , $val_post ) )
-				{
-					$_SESSION['objet'.$id_post] = $_SESSION['objet'.$id_post] - 1;
-					$_SESSION['nombre_total_objet_dans_panier']-- ;
-				}
-				elseif ( preg_match( '#^[0-9]+$#' , $val_post ) )
-				{
-					$_SESSION['nombre_total_objet_dans_panier'] -= $_SESSION['objet'.$id_post] ;
-					$_SESSION['objet'.$id_post] = 0 ;
-				}
+				$_SESSION['objet'.$id_post] = $_SESSION['objet'.$id_post] - 1;
+				$_SESSION['nombre_total_objet_dans_panier']-- ;
+			}
+			elseif ( preg_match( '#^[0-9]+$#' , $val_post ) )
+			{
+				$_SESSION['nombre_total_objet_dans_panier'] -= $_SESSION['objet'.$id_post] ;
+				$_SESSION['objet'.$id_post] = 0 ;
 			}
 		}
 	}
