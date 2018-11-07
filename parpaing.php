@@ -15,6 +15,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<head>
+	<link href="css/styleModal.css" rel="stylesheet">
+	</head>
 <body>
     <?php include('header.php'); ?>
     <?php include('navbar.php'); ?>
@@ -24,20 +27,26 @@
     <section class="featured_works row" data-stellar-background-ratio="0.3">
         <div class="tittle wow fadeInUp">
             <p>   <br>   </p>
-            <h2>our breeze block</h2>
+            <h2>Les Parpaings</h2>
         </div>
         <div class="featured_gallery">
 			<form method="post" action="execution_affiche_objet_a_vendre.php">
 			<!-- le hidden est placé ici car l'obligation d'utilisation du foreach dans execution pose problème s'il est après le submit -->
 			<input type="hidden" name="nom_page" value=<?php echo $nom_page_actuelle ; ?> > <!-- permet de retourner sur la bonne page après ajout -->
 				<?php
-					for ($nombre_de_lignes = 1 ; $nombre_de_lignes <= $_SESSION['nb_objet'] ; $nombre_de_lignes++)
+					for ($nombre_de_lignes = 1 ; $nombre_de_lignes < $_SESSION['nb_objet'] ; $nombre_de_lignes++)
 					{
 				?>
 						<div class="col-md-3 col-sm-4 col-xs-6 gallery_iner p0">
 							<img src= <?php echo 'images/' . $nom_page_actuelle . $nombre_de_lignes . '.jpg' ; ?> alt="">
 							<div class="gallery_hover">
-								<h4>1 Palette - <?php echo $_SESSION['info_objet'][$nombre_de_lignes-1]['name'] . ' - ' . $_SESSION['info_objet'][$nombre_de_lignes-1]['description'] ; ?></h4>
+								<?php $id=$_SESSION['info_objet'][$nombre_de_lignes-1]['name']; 
+									  $desP =$_SESSION['info_objet'][$nombre_de_lignes-1]['description'];
+									  $prix=$_SESSION['info_objet'][$nombre_de_lignes-1]['price'] ; 
+								?>
+								<br>
+								<h4 id="nameBlock">1 Palette - <?php echo $_SESSION['info_objet'][$nombre_de_lignes-1]['name'] ; ?></h4>
+								<h4 ><?php echo "<a href='affDescription.php?id=$id&desP=$desP&price=$prix#oModal'> Ici Description </a> "?></h4>
 								<?php 
 									if ( isset( $_SESSION['username'] ) == true )
 									{
@@ -46,8 +55,8 @@
 								<?php
 									}
 								?>
+								<div class="col-md-6 col-sm-4 col-xs-6 prix"><h3><?php echo $prix; ?> €</h3></div>
 							</div>
-							<div class="prix"><h5><?php echo $_SESSION['info_objet'][$nombre_de_lignes-1]['price'] ; ?> €</h5></div>
 						</div>
 				<?php
 					}
@@ -59,5 +68,6 @@
     <!-- End Our Featured Works Area -->
 
     <?php include('footer.php'); ?>
+    <script src="js/classActive.js"></script>
 </body>
 </html>

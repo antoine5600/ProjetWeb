@@ -45,3 +45,4 @@
     <script src="vendors/stellar/jquery.stellar.js"></script>
     <!-- Theme JS -->
     <script src="js/theme.js"></script>
+    <script src="js/classActive.js"></script>

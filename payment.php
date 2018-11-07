@@ -54,9 +54,8 @@
 														if ( $_SESSION['objet' . $objet_dans_panier] != 0 )
 															{
 											?>
-											<p><?php echo $_SESSION['objet' . $objet_dans_panier]; ?> x <?php echo $_SESSION['info_objet_total'][$objet_dans_panier-1]['name'] . ' - ' . $_SESSION['info_objet_total'][$objet_dans_panier-1]['description'] ; ?> <span class="price"><?php echo $_SESSION['objet' . $objet_dans_panier]*$_SESSION['info_objet_total'][$objet_dans_panier-1]['price']; ?>€</span></p>
-												<?php
-															}
+														<p><?php echo $_SESSION['objet' . $objet_dans_panier]; ?> x <?php echo $_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['name'] . ' - ' . $_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['description'] ; ?> <span class="price"><?php echo $_SESSION['objet' . $objet_dans_panier]*$_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['price']; ?>€</span></p>
+											<?php
 													}
 											?>
 										<hr>
