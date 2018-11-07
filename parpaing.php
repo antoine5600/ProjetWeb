@@ -31,7 +31,7 @@
 			<!-- le hidden est placé ici car l'obligation d'utilisation du foreach dans execution pose problème s'il est après le submit -->
 			<input type="hidden" name="nom_page" value=<?php echo $nom_page_actuelle ; ?> > <!-- permet de retourner sur la bonne page après ajout -->
 				<?php
-					for ($nombre_de_lignes = 1 ; $nombre_de_lignes <= $_SESSION['nb_objet'] ; $nombre_de_lignes++)
+					for ($nombre_de_lignes = 1 ; $nombre_de_lignes < $_SESSION['nb_objet'] ; $nombre_de_lignes++)
 					{
 				?>
 						<div class="col-md-3 col-sm-4 col-xs-6 gallery_iner p0">
