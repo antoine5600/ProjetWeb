@@ -15,7 +15,8 @@
 						echo '<br />Nom : ' . $_SESSION['username'] ;
 						echo '<br />Prenom : ' . $_SESSION['user_firstname'] ;
 						echo '<br />Email : ' . $_SESSION['email'] ;
-						echo '<br />Téléphone : ' . $_SESSION['phone_number'] ; ?>
+						$tel = $_SESSION['phone_number'] ;
+						if(	empty($tel) == false ){echo '<br />Téléphone : ' . $tel; }?>
 				</div>
 				<div class="col-sm-6 contact_info">
 					<h2>Vos adresses</h2>

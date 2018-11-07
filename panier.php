@@ -19,8 +19,8 @@
 					{
 						
 				?>
-						<li class="active">Order</li>
-						<li><a href="payment.php">Payment</a></li>
+						<li>Order</li>
+						<li class="active"><a href="payment.php">Payment</a></li>
 				<?php
 					}
 				?>
