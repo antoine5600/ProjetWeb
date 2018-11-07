@@ -76,3 +76,7 @@
 .oModal > div section,.oModal > div > header, .oModal > div > footer {
   padding:15px;
 }
+
+#clickhere{
+  color :red;
+}

@@ -81,29 +81,29 @@
 										</div>
 										<div class="separate">
 											<label for="cname">Propriétaire de la carte</label>
-											<input type="text" id="cardname" name="cardname" placeholder="John More Doe">
+											<input type="text" id="cardname" name="cardname">
 										</div>
 										<div class="separate">
 											<label for="ccnum">Numéro de carte</label>
-											<input type="text" id="cardnumber" name="cardnumber" placeholder="1111-2222-3333-4444">
+											<input type="text" id="cardnumber" name="cardnumber">
 										</div>
 										<div class="separate">
 											<label for="expmonth">Mois d'expiration</label>
-											<input type="text" id="expmonth" name="expmonth" placeholder="September">
+											<input type="text" id="expmonth" name="expmonth">
 										</div>
 										<div class="separate">
 											
 											<label for="expyear">Année d'expiration</label>
-											<input type="text" id="expyear" name="expyear" placeholder="2018">
+											<input type="text" id="expyear" name="expyear">
 										</div>
 										<div class="separate">
 											<label for="cvv">CVV</label>
-											<input type="text" id="cvv" name="cvv" placeholder="352">
+											<input type="text" id="cvv" name="cvv">
 										</div>
 									</div>	
 								</div>
 							<div class="col-xs-6">
-								<input type="submit" name="validation_commande" value="Valider la commande" class="btn">
+								<input type="submit" class="btn btn-default" name="validation_commande" value="Valider la commande" class="btn">
 							</div>
 						</form>
 					</div>
@@ -111,9 +111,6 @@
 			</div>
 			</div>
 		</section>
-
-
-
  		 <?php include('footer.php'); ?>
 
 	</body>

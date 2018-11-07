@@ -13,27 +13,15 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta http-equiv="refresh" content="3;url=index.php" />
+</head>
 
 <body>
 
     <?php include('header.php');  ?>
     <!-- Preloader -->
     <div class="preloader"></div>
-
-	<!-- Top Header_Area -->
-
-	<!-- End Top Header_Area -->
-
-	<!-- Header_Area -->
-   
-	<!-- End Header_Area -->
-
-    <!-- Banner area -->
-  
-    <!-- End Banner area -->
-
-    <!-- End About Us Area -->
-
 
     <!-- Our Features Area -->
     <section class="our_feature_area">
@@ -54,8 +42,9 @@
                             </a>
                         </div>
                         <div class="media-body">
-                            <a href="#">Confirmation</a>
+                            <h3>Confirmation<h3>
                             <p>Votre demande a bien été envoyée.</p>
+                            <p>Redirection dans 3 secondes.</p>
                         </div>
                     </div>
                    
