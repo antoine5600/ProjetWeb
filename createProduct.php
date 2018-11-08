@@ -9,7 +9,7 @@
         <?php include('server.php') ?>
         <?php include('errors_reg.php'); ?>
 
-        <form method="post" action="productManage.php" class="form-inline contact_box">
+        <form method="post" action="productManage.php" class="form-inline contact_box" enctype="multipart/form-data" >
             <div class="separate">
                 <label class="main-label" for="bday">Nom produit *</label>
                 <input type="text" id="colortext" class="form-control input_box space" name="productName" >
@@ -21,6 +21,10 @@
             <div class="separate" >
                 <label class="main-label" for="bday">Description *</label>
                 <textarea rows="4" cols="50" name="productDescription" placeholder="Description ici :"></textarea>
+            </div>
+			<div class="separate" >
+                <label class="main-label" for="bday">Image *</label>
+				<input type="file" name="productImage"/>
             </div>
             <div class="separate">
                 <button type="submit" class="btn btn-default" name="create_product">Ajouter</button>

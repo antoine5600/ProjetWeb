@@ -1,12 +1,12 @@
 <?php
-include('server.php') ;
+	include('server.php') ;
 	// connexion à la bdd
-try
+	try
 	{ // le dernier paramètre permet d'avoir de meilleur message d'erreur
-	$bdd = new PDO('mysql:host=localhost;dbname=projet_web;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-}
-catch (Exception $e)
-{
+		$bdd = new PDO('mysql:host=localhost;dbname=projet_web;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+	}
+	catch (Exception $e)
+	{
 		die('Erreur : ' . $e->getMessage()); // permet d'afficher un message d'erreur qui n'affiche pas le login+password dans le message visible par le visiteur
 	}
 	if ( isset( $nom_page_actuelle ) == true ) // même si recharger à chaque fois les variables n'est pas optimisé, le rajout d'un objet du dashboard nécessite cette action
@@ -25,7 +25,7 @@ catch (Exception $e)
 			$nb_objet_vendable = $bdd_nb_objet_vendable->fetch() ;
 			$_SESSION['nb_objet'] = $nb_objet_vendable['nb_objet'] ;
 			
-			$bdd_info_objet_vendable = $bdd->prepare('SELECT products.id_prod , products.name , products.description , products.price , categories.name AS nom_categorie FROM products INNER JOIN product_category ON id_prod = product_category.product JOIN categories ON product_category.category = categories.id_cat WHERE categories.name = :nom_categorie') ;
+			$bdd_info_objet_vendable = $bdd->prepare('SELECT products.id_prod , products.name , products.description , products.price , products.picture , categories.name AS nom_categorie FROM products INNER JOIN product_category ON id_prod = product_category.product JOIN categories ON product_category.category = categories.id_cat WHERE categories.name = :nom_categorie') ;
 			$bdd_info_objet_vendable->execute(array( 'nom_categorie' => $nom_page_actuelle )) ;
 			$_SESSION['info_objet'] = $bdd_info_objet_vendable->fetchAll() ;
 		}
@@ -42,7 +42,7 @@ catch (Exception $e)
 			$bdd_adresses_client = $bdd->prepare('SELECT * FROM client_addr INNER JOIN addresses ON Address = id_addr WHERE Client = :id_client') ;
 			$bdd_adresses_client->execute(array(
 				'id_client' => $_SESSION['id_user']
-			));
+				));
 			$adr_client = $bdd_adresses_client->fetchAll() ;
 			$bdd_adresses_client->closeCursor() ;
 		}
@@ -80,7 +80,7 @@ catch (Exception $e)
 				'id_adresse_livraison' => $id_adresse_conversion['Address'] ,
 				'id_adresse_achat' => $id_adresse_conversion['Address'] ,
 				'id_client' => $_SESSION['id_user']
-			));
+				));
 			$req->closeCursor() ;
 		}
 		elseif ( $id_post == -1 ) // cas nouvelle adresse
@@ -98,7 +98,7 @@ catch (Exception $e)
 				'code_postale' => $new_postcode,
 				'ville' => $new_city,
 				'pays' => $new_country
-			));
+				));
 			$req->closeCursor() ;
 			// conexion adresse-client
 			$bdd_nb_adresses = $bdd->query('SELECT COUNT(*) AS nb_adresses FROM addresses') ;
@@ -109,7 +109,7 @@ catch (Exception $e)
 				'id_client' => $_SESSION['id_user'],
 				'id_adresse' => $nb_adresses['nb_adresses'],
 				'nom_adresse' => $new_adr_client
-			));
+				));
 			$req->closeCursor() ;
 			//création commande
 			$req = $bdd->prepare('SELECT AddCommand( :id_adresse_livraison , :id_adresse_achat , :id_client )') ;
@@ -117,7 +117,7 @@ catch (Exception $e)
 				'id_adresse_livraison' => $nb_adresses['nb_adresses'] ,
 				'id_adresse_achat' => $nb_adresses['nb_adresses'] ,
 				'id_client' => $_SESSION['id_user']
-			));
+				));
 			$req->closeCursor() ;
 		}
 		unset( $_SESSION['id_objet_dans_mon_panier'] ) ;
@@ -125,4 +125,4 @@ catch (Exception $e)
 	}
 	
 	
-	?>
+?>

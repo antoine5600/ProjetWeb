@@ -60,7 +60,7 @@ if (isset($_POST['reg_user'])) {
     $query = "SELECT AddUser('$username','$userFirstname', '$email', '$password', NULL,'$user_permission', '$civ', '$bday')";
 
     mysqli_query($db, $query);
-
+	
     $queryIdUser = "SELECT MAX(id_usr) as MaxId from users LIMIT 1";
     $result = mysqli_query($db, $queryIdUser);
     $idUserArray = mysqli_fetch_assoc($result);
@@ -68,7 +68,7 @@ if (isset($_POST['reg_user'])) {
 
     $_SESSION['username'] = $username;
     $_SESSION['user_permission'] = $User_permission;
-    $_SESSION['email'] = $email;
+	$_SESSION['email'] = $email;
     $_SESSION['user_firstname'] =  $userFirstname;
     $_SESSION['id_user'] = $idUser;
     $_SESSION['phone_number'] = "" ;
@@ -310,12 +310,14 @@ if (isset($_POST['create_product'])) {
   $name = mysqli_real_escape_string($db, $_POST['productName']);
   $price = mysqli_real_escape_string($db, $_POST['productPrice']);
   $description = mysqli_real_escape_string($db, $_POST['productDescription']);
+  $image = mysqli_real_escape_string($db, $_FILES['productImage']['name']);
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($name)) { array_push($errors_reg, "name is required"); }
   if (empty($price)) { array_push($errors_reg, "price is required"); }
   if (empty($description)) { array_push($errors_reg, "description is required"); }
+  if (empty($image)) { array_push($errors_reg, "an image is required"); }
 
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
@@ -329,10 +331,10 @@ if (isset($_POST['create_product'])) {
     }
   }
 
-  // Finally, register user if there are no errors in the form
+  // Finally, create the product if there are no errors in the form
   if (count($errors_reg) == 0) {
 
-    $query = "INSERT INTO products (Name,Description,Price) VALUES ('$name','$description','$price')";
+    $query = "INSERT INTO products (Name,Description,Price,Picture) VALUES ('$name','$description','$price','$image')";
     mysqli_query($db, $query);
     $queryIdProd = "SELECT MAX(id_prod) as MaxId from products LIMIT 1";
     $result = mysqli_query($db, $queryIdProd);
@@ -353,6 +355,7 @@ if (isset($_POST['edit_product'])) {
   $name = mysqli_real_escape_string($db, $_POST['productName']);
   $price = mysqli_real_escape_string($db, $_POST['productPrice']);
   $description = mysqli_real_escape_string($db, $_POST['productDescription']);
+  $image = mysqli_real_escape_string($db, $_FILES['productImage']['name']);
     $id = mysqli_real_escape_string($db, $_POST['id']);
 
   // form validation: ensure that the form is correctly filled ...
@@ -360,6 +363,7 @@ if (isset($_POST['edit_product'])) {
   if (empty($name)) { array_push($errors_reg, "name is required"); }
   if (empty($price)) { array_push($errors_reg, "price is required"); }
   if (empty($description)) { array_push($errors_reg, "description is required"); }
+  if (empty($image)) { array_push($errors_reg, "an image is required"); }
 
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
@@ -371,7 +375,7 @@ if (isset($_POST['edit_product'])) {
   // Finally, register user if there are no errors in the form
   if (count($errors_reg) == 0) {
 
-    $query = "UPDATE products SET Name='$name', Price='$price', Description='$description'WHERE id_prod = '$id'";
+    $query = "UPDATE products SET Name='$name', Price='$price', Description='$description', Picture='$image' WHERE id_prod = '$id'";
     mysqli_query($db, $query);
     $_SESSION['success'] = "Edit success";
     header('location: productManage.php');
