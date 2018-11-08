@@ -60,8 +60,18 @@ if (isset($_POST['reg_user'])) {
     $query = "SELECT AddUser('$username','$userFirstname', '$email', '$password', NULL,'$user_permission', '$civ', '$bday')";
 
     mysqli_query($db, $query);
+
+    $queryIdUser = "SELECT MAX(id_usr) as MaxId from users LIMIT 1";
+    $result = mysqli_query($db, $queryIdUser);
+    $idUserArray = mysqli_fetch_assoc($result);
+    $idUser = $idUserArray['MaxId'];
+
     $_SESSION['username'] = $username;
     $_SESSION['user_permission'] = $User_permission;
+    $_SESSION['email'] = $email;
+    $_SESSION['user_firstname'] =  $userFirstname;
+    $_SESSION['id_user'] = $idUser;
+    $_SESSION['phone_number'] = "" ;
     $_SESSION['success'] = "You are now logged in";
     header('location: index.php');
   }
@@ -82,7 +92,6 @@ if (isset($_POST['login_user'])) {
 
   if (count($errors_log) == 0) {
     $password = md5($password);
-    //$query = "SELECT * FROM users WHERE Mail='$mail' AND psswd='$password'";
     $query = "SELECT * FROM Users WHERE id_usr = Login('$mail', '$password')";
     $results = mysqli_query($db, $query);
     if (mysqli_num_rows($results) == 1) {
