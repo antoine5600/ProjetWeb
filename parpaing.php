@@ -35,7 +35,7 @@
 					{
 				?>
 						<div class="col-md-3 col-sm-4 col-xs-6 gallery_iner p0">
-							<img src= <?php echo 'images/' . $_SESSION['info_objet'][$nombre_de_lignes-1]['picture'] ; ?> alt="">
+							<img src= <?php echo 'images/' . $_SESSION['info_objet'][$nombre_de_lignes-1]['picture'] ; ?> alt="" width="240" height="180">
 							<div class="gallery_hover">
 								<?php $id=$_SESSION['info_objet'][$nombre_de_lignes-1]['name']; 
 									  $desP =$_SESSION['info_objet'][$nombre_de_lignes-1]['description'];
