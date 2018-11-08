@@ -43,7 +43,7 @@
                             <input type="text" id="colortext" value="" maxlength="100" class="form-control input_box" name="subject" id="subject" required="" aria-required="true">
                         </div>
                         <div class="col-md-12">
-                            <label class="main-label" for="bday">Message *</label>
+                            <label class="main-label" for="bday">Message</label>
                             <textarea rows="10" id="colortext" class="form-control input_box" name="message" id="message" aria-required="true"></textarea>
                         </div>
                     <div class="col-md-12">
