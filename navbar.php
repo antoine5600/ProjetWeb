@@ -43,7 +43,7 @@ if (isset($_GET['logout'])) {
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon Compte</a>
                         <ul class="dropdown-menu">
                             <?php  if ($_SESSION['user_permission'] =='2') : ?>
-                            <li id="repnavbar"><a href="myaccount.php">Dashboard </a></li>
+                            <li id="repnavbar"><a href="myaccount">Dashboard </a></li>
                             <?php endif ?>
 							<li id="repnavbar"><a href="account_user.php">Mon compte</a></li>
                             <li id="repnavbar"><a href="index.php?logout='1'">logout</a></li>
