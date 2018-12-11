@@ -1,3 +1,12 @@
+<?php 
+  //session_start();
+  include ('serverDash.php');
+  if ($_SESSION['user_permission']!="2")
+{
+	header('location: index.php');
+}
+  //include ('server.php');
+  ?>
 <!DOCTYPE html>
 <html>
 <body>
@@ -7,7 +16,6 @@
    
      <section>
       <?php 
-			include ('serverDash.php');
 			$id=$_REQUEST['id'];
 
 

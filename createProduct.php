@@ -1,3 +1,10 @@
+<?php 
+  include('server.php');
+  if ($_SESSION['user_permission']!="2")
+{
+    header('location: index.php');
+}
+  ?>
 <!DOCTYPE html>
 <html>
 <body>
@@ -6,7 +13,6 @@
    
     <section>
         <?php include ('headerDash.php'); ?>
-        <?php include('server.php') ?>
         <?php include('errors_reg.php'); ?>
 
         <form method="post" action="productManage.php" class="form-inline contact_box" enctype="multipart/form-data" >
