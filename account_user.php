@@ -12,10 +12,10 @@
 	    		<div class="col-sm-6 contact_info">
 	    			<h2>Informations personnelles</h2>
 	    			<?php 
-						echo '<br />Nom : ' . $_SESSION['username'] ;
-						echo '<br />Prenom : ' . $_SESSION['user_firstname'] ;
-						echo '<br />Email : ' . $_SESSION['email'] ;
-						$tel = $_SESSION['phone_number'] ;
+						echo '<br />Nom : ' . htmlspecialchars($_SESSION['username']) ;
+						echo '<br />Prenom : ' . htmlspecialchars($_SESSION['user_firstname']) ;
+						echo '<br />Email : ' . htmlspecialchars($_SESSION['email']) ;
+						$tel = htmlspecialchars($_SESSION['phone_number']) ;
 						if(	empty($tel) == false ){echo '<br />Téléphone : ' . $tel; }?>
 				</div>
 				<div class="col-sm-6 contact_info">
@@ -31,7 +31,7 @@
 									foreach( $adr_client as $adr )
 									{
 										echo "<tr>";
-											echo '<td>' . $adr['Street'] . ' ' . $adr['Additional'] . ', ' . $adr['City'] . ' ' . $adr['Postcode'] . ', ' . $adr['Country'] . '</td>';
+											echo '<td>' . htmlspecialchars($adr['Street']) . ' ' . htmlspecialchars($adr['Additional']) . ', ' . htmlspecialchars($adr['City']) . ' ' . htmlspecialchars($adr['Postcode']) . ', ' . htmlspecialchars($adr['Country']) . '</td>';
 										echo "</tr>";
 									}
 								echo "</table>";
@@ -58,8 +58,8 @@
 									foreach(  $adresses_commandes as $adr )
 									{
 										echo "<tr>";
-											echo '<td>' . $adr['id_command'] . '</td>';
-											echo '<td>' . $adr['Street'] . ' ' . $adr['Additional'] . ', ' . $adr['City'] . ' ' . $adr['Postcode'] . ', ' . $adr['Country'] . '</td>';
+											echo '<td>' . htmlspecialchars($adr['id_command']) . '</td>';
+											echo '<td>' . htmlspecialchars($adr['Street']) . ' ' . htmlspecialchars($adr['Additional']) . ', ' . htmlspecialchars($adr['City']) . ' ' . htmlspecialchars($adr['Postcode']) . ', ' . htmlspecialchars($adr['Country']) . '</td>';
 										echo "</tr>";
 									}
 								echo "</table>";

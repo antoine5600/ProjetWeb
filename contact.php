@@ -33,7 +33,7 @@
                         <div class="col-md-12">
                              <label class="main-label" for="bday">Email *</label>
                             <?php if (isset($_SESSION['username'])) : ?>
-                                <input type="email" id="colortext" value=" <?php echo $_SESSION['email']; ?>" maxlength="100" class="form-control input_box" name="email" id="email" required="" aria-required="true">
+                                <input type="email" id="colortext" value=" <?php echo htmlspecialchars($_SESSION['email']); ?>" maxlength="100" class="form-control input_box" name="email" id="email" required="" aria-required="true">
                             <?php else : ?>
                                 <input type="email" id="colortext" maxlength="100" class="form-control input_box" name="email" id="email" required="" aria-required="true">
                             <?php endif ?>

@@ -23,19 +23,19 @@
 													$compteur_pour_post = 1 ; // les id en sql commencent à 1
 													foreach ( $adr_client as $addresses )
 													{
-														if ( $addresses['Name'] != "" )
+														if ( htmlspecialchars($addresses['Name']) != "" )
 														{
 											?>
 															<div class="separate">
 																<input type="radio" name="choix_adresse" value="adresse<?php echo $compteur_pour_post ?>" id="adresse<?php echo $compteur_pour_post ?>" /> 
-																<label for="adresse<?php echo $compteur_pour_post ?>"><?php echo $addresses['Name'] ; ?></label>
+																<label for="adresse<?php echo $compteur_pour_post ?>"><?php echo htmlspecialchars($addresses['Name']) ; ?></label>
 															</div>
 											<?php
 														}
 														else
 														{
 											?>
-															<input type="radio" name="choix_adresse" value="adresse<?php echo $compteur_pour_post ?>" id="adresse<?php echo $compteur_pour_post ?>" /> <label for="adresse<?php echo $compteur_pour_post ?>"><?php echo $addresses['Street'] . ', ' . $addresses['Additional'] . ', ' . $addresses['City'] . ' ' . $addresses['Postcode'] . ', ' . $addresses['Country'] ; ?></label>
+															<input type="radio" name="choix_adresse" value="adresse<?php echo $compteur_pour_post ?>" id="adresse<?php echo $compteur_pour_post ?>" /> <label for="adresse<?php echo $compteur_pour_post ?>"><?php echo htmlspecialchars($addresses['Street']) . ', ' . htmlspecialchars($addresses['Additional']) . ', ' . htmlspecialchars($addresses['City']) . ' ' . htmlspecialchars($addresses['Postcode']) . ', ' . htmlspecialchars($addresses['Country']) ; ?></label>
 											<?php
 														}
 														$compteur_pour_post++ ;
@@ -48,7 +48,7 @@
 									</div>
 									<div class="col-xs-5 col-sm-6 col-lg-4 all_contact_info">
 										<h2>Votre Panier <span class="price"><i class="fa fa-shopping-cart"></i> <b>
-											<?php echo $_SESSION['nombre_total_objet_dans_panier'] ; ?></b></span></h2>
+											<?php echo htmlspecialchars($_SESSION['nombre_total_objet_dans_panier']) ; ?></b></span></h2>
 											<?php
 												$prix_total = 0 ;
 												foreach ( $_SESSION['id_objet_dans_mon_panier'] as $objet_dans_panier )
@@ -56,7 +56,7 @@
 													$num_pos_id_correspondant_dans_tableau_info_objet_total = 0 ;
 													foreach( $_SESSION['info_objet_total'] as $cherche_position )
 													{
-														if ( $cherche_position['id_prod'] == $objet_dans_panier )
+														if ( htmlspecialchars($cherche_position['id_prod']) == htmlspecialchars($objet_dans_panier) )
 														{
 															break;
 														}
@@ -65,17 +65,17 @@
 															$num_pos_id_correspondant_dans_tableau_info_objet_total++ ;
 														}
 													}
-													if ( $_SESSION['objet' . $objet_dans_panier] != 0 )
+													if ( htmlspecialchars($_SESSION['objet' . htmlspecialchars($objet_dans_panier)]) != 0 )
 													{
 											?>
-														<p><?php echo $_SESSION['objet' . $objet_dans_panier]; ?> x <?php echo $_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['name'] . ' - ' . $_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['description'] ; ?> <span class="price"><?php echo $_SESSION['objet' . $objet_dans_panier]*$_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['price']; ?>€</span></p>
+														<p><?php echo htmlspecialchars($_SESSION['objet' . htmlspecialchars($objet_dans_panier)]); ?> x <?php echo htmlspecialchars($_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['name']) . ' - ' . htmlspecialchars($_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['description']) ; ?> <span class="price"><?php echo htmlspecialchars($_SESSION['objet' . $objet_dans_panier]) * htmlspecialchars($_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['price']) ; ?>€</span></p>
 											<?php
 													}
-													$prix_total += $_SESSION['objet' . $objet_dans_panier] * $_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['price'] ;
+													$prix_total += htmlspecialchars($_SESSION['objet' . htmlspecialchars($objet_dans_panier)]) * htmlspecialchars($_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['price']) ;
 												}
 											?>
 										<hr>
-										<p>Total <span class="price" ><?php echo $prix_total ; ?></span></p>
+										<p>Total <span class="price" ><?php echo $prix_total ; ?>€</span></p>
 									</div>
 									<div class="col-xs-6 col-sm-8 col-lg-10 contact_info">
 										<h2>Carte de paiement</h2>

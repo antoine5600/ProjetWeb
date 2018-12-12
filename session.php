@@ -18,7 +18,7 @@
 		$id_produit_submit_existe_dans_bdd = false ;
 		foreach( $_SESSION['info_objet_total'] as $cherche_id_prod )
 		{
-			if ( $id_post == $cherche_id_prod['id_prod'] )
+			if ( $id_post == htmlspecialchars($cherche_id_prod['id_prod']) )
 			{
 				$id_produit_submit_existe_dans_bdd = true ;
 			}

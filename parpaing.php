@@ -31,24 +31,24 @@
 			<!-- le hidden est placé ici car l'obligation d'utilisation du foreach dans execution pose problème s'il est après le submit -->
 			<input type="hidden" name="nom_page" value=<?php echo $nom_page_actuelle ; ?> > <!-- permet de retourner sur la bonne page après ajout -->
 				<?php
-					for ($nombre_de_lignes = 1 ; $nombre_de_lignes <= $_SESSION['nb_objet'] ; $nombre_de_lignes++)
+					for ($nombre_de_lignes = 1 ; $nombre_de_lignes <= htmlspecialchars($_SESSION['nb_objet']) ; $nombre_de_lignes++)
 					{
 				?>
 						<div class="col-md-3 col-sm-4 col-xs-6 gallery_iner p0">
-							<img src= <?php echo 'images/' . $_SESSION['info_objet'][$nombre_de_lignes-1]['picture'] ; ?> alt="" width="240" height="180">
+							<img src= <?php echo 'images/' . htmlspecialchars($_SESSION['info_objet'][$nombre_de_lignes-1]['picture']) ; ?> alt="" width="240" height="180">
 							<div class="gallery_hover">
-								<?php $id=$_SESSION['info_objet'][$nombre_de_lignes-1]['name']; 
-									  $desP =$_SESSION['info_objet'][$nombre_de_lignes-1]['description'];
-									  $prix=$_SESSION['info_objet'][$nombre_de_lignes-1]['price'] ; 
+								<?php $id = htmlspecialchars($_SESSION['info_objet'][$nombre_de_lignes-1]['name']) ; 
+									  $desP = htmlspecialchars($_SESSION['info_objet'][$nombre_de_lignes-1]['description']) ;
+									  $prix = htmlspecialchars($_SESSION['info_objet'][$nombre_de_lignes-1]['price']) ; 
 								?>
 								<br>
-								<h4 id="nameBlock">1 Palette - <?php echo $_SESSION['info_objet'][$nombre_de_lignes-1]['name'] ; ?></h4>
-								<h4 ><?php echo "<a href='affDescription.php?id=$id&desP=$desP&price=$prix#oModal'> Ici Description </a> "?></h4>
+								<h4 id="nameBlock">1 Palette - <?php echo htmlspecialchars($_SESSION['info_objet'][$nombre_de_lignes-1]['name']) ; ?></h4>
+								<h4 ><?php echo "<a href='affDescription.php?id=$id&desP=$desP&price=$prix#oModal'> Ici Description </a> " ;?></h4>
 								<?php 
 									if ( isset( $_SESSION['username'] ) == true )
 									{
 								?>
-										<h4><input type="submit" name=<?php echo 'submit' . $_SESSION['info_objet'][$nombre_de_lignes-1]['id_prod'] . '+' ; ?> value="commander" class="submit_commande"/></h4>
+										<h4><input type="submit" name=<?php echo 'submit' . htmlspecialchars($_SESSION['info_objet'][$nombre_de_lignes-1]['id_prod']) . '+' ; ?> value="commander" class="submit_commande"/></h4>
 								<?php
 									}
 								?>

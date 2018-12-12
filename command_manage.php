@@ -1,7 +1,7 @@
 <?php 
   //session_start();
   include ('serverDash.php');
-  if ($_SESSION['user_permission']!="2")
+  if (htmlspecialchars($_SESSION['user_permission'])!="2")
 {
 	header('location: index.php');
 }
@@ -53,9 +53,9 @@
 			foreach( $adresses_commandes_admin as $adr_admin )
 			{
 				echo "<tr>";
-					echo '<td>' . $adr_admin['id_command'] . '</td>';
-					echo '<td>' . $adr_admin['Name'] . ' ' . $adr_admin['First_name'] . '</td>';
-					echo '<td>' . $adr_admin['Street'] . ' ' . $adr_admin['Additional'] . ', ' . $adr_admin['City'] . ' ' . $adr_admin['Postcode'] . ', ' . $adr_admin['Country'] . '</td>';
+					echo '<td>' . htmlspecialchars($adr_admin['id_command']) . '</td>';
+					echo '<td>' . htmlspecialchars($adr_admin['Name']) . ' ' . htmlspecialchars($adr_admin['First_name']) . '</td>';
+					echo '<td>' . htmlspecialchars($adr_admin['Street']) . ' ' . htmlspecialchars($adr_admin['Additional']) . ', ' . htmlspecialchars($adr_admin['City']) . ' ' . htmlspecialchars($adr_admin['Postcode']) . ', ' . htmlspecialchars($adr_admin['Country']) . '</td>';
 					echo '<td> Valider </td>';
 				echo "</tr>";
 			}

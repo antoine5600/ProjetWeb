@@ -1,7 +1,7 @@
 <?php 
   //session_start();
   include ('serverDash.php');
-  if ($_SESSION['user_permission']!="2")
+  if (htmlspecialchars($_SESSION['user_permission'])!="2")
 {
 	header('location: index.php');
 }
@@ -34,7 +34,7 @@
 				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name"><?php echo($_SESSION['username']);?></div>
+				<div class="profile-usertitle-name"><?php echo htmlspecialchars($_SESSION['username']);?></div>
 				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
 			</div>
 			<div class="clear"></div>

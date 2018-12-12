@@ -42,7 +42,7 @@ if (isset($_GET['logout'])) {
                         <li class="dropdown submenu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon Compte</a>
                         <ul class="dropdown-menu">
-                            <?php  if ($_SESSION['user_permission'] =='2') : ?>
+                            <?php  if (htmlspecialchars($_SESSION['user_permission']) =='2') : ?>
                             <li id="repnavbar"><a href="myaccount">Dashboard </a></li>
                             <?php endif ?>
 							<li id="repnavbar"><a href="account_user.php">Mon compte</a></li>
@@ -53,7 +53,7 @@ if (isset($_GET['logout'])) {
                     <?php if (!isset($_SESSION['username'])) : ?>
                         <li><a href="inscription.php">Se connecter</a></li>
                     <?php endif ?>
-                    <li><a href="panier.php" class="panier" id="panierStyleNav"><i class="fas fa-cart-arrow-down"><?php if ( $_SESSION['nombre_total_objet_dans_panier'] > 0 ) {echo $_SESSION['nombre_total_objet_dans_panier'] ;} ?></i></a></li>
+                    <li><a href="panier.php" class="panier" id="panierStyleNav"><i class="fas fa-cart-arrow-down"><?php if ( htmlspecialchars($_SESSION['nombre_total_objet_dans_panier']) > 0 ) {echo htmlspecialchars($_SESSION['nombre_total_objet_dans_panier']) ;} ?></i></a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div>

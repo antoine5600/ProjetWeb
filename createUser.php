@@ -1,6 +1,6 @@
 <?php 
   include('server.php');
-  if ($_SESSION['user_permission']!="2")
+  if (htmlspecialchars($_SESSION['user_permission'])!="2")
 {
     header('location: index.php');
 }

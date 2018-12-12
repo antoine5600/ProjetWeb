@@ -26,7 +26,7 @@ function getUserId($id)
 
 function deleteUser($id)
 {
-	$user_check_query = "DELETE FROM users where id_usr = ".$id;
+	$user_check_query = "DELETE FROM users where id_usr = ".htmlspecialchars($id);
 	$result = mysqli_query($GLOBALS['$db'], $user_check_query);
 	return $result;
 }
@@ -40,14 +40,14 @@ function getProduct()
 
 function getProductId($id)
 {
-	$user_check_query = "SELECT * FROM products where id_prod = ".$id;
+	$user_check_query = "SELECT * FROM products where id_prod = ".htmlspecialchars($id);
 	$result = mysqli_query($GLOBALS['$db'], $user_check_query);
 	return $result;
 }
 
 function deleteProduct($id)
 {
-	$user_check_query = "DELETE FROM products where id_prod = ".$id;
+	$user_check_query = "DELETE FROM products where id_prod = ".htmlspecialchars($id);
 	$result = mysqli_query($GLOBALS['$db'], $user_check_query);
 	return $result;
 }

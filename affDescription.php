@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <body>
@@ -9,9 +7,9 @@
      <section>
       <?php 
 			include ('serverDash.php');
-			$id=$_REQUEST['id'];
-			$desP=$_REQUEST['desP'];
-			$price=$_REQUEST['price'];
+			$id=htmlspecialchars($_REQUEST['id']);
+			$desP=htmlspecialchars($_REQUEST['desP']);
+			$price=htmlspecialchars($_REQUEST['price']);
 			echo "
 			   <h2>Description : $id </h2><br>
 	        <h3> $desP </h3><br>

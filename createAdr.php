@@ -36,7 +36,7 @@
                 </div>
                 <div class="separate">
             <div class="separate">
-                <input type="hidden" id="user_id" name ="user_id" value =<?php echo ($_SESSION['id_user']);?>>
+                <input type="hidden" id="user_id" name ="user_id" value =<?php echo htmlspecialchars($_SESSION['id_user']);?>>
                 <button type="submit" class="btn btn-default" name="create_adr">Ajouter</button>
                 <p>* Champs obligatoires</p>
             </div>

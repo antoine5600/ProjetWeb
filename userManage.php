@@ -59,10 +59,10 @@
 		while($row){
 			$countUser=$countUser+1;
             echo "<tr>";
-            	echo "<td>" . $row['Name'] . "</td>";
-                echo "<td>" . $row['First_name'] . "</td>";
-                echo "<td>" . $row['Mail'] . "</td>";
-                echo "<td>" . $row['Telephone'] . "</td>";
+            	echo "<td>" . htmlspecialchars($row['Name']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['First_name']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['Mail']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['Telephone']) . "</td>";
                 switch ($row['User_permission']) {
 					case 1:
 						echo "<td> Client</td>";
@@ -73,7 +73,7 @@
 				}
 				?> 
 				<td> 
-					<?php $id =  $row['id_usr'];
+					<?php $id =  htmlspecialchars($row['id_usr']);
 					echo "<a href='modifUser.php?id=$id#oModal'>Modifier</a>";
 					?>
 			     </td>

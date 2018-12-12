@@ -55,12 +55,12 @@
             $row = mysqli_fetch_array($result);
 		while($row){
             echo "<tr>";
-            	echo "<td>" . $row['Name'] . "</td>";
-                echo "<td>" . $row['Price'] . "€"."</td>";
-                echo "<td>" . $row['Description'] . "</td>";
+            	echo "<td>" . htmlspecialchars($row['Name']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['Price']) . "€"."</td>";
+                echo "<td>" . htmlspecialchars($row['Description']) . "</td>";
 				?> 
 				<td> 
-					<?php $id =  $row['id_prod'];
+					<?php $id =  htmlspecialchars($row['id_prod']);
 					echo "<a href='modifProduct.php?id=$id#oModal'>Modifier</a>";
 					?>
 			     </td>

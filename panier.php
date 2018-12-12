@@ -22,7 +22,7 @@ include('server_objet_a_vendre.php') ;
 
 		</div>
 		<?php 
-		if ( $_SESSION['nombre_total_objet_dans_panier'] > 0 )
+		if ( htmlspecialchars($_SESSION['nombre_total_objet_dans_panier']) > 0 )
 		{
 			?>
 			<div class="col-md-7 col-sm-12 text-left">
@@ -40,7 +40,7 @@ include('server_objet_a_vendre.php') ;
 								$num_pos_id_correspondant_dans_tableau_info_objet_total = 0 ;
 								foreach( $_SESSION['info_objet_total'] as $cherche_position )
 								{
-									if ( $cherche_position['id_prod'] == $objet_dans_panier )
+									if ( htmlspecialchars($cherche_position['id_prod']) == htmlspecialchars($objet_dans_panier) )
 									{
 										break;
 									}
@@ -49,34 +49,34 @@ include('server_objet_a_vendre.php') ;
 										$num_pos_id_correspondant_dans_tableau_info_objet_total++ ;
 									}
 								}
-								if ( $_SESSION['objet' . $objet_dans_panier] != 0 )
+								if ( htmlspecialchars($_SESSION['objet' . htmlspecialchars($objet_dans_panier)]) != 0 )
 								{
 						?>
 									<li class="row">
 										<span class="quantity">
-											<input type="submit" name="submit<?php echo $objet_dans_panier ?>-" value="-" class="submit_commande" 
-											<?php if ( $_SESSION['objet' . $objet_dans_panier] <= 1 ) echo 'hidden'; ?>
+											<input type="submit" name="submit<?php echo htmlspecialchars($objet_dans_panier) ; ?>-" value="-" class="submit_commande" 
+											<?php if ( htmlspecialchars($_SESSION['objet' . htmlspecialchars($objet_dans_panier)]) <= 1 ) echo 'hidden'; ?>
 											/>
 										</span>
 										<span class="quantity">
-											<input type="submit" name="submit<?php echo $objet_dans_panier ?>+" value="+" class="submit_commande"/>
+											<input type="submit" name="submit<?php echo htmlspecialchars($objet_dans_panier) ; ?>+" value="+" class="submit_commande"/>
 										</span>
 										<span class="quantity">
-											<?php echo $_SESSION['objet' . $objet_dans_panier]; ?>
+											<?php echo htmlspecialchars($_SESSION['objet' . htmlspecialchars($objet_dans_panier)]) ; ?>
 										</span>
-										<span class="itemName"><?php echo $_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['name'] . ' - ' . nl2br($_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['description'] ) ?></span>
-										<span class="popbtn"><input type="submit" name="delete_panier<?php echo $objet_dans_panier ?>" value="X" class="submit-Delete"></span>
-										<span class="price"><?php echo $_SESSION['objet' . $objet_dans_panier]*$_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['price']; ?>€</span>
+										<span class="itemName"><?php echo htmlspecialchars($_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['name']) . ' - ' . nl2br(htmlspecialchars($_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['description']) ) ; ?></span>
+										<span class="popbtn"><input type="submit" name="delete_panier<?php echo htmlspecialchars($objet_dans_panier) ; ?>" value="X" class="submit-Delete"></span>
+										<span class="price"><?php echo htmlspecialchars($_SESSION['objet' . htmlspecialchars($objet_dans_panier)]) * htmlspecialchars($_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['price']) ; ?>€</span>
 									</li>
 						<?php
 								}
-								$prix_total += $_SESSION['objet' . $objet_dans_panier] * $_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['price'] ;
+								$prix_total += htmlspecialchars($_SESSION['objet' . htmlspecialchars($objet_dans_panier)]) * htmlspecialchars($_SESSION['info_objet_total'][$num_pos_id_correspondant_dans_tableau_info_objet_total]['price']) ;
 							}
 						?>
 					</form>
 					<li class="row totals">
 						<span class="itemName">Total: </span>
-						<span class="price"><?php echo $prix_total; ?>€</span>
+						<span class="price"><?php echo $prix_total ; ?>€</span>
 						<span class="order"> <a href="payment.php" class="text-center">ORDER</a></span>
 					</li>
 				</ul>

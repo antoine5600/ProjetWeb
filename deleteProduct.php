@@ -1,7 +1,7 @@
 <?php 
   //session_start();
   include ('serverDash.php');
-  if ($_SESSION['user_permission']!="2")
+  if (htmlspecialchars($_SESSION['user_permission'])!="2")
 {
 	header('location: index.php');
 }
@@ -17,10 +17,10 @@
      <section>
       <?php 
 			
-			$id=$_REQUEST['id'];
+			$id=htmlspecialchars($_REQUEST['id']);
 
 
-			if ($_REQUEST['action']=='deleteProduct')    
+			if (htmlspecialchars($_REQUEST['action'])=='deleteProduct')    
 			{
 			echo "
 			   <br><center><h4>Souhaitez-vous vraiment supprimer le produit n° $id ? </h4>
@@ -28,7 +28,7 @@
 			   <h4><a href='deleteProduct?action=validerDeleteProduct&amp;id=$id'#oModal> Oui</a>&nbsp; &nbsp; &nbsp; &nbsp;
 			   <a href='productManage.php'>Non</a></h4></center>";
 			}
-			else if ($_REQUEST['action']=='validerDeleteProduct')
+			else if (htmlspecialchars($_REQUEST['action'])=='validerDeleteProduct')
 			{
 				$a = deleteProduct($id);
 			   	header('Location: productManage.php');

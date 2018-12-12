@@ -1,7 +1,7 @@
 <?php 
   //session_start();
   include ('serverDash.php');
-  if ($_SESSION['user_permission']!="2")
+  if (htmlspecialchars($_SESSION['user_permission'])!="2")
 {
 	header('location: index.php');
 }
@@ -14,7 +14,7 @@
 <?php 
 //include ('server.php');
 
-$id=$_REQUEST['id'];
+$id=htmlspecialchars($_REQUEST['id']);
 $result = getProductId($id);
 $row = mysqli_fetch_array($result);?>
 
@@ -23,15 +23,15 @@ $row = mysqli_fetch_array($result);?>
 	<form method="post" action="productManage.php" class="form-inline contact_box" enctype="multipart/form-data" >
 		<div class="separate">
 			<label class="main-label" for="bday">Nom *</label>
-			<input type="text" id="colortext" class="form-control input_box space" name="productName" value=<?php echo $row['Name']; ?>>
+			<input type="text" id="colortext" class="form-control input_box space" name="productName" value=<?php echo htmlspecialchars($row['Name']); ?>>
 		</div>
 		<div class="separate">
 			<label class="main-label" for="bday">Prix *</label>
-			<input type="text" id="colortext" class="form-control input_box space" name="productPrice" value=<?php echo $row['Price']; ?>>
+			<input type="text" id="colortext" class="form-control input_box space" name="productPrice" value=<?php echo htmlspecialchars($row['Price']); ?>>
 		</div>
 		<div class="separate">
 			<label class="main-label" for="bday">Description *</label>
-			<textarea rows="4" cols="50" name="productDescription"> <?php echo $row['Description']; ?></textarea>
+			<textarea rows="4" cols="50" name="productDescription"> <?php echo htmlspecialchars($row['Description']); ?></textarea>
 		</div>
 		<div class="separate" >
 			<label class="main-label" for="bday">Image *</label>

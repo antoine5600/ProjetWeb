@@ -1,6 +1,6 @@
 <?php
       // On recupere l'URL de la page pour ensuite affecter class = "active" aux liens de nav
-      $page = $_SERVER["REQUEST_URI"];
+      $page = htmlspecialchars($_SERVER["REQUEST_URI"]);
       $page = str_replace("/projetweb/", "",$page);
 ?>
 
@@ -10,7 +10,7 @@
 			<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
 		</div>
 		<div class="profile-usertitle">
-			<div class="profile-usertitle-name"><?php echo($_SESSION['username']);?></div>
+			<div class="profile-usertitle-name"><?php echo(htmlspecialchars($_SESSION['username']));?></div>
 			<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
 		</div>
 		<div class="clear"></div>

@@ -13,13 +13,13 @@ $db = mysqli_connect('localhost', 'root', '', 'projet_web');
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
   // receive all input values from the form
-  $username = mysqli_real_escape_string($db, $_POST['username']);
-  $userFirstname = mysqli_real_escape_string($db, $_POST['userFirstname']);
-  $email = mysqli_real_escape_string($db, $_POST['email']);
-  $civ = mysqli_real_escape_string($db, $_POST['customer_title']);
-  $bday = mysqli_real_escape_string($db, $_POST['bday']);
-  $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
-  $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
+  $username = mysqli_real_escape_string($db, htmlspecialchars($_POST['username']));
+  $userFirstname = mysqli_real_escape_string($db, htmlspecialchars($_POST['userFirstname']));
+  $email = mysqli_real_escape_string($db, htmlspecialchars($_POST['email']));
+  $civ = mysqli_real_escape_string($db, htmlspecialchars($_POST['customer_title']));
+  $bday = mysqli_real_escape_string($db, htmlspecialchars($_POST['bday']));
+  $password_1 = mysqli_real_escape_string($db, htmlspecialchars($_POST['password_1']));
+  $password_2 = mysqli_real_escape_string($db, htmlspecialchars($_POST['password_2']));
   $user_permission = 1;
 
   // form validation: ensure that the form is correctly filled ...
@@ -41,18 +41,18 @@ if (isset($_POST['reg_user'])) {
   $user = mysqli_fetch_assoc($result);
   
   if ($user) { // if user exists
-    if ($user['Name'] === $username) {
+    if (htmlspecialchars($user['Name']) === htmlspecialchars($username)) {
       array_push($errors_reg, "Username already exists");
     }
 
-    if ($user['Mail'] === $email) {
+    if (htmlspecialchars($user['Mail']) === htmlspecialchars($email)) {
       array_push($errors_reg, "email already exists");
     }
   }
 
   // Finally, register user if there are no errors in the form
   if (count($errors_reg) == 0) {
-    $password = md5($password_1);//encrypt the password before saving in the database
+    $password = md5(htmlspecialchars($password_1));//encrypt the password before saving in the database
 
     //$query = "INSERT INTO users (Name, First_name, Mail, psswd, User_permission, User_sex, User_Bday) 
     //      VALUES('$username','$userFirstname', '$email', '$password','$user_permission', '$civ', '$bday')";
@@ -64,7 +64,7 @@ if (isset($_POST['reg_user'])) {
     $queryIdUser = "SELECT MAX(id_usr) as MaxId from users LIMIT 1";
     $result = mysqli_query($db, $queryIdUser);
     $idUserArray = mysqli_fetch_assoc($result);
-    $idUser = $idUserArray['MaxId'];
+    $idUser = htmlspecialchars($idUserArray['MaxId']);
 
     $_SESSION['username'] = $username;
     $_SESSION['user_permission'] = $User_permission;
@@ -80,8 +80,8 @@ if (isset($_POST['reg_user'])) {
 
 // LOGIN USER
 if (isset($_POST['login_user'])) {
-  $mail = mysqli_real_escape_string($db, $_POST['mail']);
-  $password = mysqli_real_escape_string($db, $_POST['password']);
+  $mail = mysqli_real_escape_string($db, htmlspecialchars($_POST['mail']));
+  $password = mysqli_real_escape_string($db, htmlspecialchars($_POST['password']));
 
   if (empty($mail)) {
     array_push($errors_log, "Mail is required");
@@ -91,18 +91,18 @@ if (isset($_POST['login_user'])) {
   }
 
   if (count($errors_log) == 0) {
-    $password = md5($password);
+    $password = md5(htmlspecialchars($password));
     $query = "SELECT * FROM Users WHERE id_usr = Login('$mail', '$password')";
     $results = mysqli_query($db, $query);
     if (mysqli_num_rows($results) == 1) {
       $row = $results->fetch_array(MYSQLI_ASSOC);
-      $_SESSION['username'] = $row['Name'];
-      $_SESSION['user_permission'] = $row['User_permission'];
-      $_SESSION['email'] = $mail;
+      $_SESSION['username'] = htmlspecialchars($row['Name']);
+      $_SESSION['user_permission'] = htmlspecialchars($row['User_permission']);
+      $_SESSION['email'] = htmlspecialchars($mail);
       $_SESSION['success'] = "You are now logged in";
-	  $_SESSION['user_firstname'] = $row['First_name'] ;
-	  $_SESSION['id_user'] = $row['id_usr'] ;
-	  $_SESSION['phone_number'] = $row['Telephone'] ;
+	  $_SESSION['user_firstname'] = htmlspecialchars($row['First_name']) ;
+	  $_SESSION['id_user'] = htmlspecialchars($row['id_usr']) ;
+	  $_SESSION['phone_number'] = htmlspecialchars($row['Telephone']) ;
       header('location: index.php');
     }else {
       array_push($errors_log, "Wrong username/password combination");
@@ -117,13 +117,13 @@ if (isset($_POST['contact'])) {
 
 $to = 'ant.lefalher@gmail.com';
 
-$subject = $_POST['subject'];
+$subject = htmlspecialchars($_POST['subject']);
 
 if(isset($_POST['email'])) {
 
-$name = $_POST['name'];
+$name = htmlspecialchars($_POST['name']);
 
-$email = $_POST['email'];
+$email = htmlspecialchars($_POST['email']);
 
 $fields = array(
 
@@ -131,7 +131,7 @@ $fields = array(
 
 'text' => 'Name',
 
-'val' => $_POST['name']
+'val' => htmlspecialchars($_POST['name'])
 
 ),
 
@@ -139,7 +139,7 @@ $fields = array(
 
 'text' => 'Email address',
 
-'val' => $_POST['email']
+'val' => htmlspecialchars($_POST['email'])
 
 ),
 
@@ -147,7 +147,7 @@ $fields = array(
 
 'text' => 'Message',
 
-'val' => $_POST['message']
+'val' => htmlspecialchars($_POST['message'])
 
 )
 
@@ -157,7 +157,7 @@ $message = "";
 
 foreach($fields as $field) {
 
-$message .= $field['text'].": " . htmlspecialchars($field['val'], ENT_QUOTES) . "<br>\n";
+$message .= htmlspecialchars($field['text']).": " . htmlspecialchars($field['val'], ENT_QUOTES) . "<br>\n";
 
 }
 
@@ -199,14 +199,14 @@ if (isset($_POST['edit_user'])) {
   //$_SESSION['success'] = "LA";
 
   // receive all input values from the form
-  $username = mysqli_real_escape_string($db, $_POST['username']);
-  $userFirstname = mysqli_real_escape_string($db, $_POST['userFirstname']);
-  $email = mysqli_real_escape_string($db, $_POST['email']);
-  $civ = mysqli_real_escape_string($db, $_POST['customer_title']);
-  $bday = mysqli_real_escape_string($db, $_POST['bday']);
-  $id = mysqli_real_escape_string($db, $_POST['id']);
-  $number = mysqli_real_escape_string($db, $_POST['number']);
-  $userPermission = mysqli_real_escape_string($db, $_POST['userPermission']);
+  $username = mysqli_real_escape_string($db, htmlspecialchars($_POST['username']));
+  $userFirstname = mysqli_real_escape_string($db, htmlspecialchars($_POST['userFirstname']));
+  $email = mysqli_real_escape_string($db, htmlspecialchars($_POST['email']));
+  $civ = mysqli_real_escape_string($db, htmlspecialchars($_POST['customer_title']));
+  $bday = mysqli_real_escape_string($db, htmlspecialchars($_POST['bday']));
+  $id = mysqli_real_escape_string($db, htmlspecialchars($_POST['id']));
+  $number = mysqli_real_escape_string($db, htmlspecialchars($_POST['number']));
+  $userPermission = mysqli_real_escape_string($db, htmlspecialchars($_POST['userPermission']));
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
@@ -248,15 +248,15 @@ if (isset($_POST['edit_user'])) {
 // CREATE USER
 if (isset($_POST['create_user'])) {
   // receive all input values from the form
-  $username = mysqli_real_escape_string($db, $_POST['username']);
-  $userFirstname = mysqli_real_escape_string($db, $_POST['userFirstname']);
-  $email = mysqli_real_escape_string($db, $_POST['email']);
-  $civ = mysqli_real_escape_string($db, $_POST['customer_title']);
-  $bday = mysqli_real_escape_string($db, $_POST['bday']);
-  $number = mysqli_real_escape_string($db, $_POST['number']);
-  $userPermission = mysqli_real_escape_string($db, $_POST['userPermission']);
-  $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
-  $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
+  $username = mysqli_real_escape_string($db, htmlspecialchars($_POST['username']));
+  $userFirstname = mysqli_real_escape_string($db, htmlspecialchars($_POST['userFirstname']));
+  $email = mysqli_real_escape_string($db, htmlspecialchars($_POST['email']));
+  $civ = mysqli_real_escape_string($db, htmlspecialchars($_POST['customer_title']));
+  $bday = mysqli_real_escape_string($db, htmlspecialchars($_POST['bday']));
+  $number = mysqli_real_escape_string($db, htmlspecialchars($_POST['number']));
+  $userPermission = mysqli_real_escape_string($db, htmlspecialchars($_POST['userPermission']));
+  $password_1 = mysqli_real_escape_string($db, htmlspecialchars($_POST['password_1']));
+  $password_2 = mysqli_real_escape_string($db, htmlspecialchars($_POST['password_2']));
   $user_permission = 1;
 
   // form validation: ensure that the form is correctly filled ...
@@ -279,22 +279,22 @@ if (isset($_POST['create_user'])) {
   $user = mysqli_fetch_assoc($result);
   
   if ($user) { // if user exists
-    if ($user['Name'] === $username) {
+    if (htmlspecialchars($user['Name']) === htmlspecialchars($username)) {
       array_push($errors_reg, "Username already exists");
     }
 
-    if ($user['Mail'] === $email) {
+    if (htmlspecialchars($user['Mail']) === htmlspecialchars($email)) {
       array_push($errors_reg, "email already exists");
     }
 
-    if ($user['Telephone'] === $number) {
+    if (htmlspecialchars($user['Telephone']) === htmlspecialchars($number)) {
       array_push($errors_reg, "number already exists");
     }
   }
 
   // Finally, register user if there are no errors in the form
   if (count($errors_reg) == 0) {
-    $password = md5($password_1);//encrypt the password before saving in the database
+    $password = md5(htmlspecialchars($password_1));//encrypt the password before saving in the database
 
 
     $query = "SELECT AddUser('$username','$userFirstname', '$email', '$password', '$number','$userPermission', '$civ', '$bday')";
@@ -307,9 +307,9 @@ if (isset($_POST['create_user'])) {
 // CREATE PRODUCT
 if (isset($_POST['create_product'])) {
   // receive all input values from the form
-  $name = mysqli_real_escape_string($db, $_POST['productName']);
-  $price = mysqli_real_escape_string($db, $_POST['productPrice']);
-  $description = mysqli_real_escape_string($db, $_POST['productDescription']);
+  $name = mysqli_real_escape_string($db, htmlspecialchars($_POST['productName']));
+  $price = mysqli_real_escape_string($db, htmlspecialchars($_POST['productPrice']));
+  $description = mysqli_real_escape_string($db, htmlspecialchars($_POST['productDescription']));
   $image = mysqli_real_escape_string($db, $_FILES['productImage']['name']);
 
   // form validation: ensure that the form is correctly filled ...
@@ -326,7 +326,7 @@ if (isset($_POST['create_product'])) {
   $product = mysqli_fetch_assoc($result);
   
   if ($product) { // if product exists
-    if ($product['Name'] === $name) {
+    if (htmlspecialchars($product['Name']) === htmlspecialchars($name)) {
       array_push($errors_reg, "name already exists");
     }
   }
@@ -339,7 +339,7 @@ if (isset($_POST['create_product'])) {
     $queryIdProd = "SELECT MAX(id_prod) as MaxId from products LIMIT 1";
     $result = mysqli_query($db, $queryIdProd);
     $idProdArray = mysqli_fetch_assoc($result);
-    $idProd = $idProdArray['MaxId'];
+    $idProd = htmlspecialchars($idProdArray['MaxId']);
     $queryPC = "INSERT INTO  product_category (Product,Category) VALUES ('$idProd','1')";
     mysqli_query($db, $queryPC);
     //$_SESSION['test'] = $idProd;
@@ -352,11 +352,11 @@ if (isset($_POST['edit_product'])) {
 
 
   // receive all input values from the form
-  $name = mysqli_real_escape_string($db, $_POST['productName']);
-  $price = mysqli_real_escape_string($db, $_POST['productPrice']);
-  $description = mysqli_real_escape_string($db, $_POST['productDescription']);
+  $name = mysqli_real_escape_string($db, htmlspecialchars($_POST['productName']));
+  $price = mysqli_real_escape_string($db, htmlspecialchars($_POST['productPrice']));
+  $description = mysqli_real_escape_string($db, htmlspecialchars($_POST['productDescription']));
   $image = mysqli_real_escape_string($db, $_FILES['productImage']['name']);
-    $id = mysqli_real_escape_string($db, $_POST['id']);
+  $id = mysqli_real_escape_string($db, htmlspecialchars($_POST['id']));
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
@@ -385,13 +385,13 @@ if (isset($_POST['edit_product'])) {
 //CREATE ADDRESSES
 if (isset($_POST['create_adr'])) {
   // receive all input values from the form
-  $name = mysqli_real_escape_string($db, $_POST['addr_name']);
-  $street = mysqli_real_escape_string($db, $_POST['street']);
-  $additional = mysqli_real_escape_string($db, $_POST['additional']);
-  $country = mysqli_real_escape_string($db, $_POST['country']);
-  $city = mysqli_real_escape_string($db, $_POST['city']);
-  $postcode = mysqli_real_escape_string($db, $_POST['postcode']);
-  $id_user = mysqli_real_escape_string($db, $_POST['user_id']);
+  $name = mysqli_real_escape_string($db, htmlspecialchars($_POST['addr_name']));
+  $street = mysqli_real_escape_string($db, htmlspecialchars($_POST['street']));
+  $additional = mysqli_real_escape_string($db, htmlspecialchars($_POST['additional']));
+  $country = mysqli_real_escape_string($db, htmlspecialchars($_POST['country']));
+  $city = mysqli_real_escape_string($db, htmlspecialchars($_POST['city']));
+  $postcode = mysqli_real_escape_string($db, htmlspecialchars($_POST['postcode']));
+  $id_user = mysqli_real_escape_string($db, htmlspecialchars($_POST['user_id']));
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
@@ -412,7 +412,7 @@ if (isset($_POST['create_adr'])) {
     $queryIdAdr = "SELECT MAX(id_addr) as MaxId from addresses LIMIT 1";
     $result = mysqli_query($db, $queryIdAdr);
     $idAdrArray = mysqli_fetch_assoc($result);
-    $idAdr = $idAdrArray['MaxId'];
+    $idAdr = htmlspecialchars($idAdrArray['MaxId']);
     $queryAdr = "INSERT INTO client_addr (Client,Address,Name) VALUES ('$id_user','$idAdr','$name')";
     mysqli_query($db, $queryAdr);
 
