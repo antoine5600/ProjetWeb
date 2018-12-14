@@ -1,5 +1,6 @@
 <?php
 include('session.php') ;
+include('check.php');
 
 // initializing variables
 $username = "";
@@ -33,6 +34,10 @@ if (isset($_POST['reg_user'])) {
   if ($password_1 != $password_2) {
   array_push($errors_reg, "The two passwords do not match");
   }
+
+  if (verifName($username)) { array_push($errors_reg, "Prenom invalide. Utilisez que des Lettres ou/et des Nombres"); }
+  if (verifName($userFirstname)) { array_push($errors_reg, "Nom invalide. Utilisez que des Lettres ou/et des Nombres"); }
+  if (!verifMail($email)) { array_push($errors_reg, "Mail invalide"); }
 
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
@@ -310,7 +315,14 @@ if (isset($_POST['create_product'])) {
   $name = mysqli_real_escape_string($db, htmlspecialchars($_POST['productName']));
   $price = mysqli_real_escape_string($db, htmlspecialchars($_POST['productPrice']));
   $description = mysqli_real_escape_string($db, htmlspecialchars($_POST['productDescription']));
-  $image = mysqli_real_escape_string($db, $_FILES['productImage']['name']);
+  if ( preg_replace( '#^[a-zA-Z_0-9]*(.png|.jpg)$#isU' , "ok" , $_FILES['productImage']['name'] ) == "ok" )
+  {
+    $image = mysqli_real_escape_string($db, $_FILES['productImage']['name']);
+  }
+  else
+  {
+    $image = "error" ;
+  }
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
@@ -318,6 +330,7 @@ if (isset($_POST['create_product'])) {
   if (empty($price)) { array_push($errors_reg, "price is required"); }
   if (empty($description)) { array_push($errors_reg, "description is required"); }
   if (empty($image)) { array_push($errors_reg, "an image is required"); }
+  if ($image == "error") { array_push($errors_reg, "the image is not allowed"); }
 
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
@@ -420,4 +433,6 @@ if (isset($_POST['create_adr'])) {
     header('location: account_user.php');
   }
 }
+
+
 ?>
