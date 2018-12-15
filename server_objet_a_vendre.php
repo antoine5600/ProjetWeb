@@ -70,11 +70,15 @@
 	{
 		if ( $id_post > 0 ) // cas adresse qui existe déjà
 		{
-			$bdd_id_adresse_convertion = $bdd->query('SELECT Address FROM client_addr') ;
+			$req = $bdd_id_adresse_convertion = $bdd->prepare('SELECT Address FROM client_addr WHERE Client = :id_client') ;
+			$req->execute(array(
+				'id_client' => htmlspecialchars($_SESSION['id_user'])
+				));
 			for ( $i = 0 ; $i < $id_post ; $i++ )
 			{
-				$id_adresse_conversion = $bdd_id_adresse_convertion->fetch() ;
+				$id_adresse_conversion = $req->fetch() ;
 			}
+			$req->closeCursor() ;
 			$req = $bdd->prepare('SELECT AddCommand( :id_adresse_livraison , :id_adresse_achat , :id_client )') ;
 			$req->execute(array(
 				'id_adresse_livraison' => htmlspecialchars($id_adresse_conversion['Address']) ,

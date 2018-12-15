@@ -355,7 +355,6 @@ if (isset($_POST['create_product'])) {
     $idProd = htmlspecialchars($idProdArray['MaxId']);
     $queryPC = "INSERT INTO  product_category (Product,Category) VALUES ('$idProd','1')";
     mysqli_query($db, $queryPC);
-    //$_SESSION['test'] = $idProd;
     header('location: productManage.php');
   }
 }
@@ -368,7 +367,14 @@ if (isset($_POST['edit_product'])) {
   $name = mysqli_real_escape_string($db, htmlspecialchars($_POST['productName']));
   $price = mysqli_real_escape_string($db, htmlspecialchars($_POST['productPrice']));
   $description = mysqli_real_escape_string($db, htmlspecialchars($_POST['productDescription']));
-  $image = mysqli_real_escape_string($db, $_FILES['productImage']['name']);
+  if ( preg_replace( '#^[a-zA-Z_0-9]*(.png|.jpg)$#isU' , "ok" , $_FILES['productImage']['name'] ) == "ok" )
+  {
+    $image = mysqli_real_escape_string($db, $_FILES['productImage']['name']);
+  }
+  else
+  {
+    $image = "error" ;
+  }
   $id = mysqli_real_escape_string($db, htmlspecialchars($_POST['id']));
 
   // form validation: ensure that the form is correctly filled ...
@@ -377,6 +383,7 @@ if (isset($_POST['edit_product'])) {
   if (empty($price)) { array_push($errors_reg, "price is required"); }
   if (empty($description)) { array_push($errors_reg, "description is required"); }
   if (empty($image)) { array_push($errors_reg, "an image is required"); }
+  if ($image == "error") { array_push($errors_reg, "the image is not allowed"); }
 
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
