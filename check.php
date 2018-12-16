@@ -1,5 +1,5 @@
 <?php
-
+	
 function verifName($string){
 	$size = strlen($string);
 	for ($i = 0; $i < $size; $i++) {
@@ -23,15 +23,6 @@ function verifMail($string)
 	return $res;
 }
 
-function verifImg($string)
-{
-	if (strpos($string,".png")!== false) return true;
-	if (strpos($string,".jpg")!== false) return true;
-	if (strpos($string,".jpeg")!== false) return true;
-	if (strpos($string,".gif")!== false) return true;
-	if (strpos($string,".jfif")!== false) return true;
-	return false;
-}
 
 ?>
 
