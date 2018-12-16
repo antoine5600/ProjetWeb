@@ -69,7 +69,7 @@ if (isset($_POST['reg_user'])) {
     $queryIdUser = "SELECT MAX(id_usr) as MaxId from users LIMIT 1";
     $result = mysqli_query($db, $queryIdUser);
     $idUserArray = mysqli_fetch_assoc($result);
-    $idUser = htmlspecialchars($idUserArray['MaxId']);
+    $idUser = htmlspecialchars(preg_replace( '#[^a-zA-Z0-9_/\.]#isU' , '' , $idUserArray['MaxId'] )); // protection peut-être pas nécessaire mais id_user étant utilisé partout...
 
     $_SESSION['username'] = $username;
     $_SESSION['user_permission'] = $User_permission;
@@ -106,7 +106,7 @@ if (isset($_POST['login_user'])) {
       $_SESSION['email'] = htmlspecialchars($mail);
       $_SESSION['success'] = "You are now logged in";
 	  $_SESSION['user_firstname'] = htmlspecialchars($row['First_name']) ;
-	  $_SESSION['id_user'] = htmlspecialchars($row['id_usr']) ;
+	  $_SESSION['id_user'] = htmlspecialchars(preg_replace( '#[^a-zA-Z0-9_/\.]#isU' , '' , $row['id_usr'] )) ;
 	  $_SESSION['phone_number'] = htmlspecialchars($row['Telephone']) ;
       header('location: index.php');
     }else {

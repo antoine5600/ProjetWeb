@@ -19,7 +19,7 @@ function getUser()
 
 function getUserId($id)
 {
-	$user_check_query = "SELECT * FROM users where id_usr = ".$id;
+	$user_check_query = "SELECT * FROM users where id_usr = ".htmlspecialchars($id);
 	$result = mysqli_query($GLOBALS['$db'], $user_check_query);
 	return $result;
 }

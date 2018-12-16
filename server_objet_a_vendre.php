@@ -18,6 +18,8 @@
 		$bdd_info_objet_vendable_total = $bdd->query('SELECT id_prod , name , description , price FROM products') ;
 		$_SESSION['info_objet_total'] = $bdd_info_objet_vendable_total->fetchAll() ;
 		
+		// protection contre un fichier extérieur utilisant $nom_page_actuelle autrement qu'avec preg_replace( '#^(.+)\.php$#isU' , '$1' , basename(__FILE__) ) ;
+		$nom_page_actuelle = preg_replace( '#[^a-zA-Z0-9_/\.]#isU' , '' , $nom_page_actuelle ) ;
 		if ( htmlspecialchars($nom_page_actuelle) != 'panier' )
 		{
 			$bdd_nb_objet_vendable = $bdd->prepare('SELECT COUNT(*) AS nb_objet FROM products INNER JOIN product_category ON id_prod = product_category.product JOIN categories ON product_category.category = categories.id_cat WHERE categories.name = :nom_categorie') ;
@@ -28,6 +30,11 @@
 			$bdd_info_objet_vendable = $bdd->prepare('SELECT products.id_prod , products.name , products.description , products.price , products.picture , categories.name AS nom_categorie FROM products INNER JOIN product_category ON id_prod = product_category.product JOIN categories ON product_category.category = categories.id_cat WHERE categories.name = :nom_categorie') ;
 			$bdd_info_objet_vendable->execute(array( 'nom_categorie' => htmlspecialchars($nom_page_actuelle) )) ;
 			$_SESSION['info_objet'] = $bdd_info_objet_vendable->fetchAll() ;
+		}
+		else
+		{
+			$_SESSION['nb_objet'] = 0 ;
+			$_SESSION['info_objet'] = null ;
 		}
 	}
 	
@@ -90,11 +97,11 @@
 		elseif ( $id_post == -1 ) // cas nouvelle adresse
 		{
 			// création nouvelle adresse
-			$new_rue = htmlspecialchars($_POST['street']) ;
-			$new_additional = htmlspecialchars($_POST['additional']) ;
-			$new_postcode = htmlspecialchars($_POST['postcode']) ;
-			$new_city = htmlspecialchars($_POST['city']) ;
-			$new_country = htmlspecialchars($_POST['country']) ;
+			$new_rue = htmlspecialchars(preg_replace( '#[^a-zA-Z0-9_/\.]#isU' , '' , $_POST['street'] )) ;
+			$new_additional = htmlspecialchars(preg_replace( '#[^a-zA-Z0-9_/\.]#isU' , '' , $_POST['additional'] )) ;
+			$new_postcode = htmlspecialchars(preg_replace( '#[^a-zA-Z0-9_/\.]#isU' , '' , $_POST['postcode'] )) ;
+			$new_city = htmlspecialchars(preg_replace( '#[^a-zA-Z0-9_/\.]#isU' , '' , $_POST['city'] )) ;
+			$new_country = htmlspecialchars(preg_replace( '#[^a-zA-Z0-9_/\.]#isU' , '' , $_POST['country'] )) ;
 			$req = $bdd->prepare('INSERT INTO addresses( Street , Additional , Postcode , City , Country ) VALUES( :rue , :supplement , :code_postale , :ville , :pays )');
 			$req->execute(array(
 				'rue' => $new_rue,
@@ -107,7 +114,7 @@
 			// conexion adresse-client
 			$bdd_nb_adresses = $bdd->query('SELECT COUNT(*) AS nb_adresses FROM addresses') ;
 			$nb_adresses = $bdd_nb_adresses->fetch() ; // le +1 n'est pas nécessaire car l'adresse est ajouté juste avant
-			$new_adr_client = htmlspecialchars($_POST['addr_name']) ;
+			$new_adr_client = htmlspecialchars(preg_replace( '#[^a-zA-Z0-9_/\.]#isU' , '' , $_POST['addr_name'] )) ;
 			$req = $bdd->prepare('INSERT INTO client_addr( Client , Address , Name ) VALUES( :id_client , :id_adresse , :nom_adresse )');
 			$req->execute(array(
 				'id_client' => htmlspecialchars($_SESSION['id_user']),
