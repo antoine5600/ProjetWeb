@@ -14,6 +14,7 @@ $db = mysqli_connect('localhost', 'root', '', 'projet_web');
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
   // receive all input values from the form
+  $token = mysqli_real_escape_string($db, htmlspecialchars($_POST['token']));
   $username = mysqli_real_escape_string($db, htmlspecialchars($_POST['username']));
   $userFirstname = mysqli_real_escape_string($db, htmlspecialchars($_POST['userFirstname']));
   $email = mysqli_real_escape_string($db, htmlspecialchars($_POST['email']));
@@ -25,6 +26,7 @@ if (isset($_POST['reg_user'])) {
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
+  if ($token != md5("R9huKhiwbzcxJUETqqnkFZtow2yduqodPFxEjHAAyoNvGs7fnCFKtAtae96MpJxpqeOp0ImgdpegRTXuCJoVQ1GoqHl4QQu7kdvPnyeFzHSL6JaaMC5hGuuoREihfEEZl2n4dL2tG8o8Ax78Jl1qm3vloQLn9WQyFk01qWkaoJk5DQHYMsKGYy7a5kPzfZ1oyJcTYSOPA9wrIGyfgfn1JdQXRPn9AdsF6tUDbcApc45rgL4DAt2DSwAWvCGmYGPWBqkx1NenAFx4ROxZ3iN73nvEleNeNRCnseJfMrwTARUqQP5QyMKQZsAeialN3Ylm4wCzRH3A49thIcu7h12HGwg9JVDDMMXgJHXLGtZ1wnckppR4V6jNcJDicMk70sxdu7ElB3B1UtPGcDY07hqCttvZbRnqpLKV7Sv32a7Db8Tu75bp2hoqR2X5TTCFhRtp5fyiZXhgTYVNlf8M6SeLa3TuC4b5wDAlNSr9KSXYMun8tLfesQTlCZTaAiB1aI9lQAyagWTlglK1qeY0lmuWHsMFF2vZT1Vfn10qZ49DIXvjFP9hl4ZHll37477mZCUGRFisnWGZu8eDgRbc80a8rVFhCgvSrfvwBxr4N6RUeymWlccXrrNYidLfSONCYULd")) { array_push($errors_reg, "ERROR");}
   if (empty($username)) { array_push($errors_reg, "Username is required"); }
   if (empty($userFirstname)) { array_push($errors_reg, "UserFirstname is required"); }
   if (empty($email)) { array_push($errors_reg, "Email is required"); }

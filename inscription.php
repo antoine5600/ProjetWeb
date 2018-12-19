@@ -31,6 +31,7 @@
                             <input type="password" id="colortext" class="form-control input_box" name="password_1">
                         <label class="main-label" for="bday">Confirmation Mot de passe *</label>
                             <input type="password" id="colortext" class="form-control input_box" type="password" name="password_2">
+                            <input type="hidden" id="colortext" class="form-control input_box" name="token" value="5481ca07bb1074dd7720405476f44c20">
                         <button type="submit" class="btn btn-default" name="reg_user">S'inscrire</button>
                         <p>* Champs obligatoires</p>
                     </form>
